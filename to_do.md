@@ -19,3 +19,7 @@ Note: when a task is complete just add an upper-case X to the box, like this:
 - [X] Completed task 
 + **AA:** Here's an example comment on this task 
 ```
+
+This looks like this:
+- [X] Completed task 
++ **AA:** Here's an example comment on this task 
