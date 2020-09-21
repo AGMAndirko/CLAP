@@ -2,8 +2,7 @@
 
 mkdir Timeline_project && cd Timeline_project #creates home directory for the project
 
-mkdir 0_code
-#This would be actually this same github repository I guess
+
 mkdir 1_data
 mkdir 2_plots
 
@@ -72,3 +71,4 @@ mv Timeline_project/*.tsv Timeline_project//1_data/
 
 Rscript KB19_distributions.R
 mv *.pdf Timeline_project/2_plots
+# This folder is then used to send stuff to github in an organized manner

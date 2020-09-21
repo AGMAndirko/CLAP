@@ -113,3 +113,27 @@ ggplot(hf, aes(X23*29))+
   geom_vline(xintercept = 500000, color = "red") +
   geom_vline(xintercept = 800000, color = "red") 
 dev.off()
+
+km <- kmeans(hf_strict$X23,centers=4) #Change the numbers after centers to set a different k
+hf_strict$cluster <- as.factor(km$cluster)
+
+
+#Some density histograms with clusters
+pdf(file="HFstr_density_clust.pdf")
+ggplot(hf_strict, aes(X23*29)) + 
+  geom_density(adjust=1/2) +
+  scale_x_continuous(labels = function(x) format(x, scientific = FALSE), breaks = seq(0,6218702, by = 250000)) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  xlab("Measured values")
+dev.off()
+
+
+pdf(file="kmeans_HFstr.pdf")
+ggplot(hf_strict, aes(x=X23*29)) +
+  ggtitle("K-clustering (using 90% strict)")  +
+  scale_x_continuous(labels = function(x) format(x, scientific = FALSE), breaks = seq(0,6218702, by = 250000)) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  #stat_density(geom="line", color="red") +
+  geom_histogram(aes(fill=cluster), stat = "bin", bins = 500) +
+  labs(x = "Years", y = "Variant count") 
+dev.off()
