@@ -11,4 +11,4 @@ The structure of the folders is the following:
 - Text files are written in Markdown - if you need help with the syntax, here's a [quick cheatsheet](https://www.markdownguide.org/basic-syntax/).
 - I'm ordering a bit the scripts as well - should be done by tomorrow. I'm also running the procedure again to get the plots in place.
 - Ideally, we should keep figures in PDF format.
-- Apparently you can mention people (like in @AGMAndirko) in specific bits. 
+- Apparently you can mention people (like in @AGMAndirko ) in specific bits, and they get a notification.
