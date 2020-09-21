@@ -1,6 +1,6 @@
 # CLAP project: structured observations
 
-Here's a list of all the things  
+Here's a list of all the things we have mentioned (to be yet filled)
 
 ## Kuhlwilm & Boeckx (2019) core files
 - We used three versions of the data presented in K&B:
