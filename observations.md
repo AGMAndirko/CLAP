@@ -1,42 +1,20 @@
-# CLAP project: structured observations
+# CLAP project: structured observations 
+(right now unstructured, but ought to be structured as we add them)
 
-Here's a list of all the things we have mentioned (to be yet filled)
+Report all the statistically significant distributions (Nall, HF, HFstrict, etc.) LIST all statistically significant results here
 
-## Kuhlwilm & Boeckx (2019) core files
-- We used three versions of the data presented in K&B:
-	1. All variants...
-	2. Variants in high frequency...
-	3. Variants in high frequency, but...
-- These three datasets yield significantly different distributions:
-**plot here** **stats here**
+All the curves tend to look like a Brontosaurus profile, except for missense where the right bump and left bump have equal height
 
-## Precedents in dating variants
-- Our work versus kaitovich
+BAZ1B targets: INV vs DIR contrast but mostly for most robust targets -- useful to bring up H. antcessor, but also Gokhman
 
-## GEVA
-- We used the GEVA dataset to date these variants
-- The GEVA dataset consists of...
-- We used the following parameters:
-	- We used only the `Combined` data...
-	- We set generation time at 29 because...
-- We divided out data in...
+Domestication vs Globularization timing vindicated; Tom vindicated
 
-## Tissue-specific observations 
+mention of 4th genome?
 
-## GO analysis
-- We chose a threshold...
-- Brain related categories such as ... were highlighted
-- Other non-brain categories of interest are...
-	- Bone
+Not sure what to do with cortical enh/prom changes from Juan's paper, maybe in SI?
 
-## Testing categories of mutations
-- Enhancers
-- GTEx
-- Deserts, selection and introgression data
+Not sure what to do with chromosome data (ask Martin?)
 
-## Testing expression data
-- ExPecto is a tool...
-- We ran ExPEcto against the high frequency data
-- An statistical test shows that...
-- A linear regression model shows that... 
+As predicted by Kuhlwilm and Boeckx, the curve of excess follows that of pos selection more closely than length does; introgression deserts from Akey also follows pos selection closely -- these 3 curves are different ways of giving sense to "most distinctive" variants
+
 
