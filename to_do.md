@@ -8,7 +8,6 @@
 	- [ ] Run them through Expecto
 	- [ ] Run stats test 
 - [ ] Add all the current observations 
-	+ **AA:** After you check this repository, how about we start with this? 
 - [ ] Statistics for:
 	- [ ] Deserts of introgression, Akey and Peyregné
 - [ ] Add more here
