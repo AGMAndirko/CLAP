@@ -1,6 +1,8 @@
 #!/usr/bin/env Rscript
 library(tidyverse)
 library(reshape2)
+library(gprofiler2)
+library(ggrepel)
 
 #drop unnecessary columns
 output060 <- read_csv("Timeline_project/1_data/ExPecto/output060.csv")
@@ -88,70 +90,69 @@ select_n_plot(output500800[,-(1:10),drop=FALSE], "500-800k")
 
 
 #As for gene-wise plots...
-genewiseplot <- function(originalout) {
-  #Select as before, reshape
-  output <- originalout %>% 
-  select(3,8,9, 10, 11, 12, 13, 14, 15, 16,17,18,20, 42, 61, 136, 145, 161, 186, 187, 189, 209)  %>% 
-  melt()
-
-  #Keep the gene!
-  output$genes <- originalout$gene
-
-  #Variation potential directionality = value here
-	inp1 <- aggregate(value ~ genes, output, sum)
-	colnames(inp)[2] <- "directionality"
-
-	#Variation potential magnitude to a new dataframe (inpm+number of time window)
-	inpm <- aggregate(abs(value) ~ genes, output, sum)
-	colnames(inpm)[2] <- "magnitude"
-	
-	#Testing íf columns are the same
-	#Replies with FALSE here if everything ok to merge
-	test <- inp$genes == inpm$genes
-	FALSE %in% test
-
-	#adds magnitude, removes aggregate 
-	inp1$magnitude <- inpm$magnitude
-}
-
-inp1 <- 
-inp2 <- 
-inp3 <- 
-inp4 <- 
-inp5 <- 
-inp6 <- 
-
-
-
-plotinp <- rbind(inp1, inp2, inp3, inp4, inp5, inp6)
-plotinp$timing <- c(rep("0 - 60k", nrow(inp1)),
-                    rep("60k - 100k", nrow(inp2)),
-                    rep("100k - 200k", nrow(inp3)),
-                    rep("200k - 300k", nrow(inp4)),
-                    rep("300k - 500k", nrow(inp5)),
-                    rep("500k - 800k", nrow(inp6)))
-
-
-#order levels 
-plotinp$timing <- factor(plotinp$timing, levels = c("0 - 60k", "60k - 100k", "100k - 200k", "200k - 300k", "300k - 500k", "500k - 800k"))
-
-#clean a bit
-rm(inpm1,inpm2,inpm3,inpm4,inpm5, inpm6)
-rm(inp1,inp2,inp3,inp4,inp5, inp6)
-rm(output1, output2, output3, output4, output5, output6)
-
-genenames<- gconvert(query = plotinp$genes, organism = "hsapiens",
-                     target="ENSG", filter_na = FALSE)
-
-test <- genenames$target == plotinp$genes
-FALSE %in% test # should be FALSE
-#produces some NA! some ensemble ID genes are not recognized for some reason (71 genes)
-#I can live with that
-plotinp$genes <- as.character(genenames$name)
-
-#Plots a cone
-ggplot(plotinp, aes(x=magnitude, y=directionality, colour = timing, label = genes)) +
-  theme_minimal() +
-  geom_point(size = 3) +
-  labs(x= "Absolute magnitude of change", y = "Directionality (altternative allele)") +
-  geom_label_repel(data = subset(plotinp,  magnitude > 2), colour = "black", nudge_y = 1 ) 
+  genewiseplot <- function(originalout) {
+    #Select as before, reshape
+    output <- originalout %>% 
+    select(3,8,9, 10, 11, 12, 13, 14, 15, 16,17,18,20, 42, 61, 136, 145, 161, 186, 187, 189, 209)  %>% 
+    melt()
+  
+    #Keep the gene!
+    output$genes <- originalout$gene
+  
+    #Variation potential directionality = value here
+  	inp <- aggregate(value ~ genes, output, sum)
+  	colnames(inp)[2] <- "directionality"
+  
+  	#Variation potential magnitude to a new dataframe (inpm+number of time window)
+  	inpm <- aggregate(abs(value) ~ genes, output, sum)
+  	colnames(inpm)[2] <- "magnitude"
+  	
+  	#Testing íf columns are the same
+  	#Replies with FALSE here if everything ok to merge
+  	test <- inp$genes == inpm$genes
+  	FALSE %in% test
+  
+  	#adds magnitude, removes aggregate 
+  	inp$magnitude <- inpm$magnitude
+  	return(inp)
+  }
+  
+  inp1 <- genewiseplot(output060)
+  inp2 <- genewiseplot(output60100)
+  inp3 <- genewiseplot(output100200)
+  inp4 <- genewiseplot(output200300)
+  inp5 <- genewiseplot(output300500)
+  inp6 <- genewiseplot(output500800)
+  
+  plotinp <- rbind(inp1, inp2, inp3, inp4, inp5, inp6)
+  plotinp$timing <- c(rep("0 - 60k", nrow(inp1)),
+                      rep("60k - 100k", nrow(inp2)),
+                      rep("100k - 200k", nrow(inp3)),
+                      rep("200k - 300k", nrow(inp4)),
+                      rep("300k - 500k", nrow(inp5)),
+                      rep("500k - 800k", nrow(inp6)))
+  
+  
+  #order levels 
+  plotinp$timing <- factor(plotinp$timing, levels = c("0 - 60k", "60k - 100k", "100k - 200k", "200k - 300k", "300k - 500k", "500k - 800k"))
+  
+  #clean a bit
+  rm(inp1, inp2, inp3, inp4, inp5, inp6, output060, output100200, output200300, output300500, output500800)
+  
+  genenames<- gconvert(query = plotinp$genes, organism = "hsapiens",
+                       target="ENSG", filter_na = FALSE)
+  
+  test <- genenames$input == plotinp$genes
+  FALSE %in% test # should be FALSE
+  #produces some NA! some ensemble ID genes are not recognized for some reason (71 genes)
+  #I can live with that
+  plotinp$genes <- as.character(genenames$name)
+  
+  #Plots a cone
+  pdf("genewise.pdf")
+  ggplot(plotinp, aes(x=magnitude, y=directionality, colour = timing, label = genes)) +
+    theme_minimal() +
+    geom_point(size = 2) +
+    labs(x= "Absolute magnitude of change", y = "Directionality (altternative allele)")
+    #geom_label_repel(data = subset(plotinp,  magnitude > 2), colour = "black", nudge_y = 1 ) 
+  dev.off()
