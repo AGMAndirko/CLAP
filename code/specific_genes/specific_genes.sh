@@ -19,3 +19,14 @@ get_gene () {
 }
 
 get_gene FOXP2
+
+# Another option: create a list of genes in a txt file separated by new lines and run this
+CLAPgene () {
+	grep -P $1 Na_high_freq.tsv | grep -P -o "rs\d*" | grep -w -f - hf_COMBINED.tsv
+}
+
+#while IFS= read -r LINE;do
+#         CLAPgene "$LINE" > $LINE.out
+#done < listofgenes.txt
+
+#Mind that this will generate a lot of files with the names of the genes

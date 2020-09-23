@@ -1,8 +1,11 @@
 # Tasks to do
 - [ ] Get all the plots into github
 
-	Missing files:
+	Missing files for reproducibility (if we want to host them somewhere):
 			- [ ] Enhancers
+			- [ ] New/old BAZ1B lists
+	Missing plots:
+			- [ ] Five files
 			
 - [ ] Plot both introgression files (Vernot vs Sankararaman)
 - [ ] Divide between Denisovan and Neanderthals in the Martin files (and plot)
