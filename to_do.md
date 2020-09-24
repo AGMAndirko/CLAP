@@ -9,7 +9,7 @@
 			- [ ] Five files
 			- [ ] GTEX
 			
-- [ ] Plot both introgression files (Vernot vs Sankararaman)
+- [X] Plot both introgression files (Vernot vs Sankararaman)
 - [ ] Divide between Denisovan and Neanderthals in the Martin files (and plot)
 - [ ] Come up with a way to redo graphs a la Reich
 - [ ] GO gene categories
