@@ -10,7 +10,7 @@ As predicted by Kuhlwilm and Boeckx, the curve of excess follows that of positiv
 ## Statistical results
 LIST all statistically significant results here
 
-**KS test**: are certain distributions from the core files statistically significant?
+**KS test**: are certain distributions from the core files statistically significant when compared?
 - Recent distribution (0-300k years)
     - HF vs HF strict
     ```D = 0.039051, p-value = 4.328e-11 ```
