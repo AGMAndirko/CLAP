@@ -10,6 +10,7 @@
 			- [ ] GTEX
 			
 - [X] Plot both introgression files (Vernot vs Sankararaman)
+	+ **AA:** If you have any other suggestions re that let me know
 - [ ] Divide between Denisovan and Neanderthals in the Martin files (and plot)
 - [ ] Come up with a way to redo graphs a la Reich
 - [ ] GO gene categories
