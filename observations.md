@@ -7,6 +7,7 @@
 As predicted by Kuhlwilm and Boeckx, the curve of excess follows that of positive selection more closely than length does; introgression deserts from Akey also follows pos selection closely -- these 3 curves are different ways of giving sense to "most distinctive" variants
 	+ **AA:** did we roll stats on it at some point? I don't remember doing it, and that's the short of statment that we should be very careful to back strongly
 
+All the curves tend to look like a Brontosaurus profile, except for missense where the right bump and left bump have equal height, and the introgression plots, which nicely lack the posterior bump.
 ## Statistical results
 LIST all statistically significant results here
 
@@ -34,7 +35,7 @@ A linear regression analysis shows that expression values as predicted by ExPect
 Approximative Kruskal-Wallis Test with random sampling (n = 1000)
 
 
-All the curves tend to look like a Brontosaurus profile, except for missense where the right bump and left bump have equal height
+
 
 ## BAZ1B
 BAZ1B targets: INV vs DIR contrast but mostly for most robust targets -- useful to bring up H. antcessor, but also Gokhman
