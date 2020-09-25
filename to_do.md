@@ -10,7 +10,7 @@
 
 	Missing plots:
 
-			- [ ] GTEX (25)
+			- [X] GTEX (25)
 			- [ ] Peyregné (28)
 			
 - [X] Plot both introgression files (Vernot vs Sankararaman)
