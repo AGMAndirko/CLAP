@@ -10,7 +10,6 @@
 
 	Missing plots:
 
-			- [ ] Five files (25)
 			- [ ] GTEX (25)
 			- [ ] Peyregné (28)
 			
