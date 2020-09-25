@@ -17,6 +17,7 @@
 	+ **AA:** If you have any other suggestions re that let me know
 - [ ] Divide between Denisovan and Neanderthals in the Martin files (and plot) (today - 25)
 - [ ] Martin filter plots (between today 25 and monday 28)
+	+ **CB** perhaps here too differences within archaics may matter?
 - [ ] Come up with a way to redo graphs a la Reich
 - [ ] GO gene categories
 	- [ ] Select GO categories of interest
@@ -24,7 +25,7 @@
 	- [ ] Run stats test 
 - [ ] Add all the current observations 
 - [ ] Statistics for:
-	- [ ] Deserts of introgression, Akey and Peyregné
+	- [ ] Deserts of introgression, Akey and Peyregné, also for length/excess
 - [ ] Add more here
 
 Note: when a task is complete just add an upper-case X to the box, like this:
