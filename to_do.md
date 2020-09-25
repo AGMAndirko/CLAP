@@ -1,17 +1,21 @@
 # Tasks to do
 - [ ] Get all the plots into github 
-	+ **AA:** about 85% done
-
+	+ **AA:** about 95% done
+	
 	Missing files for reproducibility (if we want to host them here, discussion is open):
+
 			- [ ] Enhancers
 			- [ ] New/old BAZ1B lists
+
 	Missing plots:
+
 			- [ ] Five files
 			- [ ] GTEX
+			- [ ] Peyregné
 			
 - [X] Plot both introgression files (Vernot vs Sankararaman)
 	+ **AA:** If you have any other suggestions re that let me know
-- [ ] Divide between Denisovan and Neanderthals in the Martin files (and plot)
+- [ ] Divide between Denisovan and Neanderthals in the Martin files (and plot) (today - 25)
 - [ ] Come up with a way to redo graphs a la Reich
 - [ ] GO gene categories
 	- [ ] Select GO categories of interest
