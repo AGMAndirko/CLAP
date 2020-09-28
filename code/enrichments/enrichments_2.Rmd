@@ -1,4 +1,5 @@
 ```r
+library(dplyr)
 
 hf <- read.csv("~/hf_COMBINED.tsv", header=FALSE) #Human high-freq SNPs mapped
 
@@ -59,37 +60,52 @@ grep -w -f ~/hf_COMBINED_300_500kya_only_rsIDs ~/Na_high_freq.tsv > ~/hf_COMBINE
 ```
 
 ```r
-hf_COMBINED_500kya_1mya_only_rsIDs_RESULTS <- read.delim("~/hf_COMBINED_500kya_1mya_only_rsIDs_RESULTS", header=FALSE)
-hf_COMBINED_500kya_1mya_only_rsIDs_RESULTS_enrich001 <- gost(hf_COMBINED_500kya_1mya_only_rsIDs_RESULTS$V3, organism = "hsapiens", correction_method = "gSCS", user_threshold = 0.01) #get names: evcodes = TRUE 
-#table <- apply(hf_COMBINED_500kya_1mya_only_rsIDs_RESULTS_enrich001[["result"]],2,as.character)
-#table <- as.data.frame(#table)
-#write.csv(#table, file="~/hf_COMBINED_500kya_1mya_only_rsIDs_RESULTS_enrich001.csv", row.names = FALSE)
-#publish_gost#table(hf_COMBINED_500kya_1mya_only_rsIDs_RESULTS_enrich001, highlight_terms = NULL, use_colors = TRUE,show_columns = "term_name", filename = "~/hf_COMBINED_500kya_1mya_only_rsIDs_RESULTS_enrich001.pdf")
-hf_COMBINED_500kya_1mya_only_rsIDs_RESULTS_enrich005 <- gost(hf_COMBINED_500kya_1mya_only_rsIDs_RESULTS$V3, organism = "hsapiens", correction_method = "gSCS", user_threshold = 0.05) #get names: evcodes = TRUE 
-#table <- apply(hf_COMBINED_500kya_1mya_only_rsIDs_RESULTS_enrich005[["result"]],2,as.character)
-#table <- as.data.frame(#table)
-#write.csv(#table, file="~/hf_COMBINED_500kya_1mya_only_rsIDs_RESULTS_enrich005.csv", row.names = FALSE)
+library(gprofiler2)
 
-hf_COMBINED_0kya_300kya_only_rsIDs_RESULTS <- read.delim("~/hf_COMBINED_0kya_300kya_only_rsIDs_RESULTS", header=FALSE)
-hf_COMBINED_0kya_300kya_only_rsIDs_RESULTS_enrich001 <- gost(hf_COMBINED_0kya_300kya_only_rsIDs_RESULTS$V3, organism = "hsapiens", correction_method = "gSCS", user_threshold = 0.01) #get names: evcodes = TRUE 
+##500-1m .01
+hf_COMBINED_500kya_1mya_only_rsIDs_RESULTS <- read.delim("hf_COMBINED_500kya_1mya_only_rsIDs_RESULTS", header=FALSE)
+hf_COMBINED_500kya_1mya_only_rsIDs_RESULTS_enrich001 <- gost(hf_COMBINED_500kya_1mya_only_rsIDs_RESULTS$V3, organism = "hsapiens", correction_method = "gSCS", user_threshold = 0.01, evcodes = TRUE)
+#Write:
+#table <- apply(hf_COMBINED_500kya_1mya_only_rsIDs_RESULTS_enrich001[["result"]],2,as.character)
+#table <- as.data.frame(table)
+#write.csv(table, file="hf_COMBINED_500kya_1mya_only_rsIDs_RESULTS_enrich001.csv", row.names = FALSE)
+
+##500-1m .05
+hf_COMBINED_500kya_1mya_only_rsIDs_RESULTS_enrich005 <- gost(hf_COMBINED_500kya_1mya_only_rsIDs_RESULTS$V3, organism = "hsapiens", correction_method = "gSCS", user_threshold = 0.05, evcodes = TRUE)  
+#Write:
+#table <- apply(hf_COMBINED_500kya_1mya_only_rsIDs_RESULTS_enrich005[["result"]],2,as.character)
+#table <- as.data.frame(table)
+#write.csv(table, file="hf_COMBINED_500kya_1mya_only_rsIDs_RESULTS_enrich005.csv", row.names = FALSE)
+
+##0-300 .01
+hf_COMBINED_0kya_300kya_only_rsIDs_RESULTS <- read.delim("hf_COMBINED_0kya_300kya_only_rsIDs_RESULTS", header=FALSE)
+hf_COMBINED_0kya_300kya_only_rsIDs_RESULTS_enrich001 <- gost(hf_COMBINED_0kya_300kya_only_rsIDs_RESULTS$V3, organism = "hsapiens", correction_method = "gSCS", user_threshold = 0.01, evcodes = TRUE)
+#Write:
 #table <- apply(hf_COMBINED_0kya_300kya_only_rsIDs_RESULTS_enrich001[["result"]],2,as.character)
-#table <- as.data.frame(#table)
-#write.csv(#table, file="~/hf_COMBINED_0kya_300kya_only_rsIDs_RESULTS_enrich001.csv", row.names = FALSE)
-#publish_gost#table(hf_COMBINED_500kya_1mya_only_rsIDs_RESULTS_enrich001, highlight_terms = NULL, use_colors = TRUE,show_columns = "term_name", filename = "~/hf_COMBINED_500kya_1mya_only_rsIDs_RESULTS_enrich001.pdf")
-hf_COMBINED_0kya_300kya_only_rsIDs_RESULTS_enrich005 <- gost(hf_COMBINED_0kya_300kya_only_rsIDs_RESULTS$V3, organism = "hsapiens", correction_method = "gSCS", user_threshold = 0.05) #get names: evcodes = TRUE 
+#table <- as.data.frame(table)
+#write.csv(table, file="hf_COMBINED_0kya_300kya_only_rsIDs_RESULTS_enrich001.csv", row.names = FALSE)
+
+##0-300 .05
+hf_COMBINED_0kya_300kya_only_rsIDs_RESULTS_enrich005 <- gost(hf_COMBINED_0kya_300kya_only_rsIDs_RESULTS$V3, organism = "hsapiens", correction_method = "gSCS", user_threshold = 0.05, evcodes = TRUE)  
+#Write:
 #table <- apply(hf_COMBINED_0kya_300kya_only_rsIDs_RESULTS_enrich005[["result"]],2,as.character)
-#table <- as.data.frame(#table)
-#write.csv(#table, file="~/hf_COMBINED_0kya_300kya_only_rsIDs_RESULTS_enrich005.csv", row.names = FALSE)
-#300-500kya
-hf_COMBINED_300_500kya_only_rsIDs_RESULTS_enrich001 <- gost(hf_COMBINED_300_500kya_only_rsIDs_RESULTS$V3, organism = "hsapiens", correction_method = "gSCS", user_threshold = 0.01, evcodes = TRUE) #get names: evcodes = TRUE 
+#table <- as.data.frame(table)
+#write.csv(table, file="hf_COMBINED_0kya_300kya_only_rsIDs_RESULTS_enrich005.csv", row.names = FALSE)
+
+##300-500kya .01
+hf_COMBINED_300_500kya_only_rsIDs_RESULTS <- read.delim("hf_COMBINED_300_500kya_only_rsIDs_RESULTS", header=FALSE)
+hf_COMBINED_300_500kya_only_rsIDs_RESULTS_enrich001 <- gost(hf_COMBINED_300_500kya_only_rsIDs_RESULTS$V3, organism = "hsapiens", correction_method = "gSCS", user_threshold = 0.01, evcodes = TRUE)
+#Write:
 #table <- apply(hf_COMBINED_300_500kya_only_rsIDs_RESULTS_enrich001[["result"]],2,as.character)
-#table <- as.data.frame(#table)
-#write.csv(#table, file="~/hf_COMBINED_300_500kya_only_rsIDs_RESULTS_enrich001.csv", row.names = FALSE)
-publish_gost#table(hf_COMBINED_300_500kya_only_rsIDs_RESULTS_enrich001, highlight_terms = NULL, use_colors = TRUE, filename = "~/hf_COMBINED_300_500kya_only_rsIDs_RESULTS_enrich001.pdf")
-hf_COMBINED_300_500kya_only_rsIDs_RESULTS_enrich005 <- gost(hf_COMBINED_300_500kya_only_rsIDs_RESULTS$V3, organism = "hsapiens", correction_method = "gSCS", user_threshold = 0.05, evcodes = TRUE) #get names: evcodes = TRUE 
-#table <- apply(hf_COMBINED_300_500kya_only_rsIDs_RESULTS_enrich005[["result"]],2,as.character)
-#table <- as.data.frame(#table)
-#write.csv(#table, file="~/hf_COMBINED_300_500kya_only_rsIDs_RESULTS_enrich005.csv", row.names = FALSE)
+#table <- as.data.frame(table)
+#write.csv(table, file="/hf_COMBINED_300_500kya_only_rsIDs_RESULTS_enrich001.csv", row.names = FALSE)
+
+#300-500kya .05
+hf_COMBINED_300_500kya_only_rsIDs_RESULTS_enrich005 <- gost(hf_COMBINED_300_500kya_only_rsIDs_RESULTS$V3, organism = "hsapiens", correction_method = "gSCS", user_threshold = 0.05, evcodes = TRUE) 
+table <- apply(hf_COMBINED_300_500kya_only_rsIDs_RESULTS_enrich005[["result"]],2,as.character)
+#Write:
+#table <- as.data.frame(table)
+#write.csv(table, file="/hf_COMBINED_300_500kya_only_rsIDs_RESULTS_enrich005.csv", row.names = FALSE)
 ```
 
 
