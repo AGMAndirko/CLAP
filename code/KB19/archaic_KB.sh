@@ -33,16 +33,16 @@ wget https://human.genome.dating/bulk/atlas.chr21.csv.gz
 wget https://human.genome.dating/bulk/atlas.chr22.csv.gz
 gzip -d *
 
-awk '{print $1, $19, $7, $10, $13}' NNaall_positions.tsv | grep -P -o 'rs\d*'  > NNaall_relevantcols.txt
+awk '{print $1, $19, $7, $10, $13}' NNaall_positions.tsv  > NNaall_relevantcols.txt
 
 #Altai
-awk '{if ($3==1) print $0}' NNaall_relevantcols.txt | grep -P -o 'rs\d*' | grep -w -f - *.csv > Altai_dated
+awk '{if ($3==1) print $0}' NNaall_relevantcols.txt | grep -P -o 'rs\d*' | grep -w -f - *.csv | grep 'Combined' > Altai_dated
 
 #Vindija
-awk '{if ($4==1) print $0}' NNaall_relevantcols.txt | grep -P -o 'rs\d*' | grep -w -f - *.csv > Vindija_dated
-
+awk '{if ($4==1) print $0}' NNaall_relevantcols.txt | grep -P -o 'rs\d*' | grep -w -f - *.csv | grep 'Combined' > Vindija_dated
+ 
 #Denisova
-awk '{if ($5==1) print $0}' NNaall_relevantcols.txt | grep -P -o 'rs\d*' | grep -w -f - *.csv >  Denisova_dated
+awk '{if ($5==1) print $0}' NNaall_relevantcols.txt | grep -P -o 'rs\d*' | grep -w -f - *.csv | grep 'Combined' >  Denisova_dated
 
 rm NNaall_relevantcols.txt NNaall_positions.tsv atlas*
 
