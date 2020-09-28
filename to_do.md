@@ -1,8 +1,6 @@
 # Tasks to do
 - [ ] Get all the plots into github 
-	+ **AA:** about 95% done
-	
-	Missing files for reproducibility (if we want to host them here, discussion is open - so far the Martin files, for example, are hosted in google drive and incorporated into the scripts with a custom command):
+	**AA:** Missing files for reproducibility (if we want to host them here, discussion is open - so far the Martin files, for example, are hosted in google drive and incorporated into the scripts with a custom command):
 
 			- [ ] Enhancers
 			- [ ] New/old BAZ1B lists
@@ -15,12 +13,14 @@
 			
 - [X] Plot both introgression files (Vernot vs Sankararaman)
 	+ **AA:** If you have any other suggestions re that let me know
-- [ ] Divide between Denisovan and Neanderthals in the Martin files (and plot) (today - 25)
+- [X] Divide between Denisovan and Neanderthals in the Martin files (and plot)
+	+ **AA:** Done using NNall and columns 7, 10 and 13 for the filter specifically. Looks like it should. I'd say stats should be robust on the earlier peak with Neanderthals vs Denisovan.
+	- [ ] KS tests for Denisovan, if we want to mention this
 - [ ] Martin filter plots (between today 25 and monday 28)
 	+ **CB** perhaps here too differences within archaics may matter?
 - [ ] Come up with a way to redo graphs a la Reich
-- [ ] GO gene categories
-	- [ ] Select GO categories of interest
+- [~] GO gene categories
+	- [X] Select GO categories of interest
 	- [ ] Run them through Expecto
 	- [ ] Run stats test 
 - [ ] Add all the current observations 
