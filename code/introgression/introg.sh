@@ -91,7 +91,7 @@ findfilt2 () {
         rm uber.txt;
 	sed -i 's/\t/\, /g' filtranges;
 	head filtranges;
-	tail -n 3 atlas.chr1.csv | awk -F, '{range[$1]=$1; range[$2]=$3; range[$3]=$4} (($2 in range[$1]) && (($3 >= range[$2]) && ($3 <= range[$3]))) {print $0}' - filtranges > test
+	tail -n 3 atlas.chr* | awk -F, '{range[$1]=$1; range[$2]=$3; range[$3]=$4} (($2 in range[$1]) && (($3 >= range[$2]) && ($3 <= range[$3]))) {print $0}' - filtranges > test
 } 
 
 findfilt2 denisova > dated_intro_deni
