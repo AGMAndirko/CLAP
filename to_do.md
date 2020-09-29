@@ -16,10 +16,10 @@
 - [X] Divide between Denisovan and Neanderthals in the Martin files (and plot)
 	+ **AA:** Done using NNall and columns 7, 10 and 13 for the filter specifically. Looks like it should. I'd say stats should be robust on the earlier peak with Neanderthals vs Denisovan.
 	- [ ] KS tests for Denisovan, if we want to mention this
-- [ ] Martin filter plots (between today 25 and monday 28)
-	+ **CB** perhaps here too differences within archaics may matter?
+- [X] Martin filter plots
+	+ [ ] **CB** perhaps here too differences within archaics may matter?
 - [ ] Come up with a way to redo graphs a la Reich
-- [~] GO gene categories
+- [ ] GO gene categories
 	- [X] Select GO categories of interest
 	- [ ] Run them through Expecto
 	- [ ] Run stats test 
