@@ -3,7 +3,8 @@ Here's a repository of all the data, observations, code and plots for the CLAP p
 The structure of the folders is the following:
 - `plots/` is self-explanatory. Subfolders are thematically organized.
 - `code/` includes all the subtasks divided in thematic subscripts (f ex: a script for the generation of a specific set of plots). The products of these scripts in form of plots are found in matching subfolders - wordier results should go to `observations.md`.
-- `observations.md` is the document where we had results and interpretations of the plots.
+- `observations.md` is the document where we add results and interpretations of the plots.
+- `outline.md` sketches the overall project and the narrative we intend to articulate in the paper.
 - `to_do.md` includes a list of minitasks, accompanied by a due date and maybe a short description.
 
 
