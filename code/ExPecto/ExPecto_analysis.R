@@ -30,4 +30,4 @@ out$effect_allele <- pull(input, var = 6)
 input <- out %>% 
   filter(value >= 0.001)
 GO <- gprofiler2::gost(input$genes)
-
+    
