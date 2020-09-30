@@ -254,7 +254,6 @@ p <- melt(p)
 p <- as.data.frame(p)
 
 pdf("BAZ1B_3_inv.pdf")
-
 ggplot(p, aes(value*29, L1)) +
   theme_minimal() +
   ggtitle("BAZ1B INV", subtitle = "DE bound by enhancer / 2 histones") +
@@ -264,5 +263,31 @@ ggplot(p, aes(value*29, L1)) +
   labs(x = "Years", y = "Gene") +
   theme(legend.position = "top") +
   geom_vline(xintercept = BAZ1B$X23*29, colour = "red")
+dev.off()
 
+rm(list = ls())
+
+degsDir <- read_csv("Timeline_project/1_data/BAZ1B/BAZ1B_3/degsDir.atl2HPTM.genes.txt.out", 
+                                       col_names = FALSE)
+degsInv <- read_csv("Timeline_project/1_data/BAZ1B/BAZ1B_3/degsInv.atl2HPTM.genes.txt.out", 
+                                       col_names = FALSE)
+
+p <- NULL
+p$Dir <- degsDir$X23
+p$Inv <- degsInv$X23
+p <- melt(p)
+
+BAZ1B <- read_csv("Timeline_project/1_data/BAZ1B/BAZ1B_3/BAZ1B.out", 
+                  col_names = FALSE)
+
+pdf("BAZ1B_3_alt.pdf")
+ggplot(p, aes(value*29, group = L1, colour = L1)) +
+  theme_minimal() +
+  scale_x_continuous(labels = function(x) format(x, scientific = FALSE), breaks = seq(0,6218702, by = 250000)) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  geom_density(stat = "bin", bins = 50) +
+  labs(x = "Years", y = "Variant count", color= "List") +
+  scale_color_brewer(palette="Paired") +
+  theme(legend.position = "top") +
+  geom_vline(xintercept = BAZ1B$X23*29, colour = "black", alpha = 0.5)
 dev.off()

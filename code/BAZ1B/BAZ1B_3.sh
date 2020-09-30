@@ -33,6 +33,19 @@ find -size  0 -print -delete
 
 CLAPgene "BAZ1B" > BAZ1B.out
 
+CLAPing () {
+	grep -w -f $1 Na_high_freq.tsv | grep -P -o "rs\d*" >  $1.temp;
+	grep -w -f $1.temp hf_COMBINED.tsv > $1.out;
+	rm $1.temp
+}
+
+CLAPing degsInv.atl2HPTM.genes.txt
+echo !$ " done"
+
+CLAPing degsDir.atl2HPTM.genes.txt
+echo !$ " done"
 
 cd ../../..
-Rscrip_clap newBAZ1B_plots.R
+Rscrip_clap BAZ1B_3_plots.R
+
+
