@@ -17,7 +17,8 @@
 	+ **AA:** Done using NNall and columns 7, 10 and 13 for the filter specifically. Looks like it should. I'd say stats should be robust on the earlier peak with Neanderthals vs Denisovan.
 	- [ ] KS tests for Denisovan, if we want to mention this
 - [X] Martin filter plots
-	+ [ ] **CB** perhaps here too differences within archaics may matter? (1/10)
+	+ [X] **CB** perhaps here too differences within archaics may matter?
+	+ **A** They don't really, as shown by the archaic_and_populations plot. The curves are very similar (almost identical, differences in some hundred of variants overall) between archaics, despite filters. It's true this is done through HF right now, so of course a lot of variants are shared. I might update it in some minutes using NNall as a base to see if there's a significant difference. Meanwhile I'm leaving the most recent plot there.
 - [ ] Come up with a way to redo graphs a la Reich
 - [ ] GO gene categories
 	- [X] Select GO categories of interest
