@@ -21,7 +21,7 @@ filter1 <- HF_population_freqs %>%
   filter(AFR_MAF <= 0.03, nonAFR <= 0.1)
 #  filter (<10% for non-africans, <3% for africans
 
-filter2 <- filter1 <- HF_population_freqs %>% 
+filter2 <- HF_population_freqs %>% 
   filter(AFR_MAF <= 0.1, nonAFR <= 0.01)
 #<10 AFR & <1 non−AFR
 
