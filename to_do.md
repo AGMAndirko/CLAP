@@ -7,10 +7,7 @@
 			- [ ] GTEx files
 
 	Missing plots:
-
-			- [X] GTEX (25)
-			- [ ] Peyregné (1/10)
-			
+	
 - [X] Plot both introgression files (Vernot vs Sankararaman)
 	+ **AA:** If you have any other suggestions re that let me know
 - [X] Divide between Denisovan and Neanderthals in the Martin files (and plot)
@@ -18,7 +15,7 @@
 	- [ ] KS tests for Denisovan, if we want to mention this
 - [X] Martin filter plots
 	+ [X] **CB** perhaps here too differences within archaics may matter?
-	+ **A** They don't really, as shown by the archaic_and_populations plot. The curves are very similar (almost identical, differences in some hundred of variants overall) between archaics, despite filters. It's true this is done through HF right now, so of course a lot of variants are shared. I might update it in some minutes using NNall as a base to see if there's a significant difference. Meanwhile I'm leaving the most recent plot there.
+	+ [X] **A** They don't really, as shown by the archaic_and_populations plot. The curves are very similar (almost identical, differences in some hundred of variants overall) between archaics, despite filters. It's true this is done through HF right now, so of course a lot of variants are shared. There is a difference re Denisova in the second plot from Naall though 
 - [ ] Come up with a way to redo graphs a la Reich
 - [ ] GO gene categories
 	- [X] Select GO categories of interest
