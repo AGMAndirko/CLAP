@@ -9,7 +9,7 @@
 	Missing plots:
 
 			- [X] GTEX (25)
-			- [ ] Peyregné (28)
+			- [ ] Peyregné (1/10)
 			
 - [X] Plot both introgression files (Vernot vs Sankararaman)
 	+ **AA:** If you have any other suggestions re that let me know
@@ -17,7 +17,7 @@
 	+ **AA:** Done using NNall and columns 7, 10 and 13 for the filter specifically. Looks like it should. I'd say stats should be robust on the earlier peak with Neanderthals vs Denisovan.
 	- [ ] KS tests for Denisovan, if we want to mention this
 - [X] Martin filter plots
-	+ [ ] **CB** perhaps here too differences within archaics may matter?
+	+ [ ] **CB** perhaps here too differences within archaics may matter? (1/10)
 - [ ] Come up with a way to redo graphs a la Reich
 - [ ] GO gene categories
 	- [X] Select GO categories of interest
