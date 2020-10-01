@@ -1,9 +1,8 @@
 #!/usr/bin/env bash 
 
-wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1mtd-feRUhXLhm5oJOvH7C0LKaRR98BID' -O Na_high_freq.tsv
+wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=19tQMjCfwH9zNHY072IK0ou4LNns8UAXu' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=19tQMjCfwH9zNHY072IK0ou4LNns8UAXu" -O NNaall_positions.tsv && rm -rf /tmp/cookies.txt
 
-
-awk '{print $1, $19, $2, $32}' Na_high_freq.tsv | sed 's/|/ /g' | sed 's/\b...\_MAF\=.\://g' > HF_population_freqs.txt
+awk '{print $1, $19, $2, $32}' NNaall_positions.tsv  | grep 'rs\d*' | sed 's/|/ /g' | sed 's/\b...\_MAF\=.\://g' > population_freqs.txt
 
 Rscript filters.R
 
@@ -31,9 +30,8 @@ wget https://human.genome.dating/bulk/atlas.chr21.csv.gz
 wget https://human.genome.dating/bulk/atlas.chr22.csv.gz
 gzip -d *
 
-awk -F, '{print $3}' AFR03nonAFR10.csv | sed 's/"//g' | grep -wf - Na_high_freq.tsv > AFR03nonAFR10_full
-awk -F, '{print $3}' AFR10nonAFR01.csv | sed 's/"//g' | grep -wf - Na_high_freq.tsv > AFR10nonAFR01_full
-rm AFR03nonAFR10.csv AFR10nonAFR01.csv
+awk -F, '{print $3}' AFR03nonAFR10.csv | sed 's/"//g' | grep -wf - NNaall_positions.tsv > AFR03nonAFR10_full
+awk -F, '{print $3}' AFR10nonAFR01.csv | sed 's/"//g' | grep -wf - NNaall_positions.tsv > AFR10nonAFR01_full
 
 archaic_filt () {
 	awk '{print $1, $19, $7, $10, $13}' $1 > temp
@@ -45,4 +43,3 @@ archaic_filt () {
 
 archaic_filt AFR03nonAFR10_full
 archaic_filt AFR10nonAFR01_full
-rm atlas*
