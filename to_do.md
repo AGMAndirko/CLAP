@@ -12,18 +12,22 @@
 	+ **AA:** If you have any other suggestions re that let me know
 - [X] Divide between Denisovan and Neanderthals in the Martin files (and plot)
 	+ **AA:** Done using NNall and columns 7, 10 and 13 for the filter specifically. Looks like it should. I'd say stats should be robust on the earlier peak with Neanderthals vs Denisovan.
-	- [ ] KS tests for Denisovan, if we want to mention this
+	- [X] KS tests for Denisovan, if we want to mention this
 - [X] Martin filter plots
 	+ [X] **CB** perhaps here too differences within archaics may matter?
 	+ [X] **A** They don't really, as shown by the archaic_and_populations plot. The curves are very similar (almost identical, differences in some hundred of variants overall) between archaics, despite filters. It's true this is done through HF right now, so of course a lot of variants are shared. There is a difference re Denisova in the second plot from Naall though 
 - [ ] Come up with a way to redo graphs a la Reich
+- [X] Expecto GO
+- [X] Run Phewas through the variants with highest expression values to get list of GWAS top hits 
 - [ ] GO gene categories
 	- [X] Select GO categories of interest
 	- [ ] Run them through Expecto
 	- [ ] Run stats test 
 - [ ] Add all the current observations 
-- [ ] Statistics for:
-	- [ ] Deserts of introgression, Akey and Peyregné, also for length/excess
+- [X] Statistics for:
+	- [X] Deserts of introgression, Akey and Peyregné 
+		+ **AA:** all <0.01 except hf vs deserts, which gives a p-value of ~ 0.011
+	- [ ] also for length/excess
 - [ ] Add more here
 
 Note: when a task is complete just add an upper-case X to the box, like this:

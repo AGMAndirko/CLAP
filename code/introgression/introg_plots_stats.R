@@ -1,7 +1,7 @@
 #!/usr/bin/env Rscript
 
-library(readr)
 library(tidyverse)
+library(magrittr)
 
 plotinp <- read_table2("Timeline_project/1_data/introgression/rinput", 
                         col_names = FALSE)
@@ -18,3 +18,11 @@ ggplot(plotinp, aes(X2*29,  group =X1, colour = X1))+
   scale_y_sqrt() 
 dev.off()
 
+sank <- plotinp %>% 
+  filter(X1 == "Sankarararaman")
+
+vernot <- plotinp %>% 
+  filter(X1 == "Vernot")
+
+ks.test(vernot$X2, sank$X2) 
+# < 2.2e-16! that was unexpected
