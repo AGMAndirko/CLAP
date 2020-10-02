@@ -43,3 +43,9 @@ ggplot(p, aes(value*29, group = L1, colour = L1)) +
   theme(legend.position = "top") +
   scale_y_sqrt() 
 dev.off()
+
+
+ks.test(hf$X23, hf_strict$X23) # p < 2.2e-16
+ks.test(hf$X23, akey$X23) # p < 2.2e-16
+ks.test(hf$X23, desert$X23) #p = 0.01193, sign?
+ks.test(hf$X23, pey$X23) # p < 2.2e-16
