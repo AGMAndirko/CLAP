@@ -15,6 +15,7 @@ output500800 <- read_csv("Timeline_project/1_data/ExPecto/output500800.csv")
 
 #select columns
 select_n_plot <- function (out, whichtitleplot) {	
+	#Discard from tin also the first ten columns!!!!!
 	tin <- out %>% 
 	select(3,8,9, 10, 11, 12, 13, 14, 15, 16,17,18,20, 42, 61, 136, 145, 161, 186, 187, 189, 209) 
 	#3,8:20 = gtex, minus 19 (spinal cord)

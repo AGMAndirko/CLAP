@@ -21,7 +21,8 @@
 - [X] Run Phewas through the variants with highest expression values to get list of GWAS top hits 
 - [ ] GO gene categories
 	- [X] Select GO categories of interest
-	- [ ] Run them through Expecto
+	- [~] Run them through Expecto
+		- **AA:** with caveat
 	- [ ] Run stats test 
 - [ ] Add all the current observations 
 - [X] Statistics for:
