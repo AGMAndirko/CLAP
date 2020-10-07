@@ -11,31 +11,31 @@ CLAPgene () {
 
 while IFS= read -r LINE;do
 	CLAPgene "$LINE" > $LINE.out; 
-done < BAZ1B_0/4D.BAZ1B.fdr01.genes
+done < BAZ1B_0/13DirDegs3marksgenes.csv
 
-mkdir BAZ1B_0/4D01
-mv *.out BAZ1B_0/4D01/
-
-while IFS= read -r LINE;do
-	CLAPgene "$LINE" > $LINE.out; 
-done < BAZ1B_0/4D.BAZ1B.fdr025.genes
-
-mkdir BAZ1B_0/4D025
-mv *.out BAZ1B_0/4D025/
+mkdir BAZ1B_0/13Dir
+mv *.out BAZ1B_0/13Dir/
 
 while IFS= read -r LINE;do
 	CLAPgene "$LINE" > $LINE.out; 
-done < BAZ1B_0/Prom.BAZ1B.fdr01.genes
+done < BAZ1B_0/17InvDegs3marksgenes.csv
 
-mkdir BAZ1B_0/Prom01
-mv *.out BAZ1B_0/Prom01/
+mkdir BAZ1B_0/17Inv
+mv *.out BAZ1B_0/17Inv/
 
 while IFS= read -r LINE;do
 	CLAPgene "$LINE" > $LINE.out; 
-done < BAZ1B_0/Prom.BAZ1B.fdr025.genes
+done < BAZ1B_0/25InvDegsK27acme3okgenes.csv
 
-mkdir BAZ1B_0/Prom025
-mv *.out BAZ1B_0/Prom025/
+mkdir BAZ1B_0/25Inv
+mv *.out BAZ1B_0/25Inv/
+
+while IFS= read -r LINE;do
+	CLAPgene "$LINE" > $LINE.out; 
+done < BAZ1B_0/27DirDegsK27acme3okgenes.csv
+
+mkdir BAZ1B_0/27Dir
+mv *.out BAZ1B_0/27Dir/
 
 find -size  0 -print -delete
 
@@ -43,10 +43,10 @@ CLAPgene "BAZ1B" > BAZ1B.out
 
 cd ../../..
 
-cat Timeline_project/1_data/BAZ1B/BAZ1B_0/4D01/*.out >> Timeline_project/1_data/BAZ1B/BAZ1B_0/all_4D01
-cat Timeline_project/1_data/BAZ1B/BAZ1B_0/4D025/*.out >> Timeline_project/1_data/BAZ1B/BAZ1B_0/all_4D025
-cat Timeline_project/1_data/BAZ1B/BAZ1B_0/Prom01/*.out >> Timeline_project/1_data/BAZ1B/BAZ1B_0/all_Prom01
-cat Timeline_project/1_data/BAZ1B/BAZ1B_0/Prom025/*.out >> Timeline_project/1_data/BAZ1B/BAZ1B_0/all_Prom025
+cat Timeline_project/1_data/BAZ1B/BAZ1B_0/13Dir/*.out >> Timeline_project/1_data/BAZ1B/BAZ1B_0/all_13Dir
+cat Timeline_project/1_data/BAZ1B/BAZ1B_0/17Inv/*.out >> Timeline_project/1_data/BAZ1B/BAZ1B_0/all_17Inv
+cat Timeline_project/1_data/BAZ1B/BAZ1B_0/25Inv/*.out >> Timeline_project/1_data/BAZ1B/BAZ1B_0/all_25Inv
+cat Timeline_project/1_data/BAZ1B/BAZ1B_0/27Dir/*.out >> Timeline_project/1_data/BAZ1B/BAZ1B_0/all_27Dir
 
 
 Rscript origBAZ1B_plots.R
