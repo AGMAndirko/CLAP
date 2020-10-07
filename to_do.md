@@ -20,7 +20,7 @@
 - [X] Run Phewas through the variants with highest expression values to get list of GWAS top hits 
 - [ ] GO gene categories
 	- [X] Select GO categories of interest
-	- [~] Run them through Expecto
+	- [X] Run them through Expecto
 		- **AA:** (with caveat)
 		- [X] Plots
 		- [X] QQ plot - regular ExPecto
@@ -34,8 +34,9 @@
 - [X] Statistics for:
 	- [X] Deserts of introgression, Akey and Peyregné 
 		+ **AA:** all <0.01 except hf vs deserts, which gives a p-value of ~ 0.011
-	- [ ] also for length/excess
-	- [ ] Also, add lenght/excess to 5 (7?) files plot
+	- [X] also for length/excess	
+		+ **AA:** significant against all 
+	- [X] Also, add lenght/excess to 5 (7?) files plot
 - [ ] Reproduce "<" ExPecto plots
 	- [ ] Use the same kind of plot for GO genes
 - [ ] Check out Hallmark GProfiler2 genes

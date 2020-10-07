@@ -37,6 +37,7 @@ Approximative Kruskal-Wallis Test with random sampling (n = 1000)
 
 ## Expecto
 After runing the dated variants through the ExPecto tool we find an overall tissue skewedness over extreme positive and negative values. The same kind of analysis reveals that brain tissues have a different profile, with Astrocyte, Neural Progenitor Cell and Adrenal Gland carrying overall more negative values than the rest of the tissues.
+	 + **AA:** "indicate what this "more negative values" mean functionally for EXPECTO" - Depends on other things. The values could mean that there is a tissue sample size bias in the training data of the DL tool (ie the original datasets)s. Once we discard that we could say those are tissues that have changed overall expression by HF mutations - but we also should prove that's specific of HF mutations, and that's something that can't be done until we do NNaall in ExPecto (for which we have a computational limtiation).
 
 
 ## BAZ1B
