@@ -82,6 +82,12 @@ python predict.py --coorFile ./run5/run300500.vcf --geneFile ./run5/run300500.vc
 python predict.py --coorFile ./run6/run500800.vcf --geneFile ./run6/run500800.vcf.bed.sorted.bed.closestgene --snpEffectFilePattern ./run6/run500800.vcf.shift_SHIFT.diff.h5 --modelList ./resources/modellist --output output500800.csv
 echo "Done!"
 
-cat *output.csv > combined_output.csv
+cat output060.csv > outputall.csv
+tail -n+2 output60100.csv >> outputall.csv 
+tail -n+2 output100200.csv >> outputall.csv 
+tail -n+2 output200300.csv >> outputall.csv 
+tail -n+2 output300500.csv >> outputall.csv 
+tail -n+2 output500800.csv >> outputall.csv 
+
 
 Rscript ExPecto_plots.R

@@ -11,7 +11,7 @@ output100200 <- read_csv("Timeline_project/1_data/ExPecto/output100200.csv")
 output200300 <- read_csv("Timeline_project/1_data/ExPecto/output200300.csv")
 output300500 <- read_csv("Timeline_project/1_data/ExPecto/output300500.csv")
 output500800 <- read_csv("Timeline_project/1_data/ExPecto/output500800.csv")
-
+output <- read_csv("Timeline_project/1_data/ExPecto/outputall.csv")
 
 #select columns
 select_n_plot <- function (out, whichtitleplot) {	
@@ -157,3 +157,38 @@ select_n_plot(output500800[,-(1:10),drop=FALSE], "500-800k")
     labs(x= "Absolute magnitude of change", y = "Directionality (altternative allele)")
     #geom_label_repel(data = subset(plotinp,  magnitude > 2), colour = "black", nudge_y = 1 ) 
   dev.off()
+  
+  
+#Overall Q-Q plot
+out <- output[,-(1:10),drop=FALSE]
+out <- melt(out)
+
+out <- out %>% 
+  group_by(variable) %>% 
+  summarize(sum = sum(as.numeric(value)))
+
+#Quantile / quantile distribution
+pdf("alltissuesQQ.pdf")
+ggplot(out, aes(sample=sum)) + 
+  theme_minimal() +
+  ggtitle("Q-Q plot - extreme value skewedness", subtitle = "ExPecto (all time windows - all tissues)") +
+  geom_qq() +
+  stat_qq_line()
+dev.off()
+
+out <- output[,-(1:10),drop=FALSE]
+out <- out%>% 
+    select(3,8,9, 10, 11, 12, 13, 14, 15, 16,17,18,20, 42, 61, 136, 145, 161, 186, 187, 189, 209) 
+out <- melt(out)
+
+out <- out %>% 
+  group_by(variable) %>% 
+  summarize(sum = sum(as.numeric(value)))
+
+pdf("braintissuesQQ.pdf")
+ggplot(out, aes(sample=sum)) + 
+    theme_minimal() +
+    ggtitle("Q-Q plot - extreme value skewedness", subtitle = "ExPecto (all time windows - only brain tissues)") +
+    geom_qq() +
+    stat_qq_line()
+dev.off()

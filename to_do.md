@@ -17,20 +17,19 @@
 - [X] Martin filter plots
 	+ [X] **CB** perhaps here too differences within archaics may matter?
 	+ [X] **A** They don't really, as shown by the archaic_and_populations plot. The curves are very similar (almost identical, differences in some hundred of variants overall) between archaics, despite filters. It's true this is done through HF right now, so of course a lot of variants are shared. There is a difference re Denisova in the second plot from Naall though 
-
 - [X] Run Phewas through the variants with highest expression values to get list of GWAS top hits 
 - [ ] GO gene categories
 	- [X] Select GO categories of interest
 	- [~] Run them through Expecto
 		- **AA:** (with caveat)
 		- [X] Plots
-		- [ ] QQ plot - regular ExPecto
+		- [X] QQ plot - regular ExPecto
 	- [ ] Run stats test GO EXP (vs normal as well)
 	- [ ] Exclusive GO terms code
 	- [ ] Venn diagram
-- [ ] Reorganize BAZ1B 
-	- [ ] create "BAZ1B_0", 
-	- [ ] *bona fide* lists & plots
+- [X] Reorganize BAZ1B 
+	- [X] create "BAZ1B_0", 
+	- [X] *bona fide* lists & plots
 	- [ ] Statistics for BAZ1B_1
 - [X] Statistics for:
 	- [X] Deserts of introgression, Akey and Peyregné 
