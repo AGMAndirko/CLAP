@@ -5,14 +5,12 @@
 			- [ ] Enhancers
 			- [ ] New/old BAZ1B lists
 			- [ ] GTEx files
-
-	Missing plots:
 	
 - [X] Plot both introgression files (Vernot vs Sankararaman)
 	+ **AA:** If you have any other suggestions re that let me know
-	+ [ ] check introgression captions for errors
+	+ [X] check introgression captions for errors
 	+ [ ] Add Sankararaman as well
-	+ [ ] Reduced window for the 2 introgression files plot
+	+ [X] Reduced window for the 2 introgression files plot
 - [X] Divide between Denisovan and Neanderthals in the Martin files (and plot)
 	+ **AA:** Done using NNall and columns 7, 10 and 13 for the filter specifically. Looks like it should. I'd say stats should be robust on the earlier peak with Neanderthals vs Denisovan.
 	- [X] KS tests for Denisovan, if we want to mention this
