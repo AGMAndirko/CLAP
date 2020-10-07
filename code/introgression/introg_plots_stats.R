@@ -5,6 +5,7 @@
   
   plotinp <- read_table2("Timeline_project/1_data/introgression/rinput", 
                           col_names = FALSE)
+  plotinp$X1 <- str_replace_all(plotinp$X1, "Sankarararaman", "Sankararaman")
   
   
   pdf("all_neand_intro.pdf")
@@ -34,6 +35,7 @@ sank <- plotinp %>%
 
 vernot <- plotinp %>% 
   filter(X1 == "Vernot")
+
 
 ks.test(vernot$X2, sank$X2) 
 # < 2.2e-16! that was unexpected
