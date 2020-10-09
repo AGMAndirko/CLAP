@@ -100,7 +100,7 @@ select_n_plot(output500800[,-(1:10),drop=FALSE], "500-800k")
     #Keep the gene!
     output$genes <- originalout$gene
   
-    #Variation potential directionality = value here
+    #Variation potential +directionality = value here
   	inp <- aggregate(value ~ genes, output, sum)
   	colnames(inp)[2] <- "directionality"
   
@@ -151,8 +151,7 @@ select_n_plot(output500800[,-(1:10),drop=FALSE], "500-800k")
   
   #Plots a cone
   pdf("genewise.pdf")
-  ggplot(plotinp, aes(x=magnitude, y=directionality, colour = timing, label = genes)) +
-    theme_minimal() +
+  ggplot(plotinp, aes(x=-
     geom_point(size = 2) +
     labs(x= "Absolute magnitude of change", y = "Directionality (altternative allele)")
     #geom_label_repel(data = subset(plotinp,  magnitude > 2), colour = "black", nudge_y = 1 ) 
@@ -191,4 +190,88 @@ ggplot(out, aes(sample=sum)) +
     ggtitle("Q-Q plot - extreme value skewedness", subtitle = "ExPecto (all time windows - only brain tissues)") +
     geom_qq() +
     stat_qq_line()
+dev.off()
+
+#Now for the cone plots
+rm(list = ls())
+
+#Import
+output060 <- read_csv("Timeline_project/1_data/ExPecto/output060.csv")
+output60100 <- read_csv("Timeline_project/1_data/ExPecto/output60100.csv")
+output100200 <- read_csv("Timeline_project/1_data/ExPecto/output100200.csv")
+output200300 <- read_csv("Timeline_project/1_data/ExPecto/output200300.csv")
+output300500 <- read_csv("Timeline_project/1_data/ExPecto/output300500.csv")
+output500800 <- read_csv("Timeline_project/1_data/ExPecto/output500800.csv")
+
+#select columns
+
+dataprep <- function (timewindow) {
+  output <- timewindow[,-(1:10),drop=FALSE] 
+  
+  output <- output %>% 
+    select(3,8,9, 10, 11, 12, 13, 14, 15, 16,17,18,20, 42, 61, 136, 145, 161, 186, 187, 189, 209) %>% 
+    melt()
+  output$genes <- timewindow$gene
+  
+  inp <- aggregate(value ~ genes, output, sum)
+  colnames(inp)[2] <- "directionality"
+  
+  inpm <- aggregate(abs(value) ~ genes, output, sum)
+  colnames(inpm)[2] <- "magnitude"
+  
+  test <- inp$genes == inpm$genes
+  FALSE %in% test
+  inp$magnitude <- inpm$magnitude
+  return(inp)
+}
+
+output060 <- dataprep(output060)
+output60100 <- dataprep(output60100)
+output100200 <- dataprep(output100200)
+output200300 <- dataprep(output200300)
+output300500 <- dataprep(output300500)
+output500800 <- dataprep(output500800)
+
+plotinp <- rbind(output060, output60100, output100200, output200300, output300500, output500800)
+plotinp$timing <- c(rep("0 - 60k", nrow(output060)),
+                    rep("60k - 100k", nrow(output60100)),
+                    rep("100k - 200k", nrow(output100200)),
+                    rep("200k - 300k", nrow(output200300)),
+                    rep("300k - 500k", nrow(output300500)),
+                    rep("500k - 800k", nrow(output500800)))
+
+
+#order levels 
+plotinp$timing <- factor(plotinp$timing, levels = c("0 - 60k", "60k - 100k", "100k - 200k", "200k - 300k", "300k - 500k", "500k - 800k"))
+
+#clean a bit
+rm(output060, output60100, output100200, output200300, output300500, output500800)
+
+genenames<- gconvert(query = plotinp$genes, organism = "hsapiens",
+                     target="ENSG", filter_na = FALSE)
+
+test <- genenames$input == plotinp$genes
+# Interestingly there are targets here that produce FALSE! 
+# No clue why though
+FALSE %in% test # should be FALSE
+#produces some NA! some ensemble ID genes are not recognized for some reason (71 genes)
+#I can live with that
+plotinp$genes <- as.character(genenames$name)
+
+#plot like in the Expecto paper!
+pdf("allconeplot.pdf")
+ggplot(plotinp, aes(x=magnitude, y=directionality, colour = timing, label = genes)) +
+  theme_minimal() +
+  geom_point(size = 3) +
+  labs(x= "Absolute magnitude of change", y = "Directionality (altternative allele)") +
+  geom_label_repel(data = subset(plotinp,  magnitude > 2), colour = "black", nudge_y = 1 ) 
+dev.off()
+
+pdf("wrapped.pdf")
+ggplot(plotinp, aes(x=magnitude, y=directionality, colour = timing, label = genes)) +
+  theme_minimal() +
+  geom_point(size = 3) +
+  labs(x= "Absolute magnitude of change", y = "Directionality (altternative allele)") +
+  geom_label_repel(data = subset(plotinp,  magnitude > 2), colour = "black", nudge_y = 1 ) +
+  facet_wrap(timing ~ ., ncol = 2)
 dev.off()

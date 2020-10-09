@@ -5,6 +5,7 @@
 			- [ ] Enhancers
 			- [ ] New/old BAZ1B lists
 			- [ ] GTEx files
+			- [ ] Lenght/excess
 	
 - [X] Plot both introgression files (Vernot vs Sankararaman)
 	+ **AA:** If you have any other suggestions re that let me know
@@ -38,7 +39,7 @@
 	- [X] also for length/excess	
 		+ **AA:** significant against all 
 	- [X] Also, add lenght/excess to 5 (7?) files plot
-- [ ] Reproduce "<" ExPecto plots
+- [X] Reproduce "<" ExPecto plots
 	- [ ] Use the same kind of plot for GO genes
 - [ ] Check out Hallmark GProfiler2 genes
 - [ ] Come up with a way to redo graphs a la Reich
