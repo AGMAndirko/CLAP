@@ -40,7 +40,7 @@
 		+ **AA:** significant against all 
 	- [X] Also, add lenght/excess to 5 (7?) files plot
 - [X] Reproduce "<" ExPecto plots
-	- [X] Use the same kind of plot for GO genes
+	- [ ] Use the same kind of plot for GO genes
 	- [ ] Are those genes specially interesting vs the rest? find a way to check
 - [ ] Check out Hallmark GProfiler2 genes
 - [ ] Come up with a way to redo graphs a la Reich
