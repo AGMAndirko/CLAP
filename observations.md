@@ -29,7 +29,7 @@ LIST all statistically significant results here
 
 **Linear regression model**
 A linear regression analysis shows that expression values as predicted by ExPecto are significantly different in the 0-60k, 200-300k and 300-500k blocks of time (p-values <0.05).The R2 is very low though - expertise in stats needed here.
-
+We performed another analysis to check whether there was a significant correlation between dates predicted by the GEVA tool and expression - correlation is significant (p-value = 0.003259) but only when not taking into account tissue-specifity. Tissue expression value is significantly different in some of the tissues regardless of GEVA timing (such as Neural Progenitor Cell, astrocyte or Adrenal Gland). Note that this are also grouped together in a cluster, as shown by a hierarchical cluster dendrogram plot. 
 
 **Back-to-back plot statistics - random sampling**
 Approximative Kruskal-Wallis Test with random sampling (n = 1000)
@@ -39,6 +39,7 @@ Approximative Kruskal-Wallis Test with random sampling (n = 1000)
 After runing the dated variants through the ExPecto tool we find an overall tissue skewedness over extreme positive and negative values. The same kind of analysis reveals that brain tissues have a different profile, with Astrocyte, Neural Progenitor Cell and Adrenal Gland carrying overall more negative values than the rest of the tissues.
 
 **AA:** "indicate what this more negative values mean functionally for EXPECTO" -  Depends on other things. The values could mean that there is a tissue sample size bias in the training data of the DL tool (ie the original datasets). Once we discard that we could say those are tissues that have changed overall expression by HF mutations, but in that case we also should prove that that's specific of HF mutations. That's something that can't be done until we do NNaall in ExPecto (for which we have a computational limtiation).
+
 
 
 ## BAZ1B
@@ -62,3 +63,23 @@ Regarding signaling pathways, only in the first period we find 'cGMP-PKG signali
 We further noticed differences between GO terms across periods when thresholding for a adj p-value < .05. Exclusively in the middle period (300-500k) we find terms related to behavior (startle response, GO:0001964), facial shape (narrow mouth, 'HP:0000160') and hormone system (steroid hormone, GO:0043401, GO:0048545, and GO:0003707; or parathyroid hormone, KEGG:04928). For the 500-1m period, we find cognition (GO:0050890), learning or memory (GO:0007611) or cerebellum (granular layer, HPA:007020_22; also present at adj p value < .01) and spinocerebellar ataxia (KEGG:05017). Only in the most recent period the term 'cerebral cortex: neuropil' appears (HPA:008050_22) (Suppl. Tables X1...Xn).
 
 We ran the variants associated with GO-enriched genes through ExPecto in order to predict expression levels. A series of statistical tests show that varians coming from GO-enriched genes have significantly differences in their average expression levels in the middle (300-500k) and late (500-800k) periods. The early period (0-300k) didn't show this difference (p = 0.1887).
+
+## Others (not sure where to put this)
+
+A cross-check of the ExPecto/GEVA high frequency data against the [Big40](https://open.win.ox.ac.uk/ukbiobank/big40/) UKBiobank GWAS meta-analysis showed that there are top hits in GWAS related to the following:
+
+| chrom | pos       | rsids      | nearest_genes | tag                                          | Age (GEVA)|
+|-------|-----------|------------|---------------|----------------------------------------------|-----------|
+| 14    | 59669037  | rs75255901 | DAAM1         | rfMRI connectivity ICA-features 4            | 255792.5  |
+| 22    | 27195261  | rs72617274 | CRYBA4        | rfMRI connectivity ICA100 edge 1386          | 93924.62  |
+| 1     | 22498451  | rs2807369  | WNT4          | IDP T1 FAST ROIs L cerebellum V              | 39543.24  |
+| 2     | 63144695  | rs17432559 | EHBP1         | aseg global volume CC-Posterior              | 698856.5  |
+| 12    | 2231744   | rs75557252 | CACNA1C       | rfMRI connectivity ICA100 edge 643           | 418742.6  |
+| 10    | 92873811  | rs17105731 | PCGF5         | aparc-DKTatlas rh thickness inferiortemporal | 50060.96  |
+| 17    | 59312894  | rs73326893 | BCAS3         | rfMRI connectivity ICA100 edge 53            | 36735.46  |
+| 2     | 230367803 | rs56049535 | DNER          | rfMRI connectivity ICA100 edge 966           | 445477.7  |
+| 16    | 3687973   | rs78315731 | DNASE1        | aparc-Desikan lh thickness parstriangularis  | 52290.48  |
+| 20    | 49070644  | rs75994450 | PTPN1         | IDP dMRI TBSS MO Splenium of corpus callosum | 523629.8  |
+
+You can see the details of the tags [here](https://open.win.ox.ac.uk/ukbiobank/big40/BIG40-IDPs_v2/IDPs.html). 
+    + **AA:** Note that these variants don't have a particularly high expression profile in ExPecto predictions, so I think it's a nice snippet of information but I don't know if it should really be reported -- I'm including this here just in case you want to use this information, feel free to discuss whether that should be the case.
