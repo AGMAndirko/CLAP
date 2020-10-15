@@ -10,7 +10,7 @@
 - [X] Plot both introgression files (Vernot vs Sankararaman)
 	+ **AA:** If you have any other suggestions re that let me know
 	+ [X] check introgression captions for errors
-	+ [ ] Add Sankararaman as well
+	+ [X] Add Sankararaman as well
 	+ [X] Reduced window for the 2 introgression files plot
 - [X] Divide between Denisovan and Neanderthals in the Martin files (and plot)
 	+ **AA:** Done using NNall and columns 7, 10 and 13 for the filter specifically. Looks like it should. I'd say stats should be robust on the earlier peak with Neanderthals vs Denisovan.
