@@ -41,7 +41,6 @@
 	- [X] Also, add lenght/excess to 5 (7?) files plot
 - [X] Reproduce "<" ExPecto plots
 	- [X] Use the same kind of plot for GO genes
-<<<<<<< HEAD
 - [X] Check out Hallmark GProfiler2 genes
 	+ **AA:** These come by categories. I tested the following (all returned "No results to show"): 
 		1. WNT b-catenin
