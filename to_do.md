@@ -32,7 +32,7 @@
 - [X] Reorganize BAZ1B 
 	- [X] create "BAZ1B_0", 
 	- [X] *bona fide* lists & plots
-	- [ ] Statistics for BAZ1B_1
+	- [X] Statistics for BAZ1B_1
 - [X] Statistics for:
 	- [X] Deserts of introgression, Akey and Peyregné 
 		+ **AA:** all <0.01 except hf vs deserts, which gives a p-value of ~ 0.011
@@ -41,7 +41,12 @@
 	- [X] Also, add lenght/excess to 5 (7?) files plot
 - [X] Reproduce "<" ExPecto plots
 	- [X] Use the same kind of plot for GO genes
-- [ ] Check out Hallmark GProfiler2 genes
+- [X] Check out Hallmark GProfiler2 genes
+	+ **AA:** These come by categories. I tested the following (all returned "No results to show"): 
+		1. WNT b-catenin
+		2. Mitotic splindle
+		3. Notch signalling.
+		4. TGF-b signalling
 - [ ] Come up with a way to redo graphs a la Reich
 - [ ] Add all the current observations 
 
