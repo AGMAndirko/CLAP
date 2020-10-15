@@ -32,7 +32,7 @@
 - [X] Reorganize BAZ1B 
 	- [X] create "BAZ1B_0", 
 	- [X] *bona fide* lists & plots
-	- [ ] Statistics for BAZ1B_1
+	- [X] Statistics for BAZ1B_1
 - [X] Statistics for:
 	- [X] Deserts of introgression, Akey and Peyregné 
 		+ **AA:** all <0.01 except hf vs deserts, which gives a p-value of ~ 0.011
@@ -42,8 +42,7 @@
 - [X] Reproduce "<" ExPecto plots
 	- [X] Use the same kind of plot for GO genes
 - [ ] Check out Hallmark GProfiler2 genes
-- [ ] Come up with a way to redo graphs a la Reich
-- [ ] Add all the current observations 
+- [ ] Come up with a way to refine graphs 
 
 Note: when a task is complete just add an upper-case X to the box, like this:
 
