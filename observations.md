@@ -47,6 +47,8 @@ BAZ1B targets: INV vs DIR contrast but mostly for most robust targets -- useful 
 
 Domestication vs Globularization timing vindicated; Tom vindicated
 
+Anova tests to understand whether there's significant variation among lists or categories (dir/inv) didn't give a significant p-value (p ~ 0.08). This means these BAZ1B affecting variants don't have significantly different age values compared to other variants within different lists or groups (inv vs dir).
+
 ## Technical details
 - Mention of 4th genome?
 - Not sure what to do with chromosome data (ask Martin?)

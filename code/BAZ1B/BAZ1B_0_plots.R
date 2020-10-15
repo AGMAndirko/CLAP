@@ -176,6 +176,23 @@ p$`25Inv` <- `25Inv`$X23
 p$`27Dir` <- `27Dir`$X23
 p <- melt(p)
 
+model = lm(value ~ L1,
+           data=p)
+
+anova(model)
+# 0.08031 - not significant variation among the groups
+
+p <- NULL
+p$dir <- append(p$dir, `27Dir`$X23)
+p$inv <- append(`25Inv`$X23,`17Inv`$X23)
+p <- melt(p)
+
+model = lm(value ~ L1,
+           data=p)
+anova(model)
+# Not significant among categories
+
+
 
 BAZ1B <- read_csv("Timeline_project/1_data/BAZ1B/BAZ1B_3/BAZ1B.out", 
                   col_names = FALSE)
