@@ -27,7 +27,7 @@
 		- [X] QQ plot - regular ExPecto
 	- [X] Run stats test GO EXP (vs normal as well)
 		+ **AA:** This was harder than expected. Added observations.
-	- [ ] Exclusive GO terms code
+	- [X] Exclusive GO terms code
 	- [ ] Venn diagram
 - [X] Reorganize BAZ1B 
 	- [X] create "BAZ1B_0", 

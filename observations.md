@@ -70,16 +70,16 @@ A cross-check of the ExPecto/GEVA high frequency data against the [Big40](https:
 
 | chrom | pos       | rsids      | nearest_genes | tag                                          | Age (GEVA)|
 |-------|-----------|------------|---------------|----------------------------------------------|-----------|
-| 14    | 59669037  | rs75255901 | DAAM1         | rfMRI connectivity ICA-features 4            | 255792.5  |
-| 22    | 27195261  | rs72617274 | CRYBA4        | rfMRI connectivity ICA100 edge 1386          | 93924.62  |
-| 1     | 22498451  | rs2807369  | WNT4          | IDP T1 FAST ROIs L cerebellum V              | 39543.24  |
-| 2     | 63144695  | rs17432559 | EHBP1         | aseg global volume CC-Posterior              | 698856.5  |
-| 12    | 2231744   | rs75557252 | CACNA1C       | rfMRI connectivity ICA100 edge 643           | 418742.6  |
-| 10    | 92873811  | rs17105731 | PCGF5         | aparc-DKTatlas rh thickness inferiortemporal | 50060.96  |
-| 17    | 59312894  | rs73326893 | BCAS3         | rfMRI connectivity ICA100 edge 53            | 36735.46  |
-| 2     | 230367803 | rs56049535 | DNER          | rfMRI connectivity ICA100 edge 966           | 445477.7  |
-| 16    | 3687973   | rs78315731 | DNASE1        | aparc-Desikan lh thickness parstriangularis  | 52290.48  |
-| 20    | 49070644  | rs75994450 | PTPN1         | IDP dMRI TBSS MO Splenium of corpus callosum | 523629.8  |
+| 14    | 59669037  | rs75255901 | DAAM1         | rfMRI connectivity ICA-features 4            | 39543.24  |
+| 22    | 27195261  | rs72617274 | CRYBA4        | rfMRI connectivity ICA100 edge 1386          | 445477.7  |
+| 1     | 22498451  | rs2807369  | WNT4          | IDP T1 FAST ROIs L cerebellum V              | 50060.96  |
+| 2     | 63144695  | rs17432559 | EHBP1         | aseg global volume CC-Posterior              | 52290.48  |
+| 12    | 2231744   | rs75557252 | CACNA1C       | rfMRI connectivity ICA100 edge 643           | 93924.62  |
+| 10    | 92873811  | rs17105731 | PCGF5         | aparc-DKTatlas rh thickness inferiortemporal | 255792.5  |
+| 17    | 59312894  | rs73326893 | BCAS3         | rfMRI connectivity ICA100 edge 53            | 418742.6  |
+| 2     | 230367803 | rs56049535 | DNER          | rfMRI connectivity ICA100 edge 966           | 523629.8  |
+| 16    | 3687973   | rs78315731 | DNASE1        | aparc-Desikan lh thickness parstriangularis  | 698856.5  |
+| 20    | 49070644  | rs75994450 | PTPN1         | IDP dMRI TBSS MO Splenium of corpus callosum | 36735.46  |
 
 You can see the details of the tags [here](https://open.win.ox.ac.uk/ukbiobank/big40/BIG40-IDPs_v2/IDPs.html). 
     + **AA:** Note that these variants don't have a particularly high expression profile in ExPecto predictions, so I think it's a nice snippet of information but I don't know if it should really be reported -- I'm including this here just in case you want to use this information, feel free to discuss whether that should be the case.
