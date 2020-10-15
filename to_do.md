@@ -41,14 +41,15 @@
 	- [X] Also, add lenght/excess to 5 (7?) files plot
 - [X] Reproduce "<" ExPecto plots
 	- [X] Use the same kind of plot for GO genes
+<<<<<<< HEAD
 - [X] Check out Hallmark GProfiler2 genes
 	+ **AA:** These come by categories. I tested the following (all returned "No results to show"): 
 		1. WNT b-catenin
 		2. Mitotic splindle
 		3. Notch signalling.
 		4. TGF-b signalling
-- [ ] Come up with a way to redo graphs a la Reich
-- [ ] Add all the current observations 
+- [ ] Come up with a way to refine graphs 
+
 
 Note: when a task is complete just add an upper-case X to the box, like this:
 
