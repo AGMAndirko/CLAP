@@ -81,7 +81,6 @@ regulation of system process
 regulation of transmembrane transport
 cell surface receptor signaling pathway involved in cell-cell signaling
 regulation of transport
-cellular component organization or biogenesis
 cell-cell adhesion
 regulation of cellular component movement
 intracellular signal transduction
@@ -91,80 +90,48 @@ actin cytoskeleton organization
 synapse assembly
 system process
 regulation of neuron projection development
-vesicle-mediated transport in synapse
-regulation of response to stimulus
 regulation of synapse structure or activity
 anatomical structure formation involved in morphogenesis
-localization of cell
-cell motility
 regulation of cation transmembrane transport
 head development
 brain development
 cell surface receptor signaling pathway
 tube development
-cell migration
 enzyme linked receptor protein signaling pathway
 regulation of cell morphogenesis
-postsynapse organization
 regulation of ion transmembrane transporter activity
-protein localization to synapse
 regulation of synapse organization
 regulation of transmembrane transporter activity
 cellular response to stimulus
-cell-substrate adhesion
 regulation of transporter activity
 regulation of cellular component organization
-regulation of locomotion
-positive regulation of cell communication
 cell-cell adhesion via plasma-membrane adhesion molecules
 tube morphogenesis
 multicellular organismal signaling
-positive regulation of signaling
 inorganic cation transmembrane transport
 metal ion transport
 behavior
 positive regulation of multicellular organismal process
-regulation of cell motility
 regulation of cation channel activity
 adult behavior
-central nervous system neuron differentiation
 developmental growth
-positive regulation of synaptic transmission
 establishment of localization
 cellular response to endogenous stimulus
 Wnt signaling pathway
-heart development
-regulation of cell migration
 tissue development
 cell-cell signaling by wnt
 muscle structure development
+cardiovascular system development
 regulation of axonogenesis
-cytoskeleton organization
-synaptic vesicle cycle
-regulation of neurotransmitter levels
-"synaptic transmission, glutamatergic"
 sensory organ development
 circulatory system process
-neurotransmitter transport
-transmembrane receptor protein tyrosine kinase signaling pathway
+vasculature development
 transport
-sensory organ morphogenesis
-forebrain development
 response to endogenous stimulus
 response to stimulus
-cell-substrate junction organization
-receptor localization to synapse
-cell-substrate junction assembly
-calcium ion transmembrane import into cytosol
-regulation of cell adhesion
 tissue morphogenesis
-regulation of cellular localization
-protein localization to cell junction
 calcium ion transmembrane transport
 locomotory behavior
-extracellular matrix organization
-extracellular structure organization
-potassium ion transmembrane transport
 regulation of cell junction assembly
 cell junction
 cell projection
@@ -202,41 +169,21 @@ intrinsic component of postsynaptic specialization membrane
 membrane
 transporter complex
 intrinsic component of plasma membrane
-cytoskeleton
 cation channel complex
 integral component of plasma membrane
 actin cytoskeleton
-anchoring junction
 cell leading edge
-apical part of cell
 GABA-ergic synapse
 neuronal cell body
-cytoplasm
 cell body
-cell-cell junction
 presynaptic membrane
-dendritic spine
-neuron spine
-apical plasma membrane
 plasma membrane protein complex
-Z disc
 actin-based cell projection
-adherens junction
-distal axon
 intrinsic component of membrane
-potassium channel complex
-Schaffer collateral - CA1 synapse
 filopodium
-I band
 intrinsic component of presynaptic membrane
-membrane microdomain
-supramolecular polymer
 integral component of membrane
-cell surface
-membrane raft
-receptor complex
 cytoskeletal protein binding
-protein binding
 calcium ion binding
 ion channel activity
 ion binding
@@ -247,47 +194,17 @@ metal ion transmembrane transporter activity
 channel activity
 cation channel activity
 passive transmembrane transporter activity
-inorganic cation transmembrane transporter activity
-Ras guanyl-nucleotide exchange factor activity
 cation transmembrane transporter activity
-inorganic molecular entity transmembrane transporter activity
-actin binding
-cell adhesion molecule binding
 ion transmembrane transporter activity
 calmodulin binding
-binding
 transporter activity
-glutamate receptor activity
-transmembrane transporter activity
-transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential
-Rho guanyl-nucleotide exchange factor activity
-potassium ion transmembrane transporter activity
-enzyme binding
-neurotransmitter receptor activity involved in regulation of postsynaptic membrane potential
-GTPase binding
-monovalent inorganic cation transmembrane transporter activity
-potassium channel activity
-transmembrane receptor protein phosphatase activity
-transmembrane receptor protein tyrosine phosphatase activity
-guanyl-nucleotide exchange factor activity
 Autosomal dominant inheritance
 Axon guidance
 Cholinergic synapse
-Morphine addiction
-Focal adhesion
-Glutamatergic synapse
-Calcium signaling pathway
+Insulin secretion
 Circadian entrainment
-GABAergic synapse
-hsa-miR-6867-5p
-hsa-miR-574-5p
-hsa-miR-21-5p
 Neuronal System
-Nervous system development
 Axon guidance
-Signaling by Receptor Tyrosine Kinases
-Netrin-1 signaling
-Transmission across Chemical Synapses
 Neurotransmitter receptors and postsynaptic signal transmission
 Factor: ETF; motif: GVGGMGG; match class: 1
 Factor: RNF96; motif: BCCCGCRGCC; match class: 1
@@ -320,14 +237,10 @@ Factor: Egr-1; motif: GCGGGGGCGG; match class: 1
 Factor: Miz-1; motif: NNRGGWGGGGGAGGGGMRR; match class: 1
 Factor: ZF5; motif: NGAGCGCGC; match class: 1
 Factor: ZF5; motif: NRNGNGCGCGCWN; match class: 1
-Factor: E2F-2; motif: GCGCGCGCGYW; match class: 1
-Factor: HIC1; motif: NSNNNNTGCCCSSNN; match class: 1
 Factor: WT1; motif: NGCGGGGGGGTSMMCYN; match class: 0
 Factor: WT1; motif: NGCGGGGGGGTSMMCYN
 Factor: Egr-1; motif: GCGGGGGCGG
 Factor: Egr-1; motif: GCGGGGGCGG; match class: 0
-Factor: AP-2beta; motif: GCNNNGGSCNGVGGGN
-Factor: AP-2beta; motif: GCNNNGGSCNGVGGGN; match class: 0
 Factor: BTEB3; motif: CCNNSCCNSCCCCKCCCCC; match class: 1
 Factor: FPM315; motif: GGAGGAGGRRGRGGRGGRRGR
 Factor: FPM315; motif: GGAGGAGGRRGRGGRGGRRGR; match class: 0
@@ -335,7 +248,6 @@ Factor: ZNF460; motif: NNACNCCCCCCNN
 Factor: ZNF460; motif: NNACNCCCCCCNN; match class: 0
 Factor: FPM315; motif: GGGAGGAGGRRGRGGRGGRR
 Factor: FPM315; motif: GGGAGGAGGRRGRGGRGGRR; match class: 0
-Factor: AP-2alpha; motif: GCCNNNRGS; match class: 1
 Factor: EZI; motif: GGGGAGGGGRRGGRGRRGGRRR
 Factor: EZI; motif: GGGGAGGGGRRGGRGRRGGRRR; match class: 0
 Factor: AP-2; motif: GSCCSCRGGCNRNRNN; match class: 1
@@ -343,44 +255,18 @@ Factor: ctcf; motif: CCRSCAGGGGGCGCN; match class: 1
 Factor: EGR1; motif: NACGCCCACGCANW; match class: 0
 Factor: EGR1; motif: NACGCCCACGCANW
 Factor: ZIC4; motif: NNCCNCCCRYNGYGN; match class: 1
-Factor: EGR; motif: CGCCCCCGCNN; match class: 1
-Factor: SP1:SP3; motif: CCSCCCCCYCC; match class: 0
-Factor: SP1:SP3; motif: CCSCCCCCYCC
-Factor: AP-2beta; motif: NSCCNNNGGSN; match class: 1
-Factor: EGR1; motif: NACGCCCACGCANW; match class: 1
-Factor: KROX; motif: CCCGCCCCCRCCCC
-Factor: KROX; motif: CCCGCCCCCRCCCC; match class: 0
 Factor: AP-2; motif: MKCCCSCNGGCG; match class: 1
 Factor: WT1; motif: NNGGGNGGGSGN
 Factor: WT1; motif: NNGGGNGGGSGN; match class: 0
 Factor: Sp2; motif: TGGGCGCGCCCA; match class: 1
 Factor: CNOT3; motif: GGCCGCGSSS; match class: 0
 Factor: CNOT3; motif: GGCCGCGSSS
-Factor: AP2; motif: GCCYGSGGSN; match class: 1
 Factor: MAZ; motif: GGGMGGGGS; match class: 1
-Factor: Egr-1; motif: GCGCATGCG; match class: 1
 Factor: Churchill; motif: CGGGNN; match class: 1
 Factor: FPM315; motif: GGAGGAGGRRGRGGRGGRRGR; match class: 1
-Factor: ZNF460; motif: NNACNCCCCCCNN; match class: 1
 Factor: Egr-1; motif: GCGGGGGCGG
 Factor: Egr-1; motif: GCGGGGGCGG; match class: 0
 Factor: PATZ; motif: GGGGNGGGGGMKGGRRNGGNRN; match class: 0
 Factor: PATZ; motif: GGGGNGGGGGMKGGRRNGGNRN
-Factor: KROX; motif: CCCGCCCCCRCCCC; match class: 1
 Factor: IRX2a; motif: ACRYGNNNNACRYGT; match class: 1
-Factor: Egr-1; motif: NGCGTGCGY; match class: 0
-Factor: Egr-1; motif: NGCGTGCGY
 Factor: TAFII250; motif: RARRWGGCGGMGGNGR; match class: 1
-Factor: EGR1; motif: NCNCCGCCCCCGCN; match class: 0
-Factor: EGR1; motif: NCNCCGCCCCCGCN
-Factor: AP-2; motif: MKCCCSCNGGCG; match class: 0
-Factor: AP-2; motif: MKCCCSCNGGCG
-Factor: ctcf; motif: CCRSCAGGGGGCGCN
-Factor: ctcf; motif: CCRSCAGGGGGCGCN; match class: 0
-Factor: SP1:SP3; motif: CCSCCCCCYCC; match class: 1
-Factor: AP-2gamma; motif: NSCCYNNRGSN
-Factor: AP-2gamma; motif: NSCCYNNRGSN; match class: 0
-Factor: Egr-1; motif: NGCGTGCGY; match class: 1
-Factor: EGR; motif: CGCCCCCGCNN; match class: 0
-Factor: EGR; motif: CGCCCCCGCNN
-Splicing factor NOVA regulated synaptic proteins

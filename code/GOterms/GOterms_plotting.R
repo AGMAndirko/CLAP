@@ -1,5 +1,38 @@
 library(ggplot2)
 
+#Venn diagram
+library(VennDiagram)
+library(RColorBrewer)
+#0.01
+first001 <- read.csv("~/CLAP/code/GOterms/files_001/hf_COMBINED_0kya_300kya_only_rsIDs_RESULTS_enrich001.csv", header=TRUE)
+second001 <- read.csv("~/CLAP/code/GOterms/files_001/hf_COMBINED_300_500kya_only_rsIDs_RESULTS_enrich001.csv", header=TRUE)
+third001 <- read.csv("~/CLAP/code/GOterms/files_001/hf_COMBINED_500kya_1mya_only_rsIDs_RESULTS_enrich001.csv", header=TRUE)
+first001 <- as.data.frame(first001$term_name)
+second001 <-as.data.frame(second001$term_name)
+third001 <- as.data.frame(third001$term_name)
+
+mycol <- brewer.pal(3, "RdYlBu")
+p <- venn.diagram(x = list(first001$`first001$term_name`, second001$`second001$term_name`, third001$`third001$term_name`), category.names = c("0-300kya", "300kya-500kya", "500kya-1mya"), 
+                  lwd=2, lty = 'blank', fill=mycol, cex = 1, cat.cex = 1.5, cat.fontface = "bold",cat.pos = c(-27, 27, 135), cat.dist = c(0.055, 0.055, 0.085),filename = NULL)
+pdf(file="GOTerms_Venn_001.pdf")
+  grid.draw(p)
+dev.off()
+#0.05
+first005 <- read.csv("~/CLAP/code/GOterms/files_005/hf_COMBINED_0kya_300kya_only_rsIDs_RESULTS_enrich005.csv", header=TRUE)
+second005 <- read.csv("~/CLAP/code/GOterms/files_005/hf_COMBINED_300_500kya_only_rsIDs_RESULTS_enrich005.csv", header=TRUE)
+third005 <- read.csv("~/CLAP/code/GOterms/files_005/hf_COMBINED_500kya_1mya_only_rsIDs_RESULTS_enrich005.csv", header=TRUE)
+
+first005 <- as.data.frame(first005$term_name)
+second005 <-as.data.frame(second005$term_name)
+third005 <- as.data.frame(third005$term_name)
+
+mycol1 <- brewer.pal(3, "Pastel2")
+p <- venn.diagram(x = list(first005$`first005$term_name`, second005$`second005$term_name`, third005$`third005$term_name`), category.names = c("0-300kya", "300kya-500kya", "500kya-1mya"), 
+                  lwd=2, lty = 'blank',  fill=mycol1, cex = 1, cat.cex = 1.5, cat.fontface = "bold",cat.pos = c(-27, 27, 135), cat.dist = c(0.055, 0.055, 0.085), filename = NULL)
+pdf(file="GOTerms_Venn_005.pdf")
+  grid.draw(p)
+dev.off()
+
 #plotEXCterms_KEEG_REAC_WP .01
 plotEXCterms_KEEG_REAC_WP <- read.csv("plotEXCterms001_KEEG_REAC_WP.csv", header=FALSE)
 
