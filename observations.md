@@ -8,7 +8,11 @@ We first crossed the Kuhlwilm & Boeckx (2019) database of changes between modern
 
 These distributions are characterized by a bimodal distribution. We tried to stablish a k-cluster of ages that resulted in two possibilities for downstream analysis: a [k = 3](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/kmean3_HFstr.pdf) cluster or a [k = 4](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/kmean4_HFstr.pdf) one. We finally settled on hand-picked values based on major tipping points in the Homo sapiens history (see [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/timing_windows.pdf) for the final distribution). 
 
+## Statistical significance
+We checked with a KS statistical test whether the all, 90 (non strict) and 90 (strict) distributions are significantly different, performing different tests for the 0-300k and the 300k-end bits. The KS tests show that the different curves are different in a significant way (p-val < 0.01) despite two of them being a subset of the "all" distribution.
+ 
 ## Other subsets of evolutionary relevance
+[TBC]
 - fivefiles 
 - Introgression
 - Enhances, GTEX
@@ -17,9 +21,10 @@ These distributions are characterized by a bimodal distribution. We tried to sta
 We used the Genealogical Estimation of Variant Age [GEVA](https://github.com/pkalbers/geva) database to assign estimated dates of emergence to various sets of variants related to human evolution. We settled on **29** years per generation, though [other timings shouldn't affect the overall distribution](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/alt_gen_values.pdf). We used the "Combined" estimated age, as opposed to the measures derived uniquely from the Simons Diversity project or the 1000 genomes project. 
 
 Though the GEVA dataset has a wide set of variants, we do miss some of the rarest variants in the process of assigning a date. 
-- Of the original variant dataset we end up with 2294023 dated variants
+- Of the original variant dataset we end up with 2294023 dated ones, a loss of...
 
 ---
+**THINGS I STILL HAVE TO STRUCTURE AND ORDER**
 As predicted by Kuhlwilm and Boeckx, the curve of excess follows that of positive selection more closely than length does; introgression deserts from Akey also follows pos selection closely -- these 3 curves are different ways of giving sense to "most distinctive" variants
 	+ **AA:** did we roll stats on it at some point? I don't remember doing it, and that's the short of statment that we should be very careful to back strongly
 
