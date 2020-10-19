@@ -3,6 +3,16 @@
 ## Main messages
 
 # Dating Homo sapiens-specific variants
+
+## Methods
+We used the Genealogical Estimation of Variant Age [GEVA](https://github.com/pkalbers/geva) database to assign estimated dates of emergence to various sets of variants related to human evolution. We settled on **29** years per generation, though [other timings shouldn't affect the overall distribution](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/alt_gen_values.pdf). We used the "Combined" estimated age, as opposed to the measures derived uniquely from the Simons Diversity project or the 1000 genomes project. 
+
+Though the GEVA dataset has a wide set of variants, we do miss some of the rarest variants in the process of assigning a date. 
+- Of the original variant dataset we end up with 2294023 dated ones, a loss of...
+
+
+
+
 ## Kulhwilm and Boeckx files 
 We first crossed the Kuhlwilm & Boeckx (2019) database of changes between modern humans and archaics with the GEVA database. See the resulting distribution [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/3dist_sqrd.pdf), where "All" is all the variants from [the Kuhlwilm and Boeckx article](https://figshare.com/articles/Variants_and_annotations_of_Neandertals/8184038), 90% is a subset of the data that includes only high frequency variants and 90% (strict) is a further subset with more stringent filters.
 
@@ -17,14 +27,22 @@ We checked with a KS statistical test whether the all, 90 (non strict) and 90 (s
 - Introgression
 - Enhances, GTEX
 
+# Expecto
 ## Methods
-We used the Genealogical Estimation of Variant Age [GEVA](https://github.com/pkalbers/geva) database to assign estimated dates of emergence to various sets of variants related to human evolution. We settled on **29** years per generation, though [other timings shouldn't affect the overall distribution](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/alt_gen_values.pdf). We used the "Combined" estimated age, as opposed to the measures derived uniquely from the Simons Diversity project or the 1000 genomes project. 
+## Results
+## Stats
 
-Though the GEVA dataset has a wide set of variants, we do miss some of the rarest variants in the process of assigning a date. 
-- Of the original variant dataset we end up with 2294023 dated ones, a loss of...
+#GO analysis
+
+# BAZ1B 
+## Methods
+## Results 
+## Stats
 
 ---
-**THINGS I STILL HAVE TO STRUCTURE AND ORDER**
+**THINGS I STILL HAVEN'T STRUCTURED:*
+---
+
 As predicted by Kuhlwilm and Boeckx, the curve of excess follows that of positive selection more closely than length does; introgression deserts from Akey also follows pos selection closely -- these 3 curves are different ways of giving sense to "most distinctive" variants
 	+ **AA:** did we roll stats on it at some point? I don't remember doing it, and that's the short of statment that we should be very careful to back strongly
 
