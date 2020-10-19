@@ -2,14 +2,11 @@
 
 ## Main messages
 
-
-## Core files
+#Intro
+We used the Genealogical Estimation of Variant Age [GEVA](https://github.com/pkalbers/geva) database to assign estimated dates of emergence to various sets of variants related to human evolution. We settled on **29** years per generation, though [other timings shouldn't affect the overall distribution](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/alt_gen_values.pdf). We used the "Combined" estimated age, as opposed to the measures derived uniquely from the Simons Diversity project or the 1000 genomes project. 
 
 ## Dating Homo sapiens-specific variants
-### Results
-We first crossed the Kuhlwilm & Boeckx (2019) database of...
-![test](./plots/KB19_distributions/all.pdf) 
-
+We first crossed the Kuhlwilm & Boeckx (2019) database of changes between modern humans and archaics with the GEVA database. See the resulting distribution [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/3dist_sqrd.pdf), where "All" is all the variants from [the Kuhlwilm and Boeckx article](https://figshare.com/articles/Variants_and_annotations_of_Neandertals/8184038), 90% is a subset of the data that includes only high frequency variants and 90 (strict) is a further subset with more stringent filters.
 
 ### Methods
 In order to assign dates to variants we used the [GEVA]() database.
