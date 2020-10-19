@@ -4,17 +4,28 @@
 
 
 ## Core files
+
+## Dating Homo sapiens-specific variants
+### Results
+We first crossed the Kuhlwilm & Boeckx (2019) database of...
+![test](./plots/KB19_distributions/all.pdf) 
+
+
+### Methods
+In order to assign dates to variants we used the [GEVA]() database.
+
 As predicted by Kuhlwilm and Boeckx, the curve of excess follows that of positive selection more closely than length does; introgression deserts from Akey also follows pos selection closely -- these 3 curves are different ways of giving sense to "most distinctive" variants
 	+ **AA:** did we roll stats on it at some point? I don't remember doing it, and that's the short of statment that we should be very careful to back strongly
 
 All the curves tend to look like a Brontosaurus profile, except for missense where the right bump and left bump have equal height, and the introgression plots, which nicely lack the posterior bump.
+
 ## Statistical results
 LIST all statistically significant results here
 
 **KS test**: are certain distributions from the core files statistically significant when compared?
 - Recent distribution (0-300k years)
     - HF vs HF strict
-    ```D = 0.039051, p-value = 4.328e-11 ```
+    `D = 0.039051, p-value = 4.328e-11 ```
     - ALL vs HF
      ```D = 0.037489, p-value < 2.2e-16 ```
     - ALL vs HF strict
