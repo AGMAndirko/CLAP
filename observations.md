@@ -8,9 +8,10 @@
 We used the Genealogical Estimation of Variant Age [GEVA](https://github.com/pkalbers/geva) database to assign estimated dates of emergence to various sets of variants related to human evolution. We settled on **29** years per generation, though [other timings shouldn't affect the overall distribution](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/alt_gen_values.pdf). We used the "Combined" estimated age, as opposed to the measures derived uniquely from the Simons Diversity project or the 1000 genomes project. 
 
 Though the GEVA dataset has a wide set of variants, we do miss some of the rarest variants in the process of assigning a date. 
-- Of the original variant dataset we end up with 2294023 dated ones, a loss of...
-
-
+- Out of a total of  4437804 for out total set of variants, 3163747 can be rsID'ed (71%) ([)from 2 sources, 1000G and Simons projects), and out of that 2294023 can be mapped (72%; which means 51% of the  4437804 original total). 
+- Out of the high-frequency subset, 128706 (94%) can be rsID'ed, and out of that, 101417 can be mapped (78%; i.e., 74% of original total). 
+- For the stricter HF filtering data, out of 78085 variants, 70027 (89%) can be rsID'ed, and 48424 of that mapped (69%; i.e., 62% of the original total).
+- We looked into fixed positions, but out of 12028 variants, only 32% could be rsID'ed, and out of that only 4% could be mapped, i.e. about only 1% of the original total.
 
 
 ## Kulhwilm and Boeckx files 
@@ -22,18 +23,42 @@ These distributions are characterized by a bimodal distribution. We tried to sta
 We checked with a KS statistical test whether the all, 90 (non strict) and 90 (strict) distributions are significantly different, performing different tests for the 0-300k and the 300k-end bits. The KS tests show that the different curves are different in a significant way (p-val < 0.01) despite two of them being a subset of the "all" distribution.
  
 ## Other subsets of evolutionary relevance
-[TBC]
-- fivefiles 
+In order to see if specific subsets of variants had strickingly different distributions over time, we plotted them [here]. The subsets of interest include:
+ 1. *Akey* signals 
+ 2. *Deserts:* Deserts of introgression
+ 3. *Excess* and *lenght*: in-house lists including genes with an excess of mutations, and a gene lenght-controlled version
+ 4. *Peyregné:* regions under putative positive selection
+
+We also plotted [variants of interest](https://github.com/AGMAndirko/CLAP/blob/master/plots/McCoyetal_snps/mcCoyetal_snps.pdf) comming from McCoy et al.'s study on Neanderthal-introgressed variants. 
+
 - Introgression
-- Enhances, GTEX
+- Enhancers, GTEX
 
 # Expecto
+We tried to predict the effect of variants in specific time windows in brain tissues using [ExPecto](https://humanbase.readthedocs.io/en/latest/expecto.html), a machine learning framework for expression prediction in silico. 
+
+First, the authors of this tool trained tissue-specific convolutional neural networks (CNN) that takes histone marks, transcription factors and DNA accessibility experimental data from ENCODE and Roadmap. This information is organized in each CNN in windows of 1000 bp before and after the TSS of each protein coding gene. You can, in theory, train any expression data to generate a CNN. This generates various layers of predictions, each accounting for a series of features (roughly speaking), that are then transformed into 'weights' spatially located around the TSS. These weights are compounds of features that determine future expression predictions in a specific locus. When fed a new variant file (vcf), these weights are used to predict gene expression with a linear regression model. The predicted result correlates highly with experimental evidence, according to the authors.
+
+In our case we are using a curated list of the training models they generated for the study (GTEx, Roadmap and ENCODE expression data). The main criteria for this list was that the tissue or cell had to be brain-related. 
+
 ## Methods
+We only used the list of dated high-frequency varaints, as the process consumes a huge ammount of computational resources and couldn't be run for all the variants. You can see a list of plots generated per time windows in [here](https://github.com/AGMAndirko/CLAP/tree/master/plots/ExPecto), codenames `date-date_1or2.pdf`. The 1 plots show down and upregulation for each period. The 2 plots show the combined measure of downregulation and upregulation. 
+
+Variation potential score plots were created as described in [here](https://humanbase.readthedocs.io/en/latest/expecto.html#variation-potential-directionality-scores).
+
+
 ## Results
+We obtained [lists of genes per age](https://github.com/AGMAndirko/CLAP/blob/master/plots/ExPecto/all_timingwindows_cone.pdf) that accumulate what the ExPecto authors call a [high variation potential score](https://humanbase.readthedocs.io/en/latest/expecto.html#variation-potential-directionality-scores), a predictive measure of tissue/condition-specificity of a gene. A window-specific version of the variation potential scores can be seen [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/ExPecto/timing_cone.pdf).
+
+A [hierarchical cluster analysis](https://github.com/AGMAndirko/CLAP/blob/master/plots/ExPecto/tissues_dendrogram.pdf) showed that predicted tissue values are grouped in three main groups. This is well reflected in a [similarity distance heatmap](https://github.com/AGMAndirko/CLAP/blob/master/plots/ExPecto/expecto_similarity_value.pdf) plot. In terms of value skewedness, we show that the model reflects a high-skewedness towards negative expression values in [brain tissues](https://github.com/AGMAndirko/CLAP/blob/master/plots/ExPecto/alltissuesQQ.pdf) but not in [all the tissues included](https://github.com/AGMAndirko/CLAP/blob/master/plots/ExPecto/alltissuesQQ.pdf), where there's an overall skewedness in both positive and negative extreme values.
+
 ## Stats
+A linear regression analysis shows that expression values as predicted by ExPecto are significantly different in the 0-60k, 200-300k and 300-500k blocks of time (p-values <0.05). However, the R2 is very low.
+
+We performed another analysis to check whether there was a significant correlation between dates predicted by the GEVA tool and expression - correlation is significant (p-value = 0.003259) but only when not taking into account tissue-specifity. Tissue expression value is significantly different in some of the tissues regardless of GEVA timing (such as Neural Progenitor Cell, astrocyte or Adrenal Gland). Note that this are also grouped together in a cluster, as shown by a hierarchical cluster dendrogram plot. 
+
 
 # GO analysis
-
 
 ## Gprofiler2
 
@@ -43,12 +68,10 @@ Regarding signaling pathways, only in the first period we find 'cGMP-PKG signali
 
 We further noticed differences between GO terms across periods when thresholding for a adj p-value < .05. Exclusively in the middle period (300-500k) we find terms related to behavior (startle response, GO:0001964), facial shape (narrow mouth, 'HP:0000160') and hormone system (steroid hormone, GO:0043401, GO:0048545, and GO:0003707; or parathyroid hormone, KEGG:04928). For the 500-1m period, we find cognition (GO:0050890), learning or memory (GO:0007611) or cerebellum (granular layer, HPA:007020_22; also present at adj p value < .01) and spinocerebellar ataxia (KEGG:05017). Only in the most recent period the term 'cerebral cortex: neuropil' appears (HPA:008050_22) (Suppl. Tables X1...Xn).
 
-A venn diagran showing the number of shared categories accross timing windows can be seen [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/GO_terms/GOTerms_Venn_001.pdf) (with a significance threshold of p-val < 0.001)
+A venn diagran showing the number of shared categories accross timing windows can be seen [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/GO_terms/GOTerms_Venn_001.pdf) (with a significance threshold of p-val < 0.001).
 
 ## Gene expression in GO-enriched genes
 We ran the variants associated with GO-enriched genes through ExPecto in order to predict expression levels. A series of statistical tests show that varians coming from GO-enriched genes have significantly differences in their average expression levels in the middle (300-500k) and late (500-800k) periods. The early period (0-300k) didn't show this difference (p = 0.1887).
-
-
 
 ## Hallmark gene sets
 A Hallmark gene set enrichment set showed no significance in any of the curated pathway categories.
@@ -68,37 +91,10 @@ As predicted by Kuhlwilm and Boeckx, the curve of excess follows that of positiv
 All the curves tend to look like a Brontosaurus profile, except for missense where the right bump and left bump have equal height, and the introgression plots, which nicely lack the posterior bump.
 
 ## Statistical results
-LIST all statistically significant results here
 
-**KS test**: are certain distributions from the core files statistically significant when compared?
-- Recent distribution (0-300k years)
-    - HF vs HF strict
-    `D = 0.039051, p-value = 4.328e-11 ```
-    - ALL vs HF
-     ```D = 0.037489, p-value < 2.2e-16 ```
-    - ALL vs HF strict
-     ```D = 0.043893, p-value < 2.2e-16 ```
-- Older distribution (300k years to end of the tail):
-    - HF vs HF strict
-     ```D = 0.087302, p-value < 2.2e-16 ```
-    - ALL vs HF
-     ```D = 0.19197, p-value < 2.2e-16 ```
-    - ALL vs HF strict
-     ```D = 0.2469, p-value < 2.2e-16 ```
-
-**Linear regression model**
-A linear regression analysis shows that expression values as predicted by ExPecto are significantly different in the 0-60k, 200-300k and 300-500k blocks of time (p-values <0.05).The R2 is very low though - expertise in stats needed here.
-We performed another analysis to check whether there was a significant correlation between dates predicted by the GEVA tool and expression - correlation is significant (p-value = 0.003259) but only when not taking into account tissue-specifity. Tissue expression value is significantly different in some of the tissues regardless of GEVA timing (such as Neural Progenitor Cell, astrocyte or Adrenal Gland). Note that this are also grouped together in a cluster, as shown by a hierarchical cluster dendrogram plot. 
 
 **Back-to-back plot statistics - random sampling**
 Approximative Kruskal-Wallis Test with random sampling (n = 1000)
-
-
-## Expecto
-After runing the dated variants through the ExPecto tool we find an overall tissue skewedness over extreme positive and negative values. The same kind of analysis reveals that brain tissues have a different profile, with Astrocyte, Neural Progenitor Cell and Adrenal Gland carrying overall more negative values than the rest of the tissues.
-
-**AA:** "indicate what this more negative values mean functionally for EXPECTO" -  Depends on other things. The values could mean that there is a tissue sample size bias in the training data of the DL tool (ie the original datasets). Once we discard that we could say those are tissues that have changed overall expression by HF mutations, but in that case we also should prove that that's specific of HF mutations. That's something that can't be done until we do NNaall in ExPecto (for which we have a computational limtiation).
-
 
 
 ## BAZ1B
