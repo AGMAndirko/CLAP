@@ -23,15 +23,17 @@ These distributions are characterized by a bimodal distribution. We tried to sta
 We checked with a KS statistical test whether the all, 90 (non strict) and 90 (strict) distributions are significantly different, performing different tests for the 0-300k and the 300k-end bits. The KS tests show that the different curves are different in a significant way (p-val < 0.01) despite two of them being a subset of the "all" distribution.
  
 ## Other subsets of evolutionary relevance
-In order to see if specific subsets of variants had strickingly different distributions over time, we plotted them [here]. The subsets of interest include:
+In order to see if specific subsets of variants had strickingly different distributions over time, we plotted them [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/five_files_plots/seven_files_plot.pdf). The subsets of interest include:
  1. *Akey* signals 
  2. *Deserts:* Deserts of introgression
  3. *Excess* and *lenght*: in-house lists including genes with an excess of mutations, and a gene lenght-controlled version
  4. *Peyregné:* regions under putative positive selection
 
-We also plotted [variants of interest](https://github.com/AGMAndirko/CLAP/blob/master/plots/McCoyetal_snps/mcCoyetal_snps.pdf) comming from McCoy et al.'s study on Neanderthal-introgressed variants. 
+We also plotted [variants of interest](https://github.com/AGMAndirko/CLAP/blob/master/plots/McCoyetal_snps/mcCoyetal_snps.pdf) comming from McCoy et al.'s study on Neanderthal-introgressed variants (see [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/introgression/all_neand_intro2.pdf)). 
 
-- Introgression
+Regarding introgression, we used data from [Vernot et al.](https://pubmed.ncbi.nlm.nih.gov/26989198/) and [Sankararaman et al.](https://pubmed.ncbi.nlm.nih.gov/27032491/). Both distributions follow each other closely, and lack the second peak *circa* 1,2mya characteristic of the [main distribution plots.](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/3dist_sqrd.pdf), as expected.
+
+[TBC]
 - Enhancers, GTEX
 
 # Expecto
@@ -68,11 +70,8 @@ Regarding signaling pathways, only in the first period we find 'cGMP-PKG signali
 
 We further noticed differences between GO terms across periods when thresholding for a adj p-value < .05. Exclusively in the middle period (300-500k) we find terms related to behavior (startle response, GO:0001964), facial shape (narrow mouth, 'HP:0000160') and hormone system (steroid hormone, GO:0043401, GO:0048545, and GO:0003707; or parathyroid hormone, KEGG:04928). For the 500-1m period, we find cognition (GO:0050890), learning or memory (GO:0007611) or cerebellum (granular layer, HPA:007020_22; also present at adj p value < .01) and spinocerebellar ataxia (KEGG:05017). Only in the most recent period the term 'cerebral cortex: neuropil' appears (HPA:008050_22) (Suppl. Tables X1...Xn).
 
-<<<<<<< HEAD
-A venn diagran showing the number of shared categories accross timing windows can be seen [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/GO_terms/GOTerms_Venn_001.pdf) (with a significance threshold of p-val < 0.001).
-=======
 A venn diagran showing the number of shared categories accross timing windows can be seen [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/GO_terms/GOTerms_Venn_001.pdf) (with a significance threshold of p-val < 0.01)
->>>>>>> a3f9eada4190c987545fd83efb68b0880ce9e622
+
 
 ## Gene expression in GO-enriched genes
 We ran the variants associated with GO-enriched genes through ExPecto in order to predict expression levels. A series of statistical tests show that varians coming from GO-enriched genes have significantly differences in their average expression levels in the middle (300-500k) and late (500-800k) periods. The early period (0-300k) didn't show this difference (p = 0.1887).
@@ -82,20 +81,24 @@ A Hallmark gene set enrichment set showed no significance in any of the curated 
 
 # BAZ1B 
 ## Methods
+
 ## Results 
+
 ## Stats
 
+Anova tests to understand whether there's significant variation among lists or categories (dir/inv) didn't give a significant p-value (p ~ 0.08). This means these BAZ1B affecting variants don't have significantly different age values compared to other variants within different lists or groups (inv vs dir).
+
 ---
-**THINGS I STILL HAVEN'T STRUCTURED:*
+**THINGS I STILL HAVEN'T STRUCTURED:**
 ---
+
+
 
 As predicted by Kuhlwilm and Boeckx, the curve of excess follows that of positive selection more closely than length does; introgression deserts from Akey also follows pos selection closely -- these 3 curves are different ways of giving sense to "most distinctive" variants
 	+ **AA:** did we roll stats on it at some point? I don't remember doing it, and that's the short of statment that we should be very careful to back strongly
 
-All the curves tend to look like a Brontosaurus profile, except for missense where the right bump and left bump have equal height, and the introgression plots, which nicely lack the posterior bump.
 
 ## Statistical results
-
 
 **Back-to-back plot statistics - random sampling**
 Approximative Kruskal-Wallis Test with random sampling (n = 1000)
@@ -106,7 +109,7 @@ BAZ1B targets: INV vs DIR contrast but mostly for most robust targets -- useful 
 
 Domestication vs Globularization timing vindicated; Tom vindicated
 
-Anova tests to understand whether there's significant variation among lists or categories (dir/inv) didn't give a significant p-value (p ~ 0.08). This means these BAZ1B affecting variants don't have significantly different age values compared to other variants within different lists or groups (inv vs dir).
+
 
 ## Technical details
 - Mention of 4th genome?
