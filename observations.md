@@ -26,17 +26,19 @@ We checked with a KS statistical test whether the all, 90 (non strict) and 90 (s
  
 ## Other subsets of evolutionary relevance
 In order to see if specific subsets of variants had strickingly different distributions over time, we plotted them [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/five_files_plots/seven_files_plot.pdf). The subsets of interest include:
+
  1. *Akey* regions of the modern genome depleted of introgressed alleles (we mapped all the HF variants in these regions), according to Akey[ref] 
  2. *Deserts:* Deserts of introgression according to ...
  3. *Excess* and *lenght*: variants associated with a higher than expected number of HF mutations according to gene length/compared to archaics
  4. *Peyregné:* regions under putative positive selection from Pey [ref]
+
 
 We also plotted [variants of interest](https://github.com/AGMAndirko/CLAP/blob/master/plots/McCoyetal_snps/mcCoyetal_snps.pdf) coming from McCoy et al.'s study on Neanderthal-introgressed variants (see [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/introgression/all_neand_intro2.pdf)). + **CB:** not just of interest, these were top-ranked according to some measure, right?
 
 Regarding introgression, we used data from [Vernot et al.](https://pubmed.ncbi.nlm.nih.gov/26989198/) and [Sankararaman et al.](https://pubmed.ncbi.nlm.nih.gov/27032491/). Both distributions follow each other closely, and lack the second peak *circa* 1,2mya characteristic of the [main distribution plots.](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/3dist_sqrd.pdf), as expected.
 
 [TBC]
-- Enhancers, GTEX
+- Enhancers, GTEX?
 
 # Expecto
 We tried to predict the effect of variants in specific time windows in brain tissues using [ExPecto](https://humanbase.readthedocs.io/en/latest/expecto.html), a machine learning framework for expression prediction in silico. + **CB:** is there a good reason why this is better than other choices?
