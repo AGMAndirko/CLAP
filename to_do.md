@@ -5,7 +5,7 @@
 			- [ ] Enhancers
 			- [ ] New/old BAZ1B lists
 			- [ ] GTEx files
-			- [ ] Lenght/excess
+			- [ ] Length/excess
 	
 - [X] Plot both introgression files (Vernot vs Sankararaman)
 	+ **AA:** If you have any other suggestions re that let me know
@@ -32,7 +32,7 @@
 - [X] Reorganize BAZ1B 
 	- [X] create "BAZ1B_0", 
 	- [X] *bona fide* lists & plots
-	- [X] Statistics for BAZ1B_1
+	- [X] Statistics for BAZ1B
 - [X] Statistics for:
 	- [X] Deserts of introgression, Akey and Peyregné 
 		+ **AA:** all <0.01 except hf vs deserts, which gives a p-value of ~ 0.011
@@ -47,7 +47,8 @@
 		2. Mitotic splindle
 		3. Notch signalling.
 		4. TGF-b signalling
-- [ ] Come up with a way to refine graphs 
+- [ ] Come up with a way to refine graphs
+- [ ] Stat test for inv/dev distribution of BAZ1B targets _per period_.
 
 
 Note: when a task is complete just add an upper-case X to the box, like this:
