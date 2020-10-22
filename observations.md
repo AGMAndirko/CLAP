@@ -5,31 +5,35 @@
 # Dating Homo sapiens-specific variants
 
 ## Methods
-We used the Genealogical Estimation of Variant Age [GEVA](https://github.com/pkalbers/geva) database to assign estimated dates of emergence to various sets of variants related to human evolution. We settled on **29** years per generation, though [other timings shouldn't affect the overall distribution](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/alt_gen_values.pdf). We used the "Combined" estimated age, as opposed to the measures derived uniquely from the Simons Diversity project or the 1000 genomes project. 
+We used the Genealogical Estimation of Variant Age [GEVA](https://github.com/pkalbers/geva) database to assign estimated dates of emergence to various sets of variants related to modern human evolution---chiefly, all modern alleles (regardless of frequency) compared to archaic/ancestral variants, and those variants that are almost fixed, in the sense of Kuhlwilm and Boeckx (2019). 
++ **CB:** add a line or two about GEVA, by way of summary
+We settled on **29** years per generation, which is, we gather, pretty conventional, although [other timings shouldn't affect the overall distribution](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/alt_gen_values.pdf). We used the "Combined" estimated age, as opposed to the measures derived uniquely from the Simons Diversity project or the 1000 genomes project. + **CB:** this will be a bit too cryptic, expand slightly, and give a good reason/advantage for why we did so.
 
-Though the GEVA dataset has a wide set of variants, we do miss some of the rarest variants in the process of assigning a date. 
+Though the GEVA dataset contains a large set of variants, we miss some of the rarest variants in the process of assigning a date. 
 - Out of a total of  4437804 for out total set of variants, 3163747 can be rsID'ed (71%) ([)from 2 sources, 1000G and Simons projects), and out of that 2294023 can be mapped (72%; which means 51% of the  4437804 original total). 
 - Out of the high-frequency subset, 128706 (94%) can be rsID'ed, and out of that, 101417 can be mapped (78%; i.e., 74% of original total). 
 - For the stricter HF filtering data, out of 78085 variants, 70027 (89%) can be rsID'ed, and 48424 of that mapped (69%; i.e., 62% of the original total).
 - We looked into fixed positions, but out of 12028 variants, only 32% could be rsID'ed, and out of that only 4% could be mapped, i.e. about only 1% of the original total.
 
 
-## Kulhwilm and Boeckx files 
-We first crossed the Kuhlwilm & Boeckx (2019) database of changes between modern humans and archaics with the GEVA database. See the resulting distribution [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/3dist_sqrd.pdf), where "All" is all the variants from [the Kuhlwilm and Boeckx article](https://figshare.com/articles/Variants_and_annotations_of_Neandertals/8184038), 90% is a subset of the data that includes only high frequency variants and 90% (strict) is a further subset with more stringent filters.
+## Kuhlwilm and Boeckx files 
+We first crossed the Kuhlwilm & Boeckx (2019) database of changes between modern humans and archaics with the GEVA database. See the resulting distribution [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/3dist_sqrd.pdf), where "All" is all the variants from [the Kuhlwilm and Boeckx article](https://figshare.com/articles/Variants_and_annotations_of_Neandertals/8184038), 90% is a subset of the data that includes only high frequency variants and 90% (strict) is a further subset (one that requires 90% of fixation in each and every human population).
 
-These distributions are characterized by a bimodal distribution. We tried to stablish a k-cluster of ages that resulted in two possibilities for downstream analysis: a [k = 3](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/kmean3_HFstr.pdf) cluster or a [k = 4](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/kmeans4_HFstr.pdf) one. We finally settled on hand-picked values based on major tipping points in the Homo sapiens history (see [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/timing_windows.pdf) for the final distribution). 
+These distributions are characterized by a bimodal distribution. We tried to stablish a k-cluster of periods that resulted in two possibilities for downstream analysis: a [k = 3](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/kmean3_HFstr.pdf) cluster or a [k = 4](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/kmeans4_HFstr.pdf) one. We finally settled on hand-picked values based on major tipping points in the Homo sapiens history (see [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/timing_windows.pdf) for the final distribution). 
 
 ## Statistical significance
 We checked with a KS statistical test whether the all, 90 (non strict) and 90 (strict) distributions are significantly different, performing different tests for the 0-300k and the 300k-end bits. The KS tests show that the different curves are different in a significant way (p-val < 0.01) despite two of them being a subset of the "all" distribution.
  
 ## Other subsets of evolutionary relevance
 In order to see if specific subsets of variants had strickingly different distributions over time, we plotted them [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/five_files_plots/seven_files_plot.pdf). The subsets of interest include:
- 1. *Akey*, from the **add link to publication**
- 2. *Deserts:* Deserts of introgression
- 3. *Excess* and *lenght*: in-house lists including genes with an excess of mutations, and a gene lenght-controlled version
- 4. *Peyregné:* regions under putative positive selection
 
-We also plotted [variants of interest](https://github.com/AGMAndirko/CLAP/blob/master/plots/McCoyetal_snps/mcCoyetal_snps.pdf) comming from McCoy et al.'s study on Neanderthal-introgressed variants (see [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/introgression/all_neand_intro2.pdf)). 
+ 1. *Akey* regions of the modern genome depleted of introgressed alleles (we mapped all the HF variants in these regions), according to Akey[ref] 
+ 2. *Deserts:* Deserts of introgression according to ...
+ 3. *Excess* and *lenght*: variants associated with a higher than expected number of HF mutations according to gene length/compared to archaics
+ 4. *Peyregné:* regions under putative positive selection from Pey [ref]
+
+
+We also plotted [variants of interest](https://github.com/AGMAndirko/CLAP/blob/master/plots/McCoyetal_snps/mcCoyetal_snps.pdf) coming from McCoy et al.'s study on Neanderthal-introgressed variants (see [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/introgression/all_neand_intro2.pdf)). + **CB:** not just of interest, these were top-ranked according to some measure, right?
 
 Regarding introgression, we used data from [Vernot et al.](https://pubmed.ncbi.nlm.nih.gov/26989198/) and [Sankararaman et al.](https://pubmed.ncbi.nlm.nih.gov/27032491/). Both distributions follow each other closely, and lack the second peak *circa* 1,2mya characteristic of the [main distribution plots.](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/3dist_sqrd.pdf), as expected.
 
@@ -37,7 +41,7 @@ Regarding introgression, we used data from [Vernot et al.](https://pubmed.ncbi.n
 - Enhancers, GTEX?
 
 # Expecto
-We tried to predict the effect of variants in specific time windows in brain tissues using [ExPecto](https://humanbase.readthedocs.io/en/latest/expecto.html), a machine learning framework for expression prediction in silico. 
+We tried to predict the effect of variants in specific time windows in brain tissues using [ExPecto](https://humanbase.readthedocs.io/en/latest/expecto.html), a machine learning framework for expression prediction in silico. + **CB:** is there a good reason why this is better than other choices?
 
 First, the authors of this tool trained tissue-specific convolutional neural networks (CNN) that takes histone marks, transcription factors and DNA accessibility experimental data from ENCODE and Roadmap. This information is organized in each CNN in windows of 1000 bp before and after the TSS of each protein coding gene. You can, in theory, train any expression data to generate a CNN. This generates various layers of predictions, each accounting for a series of features (roughly speaking), that are then transformed into 'weights' spatially located around the TSS. These weights are compounds of features that determine future expression predictions in a specific locus. When fed a new variant file (vcf), these weights are used to predict gene expression with a linear regression model. The predicted result correlates highly with experimental evidence, according to the authors.
 
@@ -64,11 +68,11 @@ We performed another analysis to check whether there was a significant correlati
 
 ## Gprofiler2
 
-For the 0-300k period, terms related to post-synapse ('regulation of postsynapse organization', GO:0099175; 'postsynaptic neurotransmitter receptor activity', GO:0098960), channel activity ('transmitter-gated channel activity', GO:0022835; 'ligand-gated channel activity', GO:0022834) stand out, while in the 300-500k period it exclusively appears heart/cardiac-related terms ('regulation of heart rate by cardiac conduction', GO:0086091; 'cardiac muscle cell action potential', GO:0086001). It is indeed in the late period (300 to 1my) where we find terms related to cardiomyopathy (KEGG:05412; KEGG:05410;KEGG:05414) or 'calcium regulation in the cardiac cell' (WP:WP536). Interestingly, the comparison early (0-300k) versus late (300k-1m) periods further shows differences in bone and cartilage related terms (skeletal system development, GO:0001501; chondrocyte differentiation, GO:0002062; collagen biosynthesis and formation, REAC:R-HSA-1650814 and REAC:R-HSA-1474290) or in the visual system (eye and visual system development, GO:0001654 and GO:0150063), exclusively found in the later periods (300 to 1my). 
+For the 0-300k period, terms related to post-synapse ('regulation of postsynapse organization', GO:0099175; 'postsynaptic neurotransmitter receptor activity', GO:0098960), channel activity ('transmitter-gated channel activity', GO:0022835; 'ligand-gated channel activity', GO:0022834) stand out, while in the 300-500k period it exclusively appears heart/cardiac-related terms ('regulation of heart rate by cardiac conduction', GO:0086091; 'cardiac muscle cell action potential', GO:0086001). It is indeed in the late period (300 to 1my) that we find terms related to cardiomyopathy (KEGG:05412; KEGG:05410;KEGG:05414) or 'calcium regulation in the cardiac cell' (WP:WP536). Interestingly, the comparison early (0-300k) versus late (300k-1m) periods further reveals differences in bone and cartilage related terms (skeletal system development, GO:0001501; chondrocyte differentiation, GO:0002062; collagen biosynthesis and formation, REAC:R-HSA-1650814 and REAC:R-HSA-1474290) or in the visual system (eye and visual system development, GO:0001654 and GO:0150063), exclusively found in the later periods (300 to 1my). 
 
-Regarding signaling pathways, only in the first period we find 'cGMP-PKG signaling pathway' (KEGG:04022), while later 'oxytocin signaling pathway'(KEGG:04921) (300-500k period), 'cAMP signaling pathway' (KEGG:04024) or 'Pathways Regulating Hippo Signaling' (WP:WP4540) (500-1my period). Specific to the most recent period is the term related to the disorder 'Fragile X Syndrome' (WP:WP4549). Across all time blocks we recurrently find GO terms related to development and differentiation (including terms such as 'head development', GO:0060322; 'brain development', GO:0007420; or 'anatomical structure development', GO:0048856) and synapse (e.g. GABAergic/cholinergic/glutamatergic synapses, KEGG:04727, KEGG:04725, GO:0098978; or postsynapse, GO:0098794). Some specific terms for each period are shown in Figure X (see Suppl. Tables X1...Xn for the complete set of GO terms).
+Regarding signaling pathways, only in the first period do we find 'cGMP-PKG signaling pathway' (KEGG:04022), while later 'oxytocin signaling pathway'(KEGG:04921) (300-500k period), 'cAMP signaling pathway' (KEGG:04024) or 'Pathways Regulating Hippo Signaling' (WP:WP4540) (500-1my period). Specific to the most recent period is the term related to the disorder 'Fragile X Syndrome' (WP:WP4549). Across all time blocks we recurrently find GO terms related to development and differentiation (including terms such as 'head development', GO:0060322; 'brain development', GO:0007420; or 'anatomical structure development', GO:0048856) and synapse (e.g. GABAergic/cholinergic/glutamatergic synapses, KEGG:04727, KEGG:04725, GO:0098978; or postsynapse, GO:0098794). Some specific terms for each period are shown in Figure X (see Suppl. Tables X1...Xn for the complete set of GO terms). + **CB:** fix link, to avoid "Figure X"
 
-We further noticed differences between GO terms across periods when thresholding for a adj p-value < .05. Exclusively in the middle period (300-500k) we find terms related to behavior (startle response, GO:0001964), facial shape (narrow mouth, 'HP:0000160') and hormone system (steroid hormone, GO:0043401, GO:0048545, and GO:0003707; or parathyroid hormone, KEGG:04928). For the 500-1m period, we find cognition (GO:0050890), learning or memory (GO:0007611) or cerebellum (granular layer, HPA:007020_22; also present at adj p value < .01) and spinocerebellar ataxia (KEGG:05017). Only in the most recent period the term 'cerebral cortex: neuropil' appears (HPA:008050_22) (Suppl. Tables X1...Xn).
+We further noticed differences between GO terms across periods when thresholding for a adj p-value < .05. Only in the middle period (300-500k) do we find terms related to behavior (startle response, GO:0001964), facial shape (narrow mouth, 'HP:0000160') and hormone system (steroid hormone, GO:0043401, GO:0048545, and GO:0003707; or parathyroid hormone, KEGG:04928). For the 500-1m period, we find terms like cognition (GO:0050890), learning or memory (GO:0007611) or cerebellum (granular layer, HPA:007020_22; also present at adj p value < .01) and spinocerebellar ataxia (KEGG:05017). Only in the most recent period does the term 'cerebral cortex: neuropil' appear (HPA:008050_22) (Suppl. Tables X1...Xn). + **CB:** fix link
 
 A venn diagran showing the number of shared categories accross timing windows can be seen [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/GO_terms/GOTerms_Venn_001.pdf) (with a significance threshold of p-val < 0.01)
 
@@ -93,9 +97,6 @@ Anova tests to understand whether there's significant variation among lists or c
 ---
 
 
-
-As predicted by Kuhlwilm and Boeckx, the curve of excess follows that of positive selection more closely than length does; introgression deserts from Akey also follows pos selection closely -- these 3 curves are different ways of giving sense to "most distinctive" variants
-	+ **AA:** did we roll stats on it at some point? I don't remember doing it, and that's the short of statment that we should be very careful to back strongly
 
 
 ## Statistical results
