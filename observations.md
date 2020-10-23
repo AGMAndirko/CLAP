@@ -39,8 +39,7 @@ We also plotted [variants of interest](https://github.com/AGMAndirko/CLAP/blob/m
 
 Regarding introgression, we used data from [Vernot et al.](https://pubmed.ncbi.nlm.nih.gov/26989198/) and [Sankararaman et al.](https://pubmed.ncbi.nlm.nih.gov/27032491/). Both distributions follow each other closely, and lack the second peak *circa* 1,2mya characteristic of the [main distribution plots.](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/3dist_sqrd.pdf), as expected.
 
-[TBC]
-- Enhancers, GTEX?
+Additionally, we crossed the GEVA results with 
 
 # Expecto
 We tried to predict the effect of variants in specific time windows in brain tissues using [ExPecto](https://humanbase.readthedocs.io/en/latest/expecto.html), a machine learning framework for expression prediction in silico. As opposed to other approaches, ExPecto provides *ab initio* predictions, making the tool technically blind regarding reference genome biases.
@@ -74,9 +73,7 @@ For the 0-300k period, terms related to post-synapse ('regulation of postsynapse
 
 Regarding signaling pathways, only in the first period do we find 'cGMP-PKG signaling pathway' (KEGG:04022), while later 'oxytocin signaling pathway'(KEGG:04921) (300-500k period), 'cAMP signaling pathway' (KEGG:04024) or 'Pathways Regulating Hippo Signaling' (WP:WP4540) (500-1my period). Specific to the most recent period is the term related to the disorder 'Fragile X Syndrome' (WP:WP4549). Across all time blocks we recurrently find GO terms related to development and differentiation (including terms such as 'head development', GO:0060322; 'brain development', GO:0007420; or 'anatomical structure development', GO:0048856) and synapse (e.g. GABAergic/cholinergic/glutamatergic synapses, KEGG:04727, KEGG:04725, GO:0098978; or postsynapse, GO:0098794). Some specific terms for each period are shown in [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/GO_terms/plotEXCterms_g001_KEEG_REAC_WP.pdf) (see Suppl. Tables X1...Xn for the complete set of GO terms). 
 
-We further noticed differences between GO terms across periods when thresholding for a adj p-value < .05. Only in the middle period (300-500k) do we find terms related to behavior (startle response, GO:0001964), facial shape (narrow mouth, 'HP:0000160') and hormone system (steroid hormone, GO:0043401, GO:0048545, and GO:0003707; or parathyroid hormone, KEGG:04928). For the 500-1m period, we find terms like cognition (GO:0050890), learning or memory (GO:0007611) or cerebellum (granular layer, HPA:007020_22; also present at adj p value < .01) and spinocerebellar ataxia (KEGG:05017). Only in the most recent period does the term 'cerebral cortex: neuropil' appear (HPA:008050_22).
-	+ **CB:** fix link
-	+ **AA:** no link to fix because there are no supp tables in github
+We further noticed differences between GO terms across periods when thresholding for a adj p-value < .05. Only in the middle period (300-500k) do we find terms related to behavior (startle response, GO:0001964), facial shape (narrow mouth, 'HP:0000160') and hormone system (steroid hormone, GO:0043401, GO:0048545, and GO:0003707; or parathyroid hormone, KEGG:04928). For the 500-1m period, we find terms like cognition (GO:0050890), learning or memory (GO:0007611) or cerebellum (granular layer, HPA:007020_22; also present at adj p value < .01) and spinocerebellar ataxia (KEGG:05017). Only in the most recent period does the term 'cerebral cortex: neuropil' appear (HPA:008050_22). You can see the complete lists [here](https://github.com/AGMAndirko/CLAP/tree/master/plots/GO_terms/Supplementary_Tables).
 
 A venn diagran showing the number of shared categories accross timing windows can be seen [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/GO_terms/GOTerms_Venn_001.pdf) (with a significance threshold of p-val < 0.01)
 
@@ -116,9 +113,12 @@ A Hallmark gene set enrichment set showed no significance in any of the curated 
 Following [our work in collaboration with Giuseppe Testa's lab](https://advances.sciencemag.org/content/5/12/eaaw7908), regarding the role of BAZ1B in human evolution, we focused on this gene and its targets especifically. The goal was to determine if mutations in BAZ1B in human evolution are significantly followed by variant changes in its direct genetic targets.
 
 ## Methods
-## Results 
-## Stats
+The lists of genes were provided by the Giuseppe Testa lab.
 
+## Results  
+Plotting shows a contrast in BAZ1B targets between targets  inversely correlated and directely correlated with BAZ1B expression (but see stats section below)
+
+## Stats
 Anova tests to understand whether there's significant variation among lists or categories (dir/inv) didn't give a significant p-value (p ~ 0.08). This means these BAZ1B affecting variants don't have significantly different age values compared to other variants within different lists or groups (inv vs dir).
 
 ---
