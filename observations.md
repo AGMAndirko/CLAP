@@ -39,7 +39,7 @@ We also plotted [variants of interest](https://github.com/AGMAndirko/CLAP/blob/m
 
 Regarding introgression, we used data from [Vernot et al.](https://pubmed.ncbi.nlm.nih.gov/26989198/) and [Sankararaman et al.](https://pubmed.ncbi.nlm.nih.gov/27032491/). Both distributions follow each other closely, and lack the second peak *circa* 1,2mya characteristic of the [main distribution plots.](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/3dist_sqrd.pdf), as expected.
 
-Additionally, we crossed the GEVA results with 
+Additionally, we crossed the GEVA results with previous studies by the CBL groups. Specifically, we plotted the distribution of enhancer and promoter variants in the Cerebellum, part of an ongoing project by Juan, [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/enh_lenght_missense_plots/enh_pr_miss_lenght.pdf). We also plotted eQTL variants affecting brain-tissue gene expression ([see here](https://github.com/AGMAndirko/CLAP/blob/master/plots/GTEx/Gtex.pdf)), part of Alejandro's work.
 
 # Expecto
 We tried to predict the effect of variants in specific time windows in brain tissues using [ExPecto](https://humanbase.readthedocs.io/en/latest/expecto.html), a machine learning framework for expression prediction in silico. As opposed to other approaches, ExPecto provides *ab initio* predictions, making the tool technically blind regarding reference genome biases.
