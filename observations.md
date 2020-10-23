@@ -1,45 +1,43 @@
-# CLAP project: structured observations 
+# ChronoLogical Atlas Project (CLAP): structured observations 
 
 ## Main messages
 
 # Dating Homo sapiens-specific variants
 
 ## Methods
-We used the Genealogical Estimation of Variant Age [GEVA](https://github.com/pkalbers/geva) database to assign estimated dates of emergence to various sets of variants related to modern human evolution --- chiefly, all modern alleles (regardless of frequency) compared to archaic/ancestral variants, and those variants that are almost fixed, in the sense of Kuhlwilm and Boeckx (2019). The GEVA computes pairwise coalescence trees between various populations using a Hidden Markov Model to infer date the date of the most recent common ancestor, granting a composite prediction of date of emergence of a variant.
+We used the Genealogical Estimation of Variant Age [GEVA](https://github.com/pkalbers/geva) database to assign estimated dates of emergence to various sets of variants related to modern human evolution --- chiefly, all modern alleles (regardless of frequency) compared to archaic/ancestral variants, and those variants that are almost fixed (HF, for high frequency), in the sense of Kuhlwilm and Boeckx (2019). The GEVA tool computes pairwise coalescence trees between various populations using a Hidden Markov Model to infer the date of the most recent common ancestor, granting a composite prediction of date of emergence of a variant.
 
-We settled on **29** years per generation, which is, as we gather from the literature, pretty conventional, although [other timings shouldn't affect the overall distribution](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/alt_gen_values.pdf). We used the "Combined" estimated age, as opposed to the measures derived uniquely from the Simons Diversity project or the 1000 genomes project, as it means variants where present in both datasets and, in the words of the GEVA authors, this combined measure "implicitly increase[s] the genealogical resolution" ([see details here](https://journals.plos.org/plosbiology/article/file?id=10.1371/journal.pbio.3000586.s016&type=supplementary)).
-	+ **CB:** this will be a bit too cryptic, expand slightly, and give a good reason/advantage for why we did so.
-	+ **AA:** solved
-
-Though the GEVA dataset contains a large set of variants, we miss some of the rarest variants in the process of assigning a date. 
+We settled on **29** years per generation, which is, as we gather from the literature, pretty conventional, although [other timings don't affect the overall distribution; nor should they affect our conclusions](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/alt_gen_values.pdf). We used the "Combined" estimated age, as opposed to the measures derived uniquely from the Simons Diversity project or the 1000 genomes project, as it means variants were present in both datasets and, in the words of the GEVA authors, this combined measure "implicitly increase[s] the genealogical resolution" ([see details here](https://journals.plos.org/plosbiology/article/file?id=10.1371/journal.pbio.3000586.s016&type=supplementary)). We favored this option over relying on a single database, at the expense of the inability to date a small percentage of variants, which were found in one, but not in both databases.
+	
+Regarding mapping capacity: Though the GEVA dataset contains a large set of variants, we miss some of the rarest variants in the process of assigning a date. 
 - Out of a total of  4437804 for out total set of variants, 3163747 can be rsID'ed (71%) ([)from 2 sources, 1000G and Simons projects), and out of that 2294023 can be mapped (72%; which means 51% of the  4437804 original total). 
 - Out of the high-frequency subset, 128706 (94%) can be rsID'ed, and out of that, 101417 can be mapped (78%; i.e., 74% of original total). 
-- For the stricter HF filtering data, out of 78085 variants, 70027 (89%) can be rsID'ed, and 48424 of that mapped (69%; i.e., 62% of the original total).
+- For the stricter HF filtering data (see below), out of 78085 variants, 70027 (89%) can be rsID'ed, and 48424 of that mapped (69%; i.e., 62% of the original total).
 - We looked into fixed positions, but out of 12028 variants, only 32% could be rsID'ed, and out of that only 4% could be mapped, i.e. about only 1% of the original total.
 
 
 ## Kuhlwilm and Boeckx files 
 We first crossed the Kuhlwilm & Boeckx (2019) database of changes between modern humans and archaics with the GEVA database. See the resulting distribution [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/3dist_sqrd.pdf), where "All" is all the variants from [the Kuhlwilm and Boeckx article](https://figshare.com/articles/Variants_and_annotations_of_Neandertals/8184038), 90% is a subset of the data that includes only high frequency variants and 90% (strict) is a further subset (one that requires 90% of fixation in each and every human population).
 
-These distributions are characterized by a bimodal distribution. We tried to stablish a k-cluster of periods that resulted in two possibilities for downstream analysis: a [k = 3](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/kmean3_HFstr.pdf) cluster or a [k = 4](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/kmeans4_HFstr.pdf) one. We finally settled on hand-picked values based on major tipping points in the Homo sapiens history (see [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/timing_windows.pdf) for the final distribution). 
+These distributions are characterized by a bimodal distribution ("Brachiosaurus shape"). We tried to establish a k-cluster of periods that resulted in two possibilities for downstream analysis: a [k = 3](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/kmean3_HFstr.pdf) cluster or a [k = 4](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/kmeans4_HFstr.pdf) one. We finally settled on hand-picked values based on major tipping points in the Homo sapiens history (see [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/timing_windows.pdf) for the final distribution). 
 
 ## Statistical significance
-We checked with a KS statistical test whether the all, 90 (non strict) and 90 (strict) distributions are significantly different, performing different tests for the 0-300k and the 300k-end bits. The KS tests show that the different curves are different in a significant way (p-val < 0.01) despite two of them being a subset of the "all" distribution.
+We checked with a KS statistical test whether the all, HF and HF(strict) distributions were significantly different, performing different tests for the 0-300k and the 300k-end periods. The KS tests show that the different curves are different in a significant way (p-val < 0.01) despite two of them being a subset of the "all" distribution.
  
 ## Other subsets of evolutionary relevance
 In order to see if specific subsets of variants had strickingly different distributions over time, we plotted them [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/five_files_plots/seven_files_plot.pdf). The subsets of interest include:
 
- 1. *Akey* regions of the modern genome depleted of introgressed alleles (we mapped all the HF variants in these regions), according to [Akey et al 2020](https://pubmed.ncbi.nlm.nih.gov/32004458/) 
+ 1. *Akey* regions of the modern genome depleted of introgressed alleles (we mapped all the HF variants in these regions), according to one of the most recent studies, which takes into account the option of introgressed archaic variants in African populations [Akey et al 2020](https://pubmed.ncbi.nlm.nih.gov/32004458/) 
  2. *Deserts:* Deserts of introgression according to [Sankararaman et al](https://www.cell.com/current-biology/pdf/S0960-9822(16)30247-0.pdf)
- 3. *Excess* and *lenght*: variants associated with a higher than expected number of HF mutations according to gene length/compared to archaics
- 4. *Peyregné:* regions under putative positive selection from Pey [ref]
+ 3. *Excess* and *lenght*: variants associated with a higher than expected number of HF mutations according to gene length/compared to archaics (as per Kuhlwilm and Boeckx 2019)
+ 4. *Peyregné:* regions under putative positive selection from Peyregne et al 2017(https://pubmed.ncbi.nlm.nih.gov/28720580/)
 
 
 We also plotted [variants of interest](https://github.com/AGMAndirko/CLAP/blob/master/plots/McCoyetal_snps/mcCoyetal_snps.pdf) coming from McCoy et al.'s study on Neanderthal-introgressed variants with significant down and upregulation (see [here](https://www.cell.com/action/showFullTableHTML?isHtml=true&tableId=tbl1&pii=S0092-8674%2817%2930128-9)).
 
 Regarding introgression, we used data from [Vernot et al.](https://pubmed.ncbi.nlm.nih.gov/26989198/) and [Sankararaman et al.](https://pubmed.ncbi.nlm.nih.gov/27032491/). Both distributions follow each other closely, and lack the second peak *circa* 1,2mya characteristic of the [main distribution plots.](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/3dist_sqrd.pdf), as expected.
 
-Additionally, we crossed the GEVA results with previous studies by the CBL groups. Specifically, we plotted the distribution of enhancer and promoter variants in the Cerebellum, part of an ongoing project by Juan, [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/enh_lenght_missense_plots/enh_pr_miss_lenght.pdf). We also plotted eQTL variants affecting brain-tissue gene expression ([see here](https://github.com/AGMAndirko/CLAP/blob/master/plots/GTEx/Gtex.pdf)), part of Alejandro's work.
+Additionally, we crossed the GEVA results with previous studies by work we did in our group (in house datasets). Specifically, we plotted the distribution of enhancer and promoter variants in the Cerebellum, part of an ongoing project by Juan, [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/enh_lenght_missense_plots/enh_pr_miss_lenght.pdf). We also plotted eQTL variants affecting brain-tissue gene expression ([see here](https://github.com/AGMAndirko/CLAP/blob/master/plots/GTEx/Gtex.pdf)), part of Alejandro's work.
 
 # Expecto
 We tried to predict the effect of variants in specific time windows in brain tissues using [ExPecto](https://humanbase.readthedocs.io/en/latest/expecto.html), a machine learning framework for expression prediction in silico. As opposed to other approaches, ExPecto provides *ab initio* predictions, making the tool technically blind regarding reference genome biases.
@@ -83,13 +81,13 @@ We used the gProfiler2 R package to perform enrichment analyses (hypergeometric 
 ## Gene expression in GO-enriched genes
 We ran the variants associated with GO-enriched genes through ExPecto in order to predict expression levels. A series of statistical tests show that variants coming from GO-enriched genes have significantly differences in their average expression levels in the middle (300-500k) and late (500-800k) periods. The early period (0-300k) didn't show this difference (p = 0.1887).
 
-We also generated QQ plots per period. These show that extreme value eskewedness is specially salient in the [300-500k](https://github.com/AGMAndirko/CLAP/blob/master/plots/GO_terms/300_500/qq_plot_disp_byterm_300500.pdf) period, as disclosed by tissue in [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/GO_terms/300_500/enrichm_bytissue_300500.pdf). The same kind plots for each time period can be found [in the rest of the folders here](https://github.com/AGMAndirko/CLAP/tree/master/plots/GO_terms).
+We also generated QQ plots per period. These show that extreme value skewedness is specially salient in the [300-500k](https://github.com/AGMAndirko/CLAP/blob/master/plots/GO_terms/300_500/qq_plot_disp_byterm_300500.pdf) period, as disclosed by tissue in [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/GO_terms/300_500/enrichm_bytissue_300500.pdf). The same kind plots for each time period can be found [in the rest of the folders here](https://github.com/AGMAndirko/CLAP/tree/master/plots/GO_terms).
 
 Variation potential score plots were generated for the specific GO-enriched genes as well. The result highlight high-score genes can be seen [here] https://github.com/AGMAndirko/CLAP/blob/master/plots/GO_terms/GOwrapped.pdf
 
 ## GWAS
-A crosscheck of the ExPecto/GEVA high frequency data against the [Big40](https://open.win.ox.ac.uk/ukbiobank/big40/) UKBiobank GWAS meta-analysis showed that there are top hits GWAS 
-related to the following:
+A crosscheck of the ExPecto/GEVA high frequency data against the [Big40](https://open.win.ox.ac.uk/ukbiobank/big40/) UKBiobank GWAS meta-analysis showed that there are top hits GWAS related to the following: [You can see the details of the tags [here](https://open.win.ox.ac.uk/ukbiobank/big40/BIG40-IDPs_v2/IDPs.html). ]
+
 
 | chrom | pos       | rsids      | nearest_genes | tag                                          | Age (GEVA)|
 |-------|-----------|------------|---------------|----------------------------------------------|-----------|
@@ -104,7 +102,7 @@ related to the following:
 | 16    | 3687973   | rs78315731 | DNASE1        | aparc-Desikan lh thickness parstriangularis  | 698856.5  |
 | 20    | 49070644  | rs75994450 | PTPN1         | IDP dMRI TBSS MO Splenium of corpus callosum | 36735.46  |
 
-You can see the details of the tags [here](https://open.win.ox.ac.uk/ukbiobank/big40/BIG40-IDPs_v2/IDPs.html). 
+Of note are phenotypes associated with the precuneus, cerebellare hemisphere, and posterior corpus callosum, all with recent ages. All of these structures havve been independenrly argued to have undergone recent evolution in our lineage. 
 
 We further checked whether variants with a relatively high ExPecto predicted expression value (>= absolute 0.01) were found as top hits in GWASes. At this threshold of expression, 4 variants were found to be top hits [in various GWAS studies included in the MRCIEU consortium](https://github.com/AGMAndirko/CLAP/blob/master/code/ExPecto/GO/phewas_ExP001Pval0001.csv).
 
@@ -112,27 +110,22 @@ We further checked whether variants with a relatively high ExPecto predicted exp
 A Hallmark gene set enrichment set showed no significance in any of the curated pathway categories.
 
 # BAZ1B 
-Following [our work in collaboration with Giuseppe Testa's lab](https://advances.sciencemag.org/content/5/12/eaaw7908), regarding the role of BAZ1B in human evolution, we focused on this gene and its targets especifically. The goal was to determine if mutations in BAZ1B in human evolution are significantly followed by variant changes in its direct genetic targets.
+Following [our work in collaboration with Giuseppe Testa's lab](https://advances.sciencemag.org/content/5/12/eaaw7908), regarding the role of BAZ1B in human evolution, we focused on this gene and its targets specifically. The goal was to determine if mutations in BAZ1B in human evolution are significantly followed by variant changes in its direct genetic targets.
 
 ## Methods
-The lists of genes were provided by the Giuseppe Testa lab.
+The short lists are found in our Science Advances paper; longer lists of genes were provided by Alessandro.
 
 ## Results  
-Plotting shows a contrast in BAZ1B targets between targets  inversely correlated and directely correlated with BAZ1B expression (but see stats section below)
+Plotting shows a contrast in BAZ1B targets between targets inversely correlated and directely correlated with BAZ1B expression (should be expressed statistically). INV targets reach way back in time and may be associated with changes found in Homo antecessor. DIR targets are especially salient following BAZ1B changes around 300-500k (the period where lots of 'prosociality' variants accumulate). Genes discussed by Gokhman et al in their NatComm study of the face are of very recent vintage.
 
 ## Stats
 Anova tests to understand whether there's significant variation among lists or categories (dir/inv) didn't give a significant p-value (p ~ 0.08). This means these BAZ1B affecting variants don't have significantly different age values compared to other variants within different lists or groups (inv vs dir).
 
 ---
 
-**NOTE:**
-
-@Cedric: Here are things I haven't mentioned but you might want to include. Otherwise just erase.
-
-**BAZ1B**
-Plotting shows a contrast inverse vs DIR  but mostly for most robust targets -- useful to bring up H. antcessor, but also Gokhman
-Domestication vs Globularization timing vindicated; Tom vindicated
+##Schlebusch
+Variants in genes associated with the deepest population split in Africa are indeed assigned an old age in our tool.
+**[missing plot]** (Juan provide
 
 **Technical details**
-- Mention of 4th genome?
-- Not sure what to do with chromosome data (ask Martin?)
+- Not sure what to do with chromosome data **missing link to plot**
