@@ -124,25 +124,15 @@ Plotting shows a contrast in BAZ1B targets between targets  inversely correlated
 Anova tests to understand whether there's significant variation among lists or categories (dir/inv) didn't give a significant p-value (p ~ 0.08). This means these BAZ1B affecting variants don't have significantly different age values compared to other variants within different lists or groups (inv vs dir).
 
 ---
-**THINGS I STILL HAVEN'T STRUCTURED:**
----
 
+**NOTE:**
 
-## Statistical results
+@Cedric: Here are things I haven't mentioned but you might want to include. Otherwise just erase.
 
-
-
-## BAZ1B
+**BAZ1B**
 Plotting shows a contrast inverse vs DIR  but mostly for most robust targets -- useful to bring up H. antcessor, but also Gokhman
-
 Domestication vs Globularization timing vindicated; Tom vindicated
 
-## Technical details
+**Technical details**
 - Mention of 4th genome?
 - Not sure what to do with chromosome data (ask Martin?)
-
-
-## GO Terms - gprofiler2
-## Others (not sure where to put this)
-
-    + **AA:** Note that these variants don't have a particularly high expression profile in ExPecto predictions, so I think it's a nice snippet of information but I don't know if it should really be reported -- I'm including this here just in case you want to use this information, feel free to discuss whether that should be the case.
