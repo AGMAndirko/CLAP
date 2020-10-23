@@ -80,6 +80,8 @@ We further noticed differences between GO terms across periods when thresholding
 
 A venn diagran showing the number of shared categories accross timing windows can be seen [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/GO_terms/GOTerms_Venn_001.pdf) (with a significance threshold of p-val < 0.01)
 
+## Methods
+We used the gProfiler2 R package to perform enrichment analyses (hypergeometric test with multiple comparison correction -g:SCS method-; p-values .01 and .05). As input, we selected genes associated to dated variants in three time windows: 500kya-1mya, 300kya-500kya and 0-300kya. Supplementary Tables showing the complete set of results (exclusive terms for each period, shared terms across periods, pairwise comparisons; and files for generating the plots) can be found [here](https://github.com/AGMAndirko/CLAP/tree/master/plots/GO_terms/Supplementary_Tables).
 
 ## Gene expression in GO-enriched genes
 We ran the variants associated with GO-enriched genes through ExPecto in order to predict expression levels. A series of statistical tests show that variants coming from GO-enriched genes have significantly differences in their average expression levels in the middle (300-500k) and late (500-800k) periods. The early period (0-300k) didn't show this difference (p = 0.1887).
