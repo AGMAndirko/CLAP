@@ -15,6 +15,8 @@ Regarding mapping capacity: Though the GEVA dataset contains a large set of vari
 - For the stricter HF filtering data (see below), out of 78085 variants, 70027 (89%) can be rsID'ed, and 48424 of that mapped (69%; i.e., 62% of the original total).
 - We looked into fixed positions, but out of 12028 variants, only 32% could be rsID'ed, and out of that only 4% could be mapped, i.e. about only 1% of the original total.
 
+You can see [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/HF_by_chromosome.pdf) that the data is similarly distributed accross chromosomes.
+
 
 ## Kuhlwilm and Boeckx files 
 We first crossed the Kuhlwilm & Boeckx (2019) database of changes between modern humans and archaics with the GEVA database. See the resulting distribution [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/KB19_distributions/3dist_sqrd.pdf), where "All" is all the variants from [the Kuhlwilm and Boeckx article](https://figshare.com/articles/Variants_and_annotations_of_Neandertals/8184038), 90% is a subset of the data that includes only high frequency variants and 90% (strict) is a further subset (one that requires 90% of fixation in each and every human population).
@@ -83,7 +85,7 @@ We ran the variants associated with GO-enriched genes through ExPecto in order t
 
 We also generated QQ plots per period. These show that extreme value skewedness is specially salient in the [300-500k](https://github.com/AGMAndirko/CLAP/blob/master/plots/GO_terms/300_500/qq_plot_disp_byterm_300500.pdf) period, as disclosed by tissue in [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/GO_terms/300_500/enrichm_bytissue_300500.pdf). The same kind plots for each time period can be found [in the rest of the folders here](https://github.com/AGMAndirko/CLAP/tree/master/plots/GO_terms).
 
-Variation potential score plots were generated for the specific GO-enriched genes as well. The result highlight high-score genes can be seen [here] https://github.com/AGMAndirko/CLAP/blob/master/plots/GO_terms/GOwrapped.pdf
+Variation potential score plots were generated for the specific GO-enriched genes as well. The result highlight high-score genes can be seen [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/GO_terms/GOwrapped.pdf)
 
 ## GWAS
 A crosscheck of the ExPecto/GEVA high frequency data against the [Big40](https://open.win.ox.ac.uk/ukbiobank/big40/) UKBiobank GWAS meta-analysis showed that there are top hits GWAS related to the following: [You can see the details of the tags [here](https://open.win.ox.ac.uk/ukbiobank/big40/BIG40-IDPs_v2/IDPs.html). ]
@@ -123,9 +125,6 @@ Anova tests to understand whether there's significant variation among lists or c
 
 ---
 
-##Schlebusch
-Variants in genes associated with the deepest population split in Africa are indeed assigned an old age in our tool.
-**[missing plot]** (Juan provide
+## Schlebusch
+Variants in genes associated with the deepest population split in Africa are indeed assigned an old age in our tool. See plot [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/Schlebusch2020/Schlebusch2020.pdf)
 
-**Technical details**
-- Not sure what to do with chromosome data **missing link to plot**
