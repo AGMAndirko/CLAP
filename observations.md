@@ -123,8 +123,6 @@ Plotting shows a contrast in BAZ1B targets between targets inversely correlated 
 ## Stats
 Anova tests to understand whether there's significant variation among lists or categories (dir/inv) didn't give a significant p-value (p ~ 0.08). This means these BAZ1B affecting variants don't have significantly different age values compared to other variants within different lists or groups (inv vs dir).
 
----
-
-## Schlebusch
-Variants in genes associated with the deepest population split in Africa are indeed assigned an old age in our tool. See plot [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/Schlebusch2020/Schlebusch2020.pdf)
+# Schlebusch 2020
+Variants in genes associated with the deepest population split in Africa according to [Schlebusch et al 2020](https://academic.oup.com/mbe/article/doi/10.1093/molbev/msaa140/5874945s) are indeed assigned an old age in our tool: see [here](https://github.com/AGMAndirko/CLAP/blob/master/plots/Schlebusch2020/Schlebusch2020.pdf)
 
