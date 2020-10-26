@@ -30,7 +30,7 @@ In order to see if specific subsets of variants had strickingly different distri
  1. *Akey* regions of the modern genome depleted of introgressed alleles (we mapped all the HF variants in these regions), according to one of the most recent studies, which takes into account the option of introgressed archaic variants in African populations [Akey et al 2020](https://pubmed.ncbi.nlm.nih.gov/32004458/) 
  2. *Deserts:* Deserts of introgression according to [Sankararaman et al](https://www.cell.com/current-biology/pdf/S0960-9822(16)30247-0.pdf)
  3. *Excess* and *lenght*: variants associated with a higher than expected number of HF mutations according to gene length/compared to archaics (as per Kuhlwilm and Boeckx 2019)
- 4. *Peyregné:* regions under putative positive selection from Peyregne et al 2017(https://pubmed.ncbi.nlm.nih.gov/28720580/)
+ 4. *Peyregné:* regions under putative positive selection from [Peyregne et al 2017](https://pubmed.ncbi.nlm.nih.gov/28720580/)
 
 
 We also plotted [variants of interest](https://github.com/AGMAndirko/CLAP/blob/master/plots/McCoyetal_snps/mcCoyetal_snps.pdf) coming from McCoy et al.'s study on Neanderthal-introgressed variants with significant down and upregulation (see [here](https://www.cell.com/action/showFullTableHTML?isHtml=true&tableId=tbl1&pii=S0092-8674%2817%2930128-9)).
