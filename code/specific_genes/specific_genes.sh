@@ -18,15 +18,19 @@ get_gene () {
 	Rscript specific_genes_plot.R $1
 }
 
-get_gene FOXP2
+#get_gene FOXP2
 
 # Another option: create a list of genes in a txt file separated by new lines and run this
 CLAPgene () {
 	grep -P $1 Na_high_freq.tsv | grep -P -o "rs\d*" | grep -w -f - hf_COMBINED.tsv
 }
 
-#while IFS= read -r LINE;do
-#         CLAPgene "$LINE" > $LINE.out
-#done < listofgenes.txt
+while IFS= read -r LINE;do
+	echo $LINE;
+    CLAPgene "$LINE" > "$LINE".out
+done < listgenes
+
+Rscript specific_genes_plotNEW.R
+#rm *.out
 
 #Mind that this will generate a lot of files with the names of the genes
