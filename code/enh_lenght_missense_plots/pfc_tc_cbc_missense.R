@@ -72,22 +72,27 @@ dev.off()
 p1 <- ggplot(missense_COMBINED, aes(X23*29))+
   theme_minimal() +
   geom_freqpoly(stat = "bin", bins = 30)+ylab("Count")+xlab("Years")+ggtitle("HF Missense")+
-  scale_x_continuous(labels = function(x) format(x, scientific = FALSE), breaks = seq(0,6218702, by = 250000)) + theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  scale_x_continuous(labels = function(x) format(x, scientific = FALSE), breaks = seq(0,6218702, by = 250000)) + theme(axis.text.x = element_text(angle = 45, hjust = 1))+
+  scale_y_continuous(labels = function(x) format(x, scientific = FALSE), breaks = seq(0,6218702, by = 10))
 
 p2 <- ggplot(X200501_H3K27ac_PFC_onlyHuman2487_rsIDs_results, aes(X23*29))+
   theme_minimal() +
   geom_freqpoly(stat = "bin", bins = 30)+ylab("Count")+xlab("Years")+ggtitle("HF PFC")+
-  scale_x_continuous(labels = function(x) format(x, scientific = FALSE), breaks = seq(0,6218702, by = 250000)) + theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  scale_x_continuous(labels = function(x) format(x, scientific = FALSE), breaks = seq(0,6218702, by = 250000)) + theme(axis.text.x = element_text(angle = 45, hjust = 1))+
+  scale_y_continuous(labels = function(x) format(x, scientific = FALSE), breaks = seq(0,6218702, by = 10))
 
 p3 <- ggplot(X200501_H3K27ac_TC_onlyHuman2497_rsIDs_results, aes(X23*29))+
   theme_minimal() +
   geom_freqpoly(stat = "bin", bins = 30)+ylab("Count")+xlab("Years")+ggtitle("HF TC")+
-  scale_x_continuous(labels = function(x) format(x, scientific = FALSE), breaks = seq(0,6218702, by = 250000)) + theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  scale_x_continuous(labels = function(x) format(x, scientific = FALSE), breaks = seq(0,6218702, by = 250000)) + theme(axis.text.x = element_text(angle = 45, hjust = 1))+
+  scale_y_continuous(labels = function(x) format(x, scientific = FALSE), breaks = seq(0,6218702, by = 10))
 
 p4 <- ggplot(X200501_H3K27ac_CBC_onlyHuman1485_rsIDs_results, aes(X23*29))+
   theme_minimal() +
   geom_freqpoly(stat = "bin", bins = 30)+ylab("Count")+xlab("Years")+ggtitle("HF CBL")+
-  scale_x_continuous(labels = function(x) format(x, scientific = FALSE), breaks = seq(0,6218702, by = 250000)) + theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  scale_x_continuous(labels = function(x) format(x, scientific = FALSE), breaks = seq(0,6218702, by = 250000)) + theme(axis.text.x = element_text(angle = 45, hjust = 1))+
+  scale_y_continuous(labels = function(x) format(x, scientific = FALSE), breaks = seq(0,6218702, by = 10))
+
 
 grid.arrange(p1, p2, p3, p4, nrow = 2)
 
