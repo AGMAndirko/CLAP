@@ -40,11 +40,20 @@ dev.off()
 
 
 pdf("missense_dist.pdf")
+
+
 ggplot(missense_COMBINED, aes(X23*29))+
+  theme_minimal() +
+  geom_freqpoly(stat = "bin", bins = 30)+ylab("Count")+xlab("Years")+ggtitle("HF Missense")+
+  scale_x_continuous(labels = function(x) format(x, scientific = FALSE), breaks = seq(0,6218702, by = 250000)) + theme(axis.text.x = element_text(angle = 45, hjust = 1))+
+  stat_bin(aes(y=..count.., label=round(..count..)), geom="text", vjust=0, binwidth = 30)
+
+l1<-ggplot(missense_COMBINED, aes(X23*29))+
   theme_minimal() +
   geom_freqpoly(stat = "bin", bins = 30)+ylab("Count")+xlab("Years")+ggtitle("HF Missense")+
   scale_x_continuous(labels = function(x) format(x, scientific = FALSE), breaks = seq(0,6218702, by = 250000)) + theme(axis.text.x = element_text(angle = 45, hjust = 1))
 dev.off()
+layer_data(l1)  #Top missense counts left and righ peak: 40 and 33 respectively
 
 
 pdf("PFC_dist.pdf")
@@ -52,21 +61,37 @@ ggplot(X200501_H3K27ac_PFC_onlyHuman2487_rsIDs_results, aes(X23*29))+
   theme_minimal() +
   geom_freqpoly(stat = "bin", bins = 30)+ylab("Count")+xlab("Years")+ggtitle("HF PFC")+
   scale_x_continuous(labels = function(x) format(x, scientific = FALSE), breaks = seq(0,6218702, by = 250000)) + theme(axis.text.x = element_text(angle = 45, hjust = 1))
+l2<-ggplot(X200501_H3K27ac_PFC_onlyHuman2487_rsIDs_results, aes(X23*29))+
+  theme_minimal() +
+  geom_freqpoly(stat = "bin", bins = 30)+ylab("Count")+xlab("Years")+ggtitle("HF PFC")+
+  scale_x_continuous(labels = function(x) format(x, scientific = FALSE), breaks = seq(0,6218702, by = 250000)) + theme(axis.text.x = element_text(angle = 45, hjust = 1))
 dev.off()
+layer_data(l2) #PFC: 166 vs 144 top counts each peak
 
 pdf("TC_dist.pdf")
 ggplot(X200501_H3K27ac_TC_onlyHuman2497_rsIDs_results, aes(X23*29))+
   theme_minimal() +
   geom_freqpoly(stat = "bin", bins = 30)+ylab("Count")+xlab("Years")+ggtitle("HF TC")+
   scale_x_continuous(labels = function(x) format(x, scientific = FALSE), breaks = seq(0,6218702, by = 250000)) + theme(axis.text.x = element_text(angle = 45, hjust = 1))
+l3<-ggplot(X200501_H3K27ac_TC_onlyHuman2497_rsIDs_results, aes(X23*29))+
+  theme_minimal() +
+  geom_freqpoly(stat = "bin", bins = 30)+ylab("Count")+xlab("Years")+ggtitle("HF TC")+
+  scale_x_continuous(labels = function(x) format(x, scientific = FALSE), breaks = seq(0,6218702, by = 250000)) + theme(axis.text.x = element_text(angle = 45, hjust = 1))
 dev.off()
+layer_data(l3) #TC: 162 vs 148 top counts each peak
 
 pdf("CBL_dist.pdf")
 ggplot(X200501_H3K27ac_CBC_onlyHuman1485_rsIDs_results, aes(X23*29))+
   theme_minimal() +
   geom_freqpoly(stat = "bin", bins = 30)+ylab("Count")+xlab("Years")+ggtitle("HF CBL")+
   scale_x_continuous(labels = function(x) format(x, scientific = FALSE), breaks = seq(0,6218702, by = 250000)) + theme(axis.text.x = element_text(angle = 45, hjust = 1))
+l4<-ggplot(X200501_H3K27ac_CBC_onlyHuman1485_rsIDs_results, aes(X23*29))+
+  theme_minimal() +
+  geom_freqpoly(stat = "bin", bins = 30)+ylab("Count")+xlab("Years")+ggtitle("HF CBL")+
+  scale_x_continuous(labels = function(x) format(x, scientific = FALSE), breaks = seq(0,6218702, by = 250000)) + theme(axis.text.x = element_text(angle = 45, hjust = 1))
 dev.off()
+layer_data(l4) #CBL: 97 vs 74 top counts each peak
+
 
 #Four plots
 p1 <- ggplot(missense_COMBINED, aes(X23*29))+
