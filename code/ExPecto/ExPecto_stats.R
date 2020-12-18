@@ -44,16 +44,10 @@
   rm(list = ls(pattern='test*'))
   rm(list = ls(pattern='output*'))
   
-  #First, an anova
-  #Per tissue
-#Is data normal?  
+#Is data normal?  Shouldn't be, as shown by QQ plots
 hist(res$expression, breaks=2000, xlim = range(-.005, .005))
 #Log transformation
 hist(log10(res$expression), breaks=50)
-
-# One-way anova just taking into account tissues shows no significance
-res.aov <- aov(log10(expression) ~ variable, data = res)
-summary(res.aov)
 
 #By variable - not significant
 kruskal_test(expression ~ variable, data = res,
@@ -70,37 +64,39 @@ dunnTest(expression ~ group,
               data=res,
               method="bh") 
 
+#How about with age, in general
+all_COMBINED <- read_csv("data/Timeline_project/1_data/all_COMBINED.tsv", col_names = FALSE)
+all_COMBINED <- all_COMBINED %>% 
+  dplyr::select(X2, X3, X23)
 
-#----------------------
+output060 <- read_csv("avenues/ml/ExPecto/output060.csv")
+output60100 <- read_csv("avenues/ml/ExPecto/output60100.csv")
+output100200 <- read_csv("avenues/ml/ExPecto/output100200.csv")
+output200300 <- read_csv("avenues/ml/ExPecto/output200300.csv")
+output300500 <- read_csv("avenues/ml/ExPecto/output300500.csv")
+output500800 <- read_csv("avenues/ml/ExPecto/output500800.csv")
 
-# Linear regression model
-linearmodel1 <- lm(expression ~ group + variable, data = res)
-  summary(linearmodel1)
-  qqnorm(residuals(linearmodel1))
+tissue_rep <- function(x) {
+  rep(x, 22)
+}
 
+res$chr <- unlist(rbind(tissue_rep(output060[3]),
+                 tissue_rep(output60100[3]), 
+                 tissue_rep(output100200[3]), 
+                 tissue_rep(output200300[3]), 
+                 tissue_rep(output300500[3]), 
+                 tissue_rep(output500800[3])))
 
-model <- lme(expression ~ group, random=~1|variable,
-                 data=res,
-                 method="REML")
-    
-anova.lme(model,
-              type="sequential",
-              adjustSigma = FALSE)
-#Apparently, significant
-    
-#Now for post-hoc analysis:
-posthoc = glht(model,
-               linfct = mcp(group="Tukey"))
-    
-mcs <- summary(posthoc,
-               test=adjusted("single-step"))
-    
-mcs
-#300to500 is significantly different from everything else!
-    
-#In other visualization:
-cld(mcs,
-    level=0.05,
-    decreasing=TRUE)
-    
-    
+res$pos <- unlist(rbind(tissue_rep(output060[4]),
+                        tissue_rep(output60100[4]), 
+                        tissue_rep(output100200[4]), 
+                        tissue_rep(output200300[4]), 
+                        tissue_rep(output300500[4]), 
+                        tissue_rep(output500800[4])))
+
+res_dated <- res %>% 
+  left_join(all_COMBINED, by = c("chr" = "X2", "pos" = "X3"))
+
+#Pearson should be 
+cor.test(res_dated[["expression"]], res_dated[["X23"]], method = "pearson")
+#not sign
