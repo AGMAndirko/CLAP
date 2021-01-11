@@ -3,6 +3,7 @@ library(tidyverse)
 library(reshape2)
 library(gprofiler2)
 library(ggrepel)
+library(gghighlight)
 
 #drop unnecessary columns
 output060 <- read_csv("Timeline_project/1_data/ExPecto/output060.csv")
@@ -80,15 +81,52 @@ select_n_plot <- function (out, whichtitleplot) {
 	pdf(paste0(whichtitleplot, "_2.pdf"))
 	print(p)
 	dev.off()
+	return(alt)
 }
 
-select_n_plot(output060[,-(1:10),drop=FALSE], "0-60k")
-select_n_plot(output60100[,-(1:10),drop=FALSE], "60-100k")
-select_n_plot(output100200[,-(1:10),drop=FALSE], "100-200k")
-select_n_plot(output200300[,-(1:10),drop=FALSE], "200-300k")
-select_n_plot(output300500[,-(1:10),drop=FALSE], "300-500k")
-select_n_plot(output500800[,-(1:10),drop=FALSE], "500-800k")
+zero60 <- select_n_plot(output060[,-(1:10),drop=FALSE], "0-60k")
+sixty100 <- select_n_plot(output60100[,-(1:10),drop=FALSE], "60-100k")
+hundred200 <- select_n_plot(output100200[,-(1:10),drop=FALSE], "100-200k")
+twohundred300 <- select_n_plot(output200300[,-(1:10),drop=FALSE], "200-300k")
+threehundred500 <- select_n_plot(output300500[,-(1:10),drop=FALSE], "300-500k")
+fivehundred80 <- select_n_plot(output500800[,-(1:10),drop=FALSE], "500-800k")
 
+# Integrated figure data processing
+rm(allexpr)
+allexpr <- full_join(zero60, sixty100)
+allexpr <- full_join(allexpr, hundred200)
+allexpr <- full_join(allexpr, twohundred300)
+allexpr <- full_join(allexpr, threehundred500)
+allexpr <- full_join(allexpr, fivehundred80)
+windows <-c("0-60kya", "60-100kya", 
+            "100-200kya", "200-300ya", 
+            "300-500kya", "500-800kya")
+allexpr$time <- unlist(lapply(windows, rep, 22))
+allexpr$time <- factor(allexpr$time, levels = unique(allexpr$time))
+
+#filter specific points 
+highlights <- allexpr %>% 
+    filter(value > 0.3 | value < -1 | 
+             (time == c("60-100kya") & value < c(-0.4)) |
+             (time == c("100-200kya") & value < c(-0.3)) |
+             (time == c("0-60kya") & value < c(-0.4)))
+highlights$variable <- str_remove_all(highlights$variable, ".. GTEx")
+
+
+pdf("fig3A.pdf", width = 12, height = 8)
+ggplot(allexpr, aes(x=time, y=value, group = variable)) +
+  theme_minimal() +
+  theme(legend.position = "top") +
+  geom_line( color="grey") +
+  geom_point( color="black") +
+  geom_point(data = highlights, aes(x=time,y=value), color="red") +
+  geom_label_repel(data = highlights, 
+                   aes(x=time,y=value, label = variable), 
+                   nudge_x = 0.1, nudge_y = -0.1, 
+                   label.size = 0.05) +
+  labs(title="", x = "Time window",
+       y = "Sum of variant predicted expression (logFC)")
+dev.off()
 
 #As for gene-wise plots...
   genewiseplot <- function(originalout) {
@@ -151,10 +189,11 @@ select_n_plot(output500800[,-(1:10),drop=FALSE], "500-800k")
   
   #Plots a cone
   pdf("genewise.pdf")
-  ggplot(plotinp, aes(x=-
+  ggplot(plotinp, aes(x=magnitude, y=directionality, colour = timing, label = genes)) +
+    theme_minimal() +
     geom_point(size = 2) +
     labs(x= "Absolute magnitude of change", y = "Directionality (altternative allele)")
-    #geom_label_repel(data = subset(plotinp,  magnitude > 2), colour = "black", nudge_y = 1 ) 
+    geom_label_repel(data = subset(plotinp,  magnitude > 2), colour = "black", nudge_y = 1 ) 
   dev.off()
   
   
@@ -251,8 +290,6 @@ genenames<- gconvert(query = plotinp$genes, organism = "hsapiens",
                      target="ENSG", filter_na = FALSE)
 
 test <- genenames$input == plotinp$genes
-# Interestingly there are targets here that produce FALSE! 
-# No clue why though
 FALSE %in% test # should be FALSE
 #produces some NA! some ensemble ID genes are not recognized for some reason (71 genes)
 #I can live with that

@@ -13,8 +13,19 @@ b <- ggplot(plotinp, aes(x=magnitude, y=directionality, colour = timing, label =
   geom_label_repel(data = subset(plotinp,  magnitude > 2), colour = "black", nudge_y = 1 ) +
   facet_wrap(timing ~ ., ncol = 2)
 
-
-a <- pheatmap(test)
+#after Expecto_plots.R
+a <- ggplot(allexpr, aes(x=time, y=value, group = variable)) +
+  theme_minimal() +
+  theme(legend.position = "top") +
+  geom_line( color="grey") +
+  geom_point( color="black") +
+  geom_point(data = highlights, aes(x=time,y=value), color="red") +
+  geom_label_repel(data = highlights, 
+                   aes(x=time,y=value, label = variable), 
+                   nudge_x = 0.1, nudge_y = -0.1, 
+                   label.size = 0.05) +
+  labs(title="", x = "Time window",
+       y = "Sum of variant predicted expression (logFC)")
 
 
 # hf <- hf_COMBINED %>% 
@@ -44,7 +55,7 @@ a <- pheatmap(test)
 #   geom_density(data = dplyr::filter(hf, variab == '7'), stat = "bin", bins = 500, fill = "gray98") +
 #   labs(x = "Years", y = "HF Variant count")
 
-plot1 <- plot_grid(as.grob(a), b, ncol = 2, labels = c("A", "B"), rel_widths = c(1,1))
-plot2 <- plot_grid(c, ncol = 1, labels = c("C"))
-plot <- plot_grid(plot2, plot1,  ncol = 1)
+plot1 <- plot_grid(a, b, ncol = 2, labels = c("A", "B"), rel_widths = c(1,1))
+#plot2 <- plot_grid(c, ncol = 1, labels = c("C"))
+#plot <- plot_grid(plot2, plot1,  ncol = 1)
 ggsave("fig3.pdf", plot1, width = 20, height = 10)
