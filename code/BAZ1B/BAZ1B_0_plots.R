@@ -158,6 +158,7 @@ p <- as.data.frame(p)
       geom_vline(xintercept = BAZ1B$X23*29, colour = "red")
   dev.off()
 
+  
 rm(list = ls())
   
 `13Dir` <- read_csv("Timeline_project/1_data/BAZ1B/BAZ1B_0/all_13Dir", 
@@ -194,7 +195,7 @@ anova(model)
 
 
 
-BAZ1B <- read_csv("Timeline_project/1_data/BAZ1B/BAZ1B_3/BAZ1B.out", 
+BAZ1B <- read_csv("../Timeline_project/1_data/BAZ1B/BAZ1B_3/BAZ1B.out", 
                   col_names = FALSE)
 
 pdf("BAZ1B_dists.pdf")
@@ -230,3 +231,23 @@ ggplot(p, aes(value*29, group = L1, colour = L1)) +
   facet_grid(L1 ~ .) +
   geom_vline(xintercept = BAZ1B$X23*29, colour = "grey")
 dev.off()
+
+#Hor many inv/dir?
+filt <- function(input, dirinv, beg, end){
+  input %>% 
+    filter(L1 == dirinv & value*29 > beg & value*29 < end) %>% 
+    count
+}
+
+filt(p, "dir", 0, 300000) 
+filt(p, "inv", 0, 300000)
+
+filt(p, "dir", 300000, 500000)
+filt(p, "inv", 300000, 500000)
+
+filt(p, "dir", 500000, 1000000)
+filt(p, "inv", 500000, 1000000)
+
+
+filt(p, "dir", 1000000, 1300000)
+filt(p, "inv", 1000000, 1300000)
