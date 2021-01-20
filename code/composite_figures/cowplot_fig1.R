@@ -37,7 +37,7 @@ two <- ggplot(hf, aes(X23*29))+
   labs(x = "Years", y = "HF Variant count")
 
 #seven_files_plots_stats
-p$L1 <- str_replace_all(p$L1, "Akey", "Akey et al. 2020")
+p$L1 <- str_replace_all(p$L1, "Akey", "Chen et al. 2020")
 p$L1 <- str_replace_all(p$L1, "Lenght", "Length")
 p$L1 <- str_replace_all(p$L1, "Peyregne", "Peyrégne et al. 2017")
 p$L1 <- str_replace_all(p$L1, "Deserts", "Sankararaman et al. 2016")
@@ -69,7 +69,7 @@ threeplus <- ggplot(peaksratios_df, aes(x=group, y = 1-ncount)) +
   theme_minimal() +
   geom_bar(stat = "identity", fill = "#39568CFF") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  labs(x = "File", y = "Peaks density difference") +
+  labs(x = "", y = "Peaks density difference") +
   theme(legend.position = "none") +
   scale_x_discrete(labels= c("7" = "Sankararaman et al. 2016", 
                              "6" = "Peyrégne et al. 2017", 
@@ -77,7 +77,7 @@ threeplus <- ggplot(peaksratios_df, aes(x=group, y = 1-ncount)) +
                              "4" = "HF (pop. filter)",
                              "3" = "HF",
                              "2" = "Excess",
-                             "1" = "Akey et al. 2020"))
+                             "1" = "Chen et al. 2020"))
 
 
 
