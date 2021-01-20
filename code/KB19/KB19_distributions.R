@@ -12,17 +12,18 @@ fixed <- read_csv("Timeline_project/1_data/fixed_COMBINED.tsv", col_names = FALS
 
 #The three distributions - squared
 pdf(file="3dist_sqrd.pdf")
-ggplot(all, aes(X23*29))+
-    theme_minimal() +
-    ggtitle("All VS 90% non strict (red) VS 90 strict (blue)") +
-    scale_x_continuous(labels = function(x) format(x, scientific = FALSE), breaks = seq(0,6218702, by = 250000)) +
-    theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-    geom_freqpoly(stat = "bin", bins = 500) +
-    geom_freqpoly(data = hf, aes(X23*29), stat = "bin", bins = 500, colour = "red") +
-    geom_freqpoly(data = hf_strict, aes(X23*29), stat = "bin", bins = 500, colour = "blue") +
-    labs(x = "Years", y = "Variant count") +
-    scale_y_sqrt()
-  dev.off()
+a <- ggplot(all, aes(X23*29))+
+  theme_minimal() +
+  ggtitle("Distribution of overall derived, HF and HF (pop. filter)") +
+  scale_x_continuous(labels = function(x) format(x, scientific = FALSE), breaks = seq(0,6102789, by = 200000)) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  geom_density(stat = "bin", bins = 500, fill = "#39568CFF") +
+  geom_density(data = hf, aes(X23*29), stat = "bin", bins = 500, fill = "#1F968BFF" ) +
+  geom_density(data = hf_strict, aes(X23*29), stat = "bin", bins = 500, fill = "#73D055FF") +
+  geom_density(data = hf_strict, aes(X23*29), stat = "bin", bins = 500, fill = "#73D055FF") +
+  labs(x = "Years", y = "Variant count (squared)") +
+  scale_y_sqrt()
+dev.off()
 
 #Just all
 pdf(file="all.pdf")
@@ -137,3 +138,21 @@ ggplot(hf_strict, aes(x=X23*29)) +
   geom_histogram(aes(fill=cluster), stat = "bin", bins = 500) +
   labs(x = "Years", y = "Variant count") 
 dev.off()
+
+set.seed(123)
+randomreg <- NULL
+randomreg$X23 <- sample(all$X23, 10000)
+randomreg <- as.data.frame(randomreg)
+
+pdf(file="random_regions.pdf")
+#might change due to seed
+b<- ggplot(randomreg, aes(X23*29))+
+  theme_minimal() +
+  ggtitle("Distribution of a random sample of derived variants (n=10000)") +
+  scale_x_continuous(labels = function(x) format(x, scientific = FALSE), breaks = seq(0,6218702, by = 200000)) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  geom_freqpoly(stat = "bin", bins = 30) +
+  labs(x = "Years", y = "Variant count")
+dev.off()
+
+
