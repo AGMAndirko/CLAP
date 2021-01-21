@@ -139,7 +139,7 @@ ggplot(hf_strict, aes(x=X23*29)) +
   labs(x = "Years", y = "Variant count") 
 dev.off()
 
-set.seed(123)
+set.seed(1234)
 randomreg <- NULL
 randomreg$X23 <- sample(all$X23, 10000)
 randomreg <- as.data.frame(randomreg)
