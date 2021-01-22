@@ -1,4 +1,4 @@
-# ChronoLogical Atlas Project (CLAP)
+# Fine-grained temporal mapping repository
 Here's a repository of all the code and plots for the 'Fine-grained temporal mapping of derived high-frequency variants supports the mosaic nature of the evolution of Homo sapiens' article.
 The structure of the folders is the following:
 - `plots/` is self-explanatory. Subfolders are thematically organized.
