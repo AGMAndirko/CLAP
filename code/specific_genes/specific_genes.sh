@@ -33,4 +33,4 @@ done < listgenes
 Rscript specific_genes_plotNEW.R
 #rm *.out
 
-#Mind that this will generate a lot of files with the names of the genes
+#Mind that this will generate a large number of files with the names of the genes
