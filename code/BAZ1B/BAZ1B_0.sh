@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-#Assuming we have the lists
-mkdir Timeline_project/1_data/BAZ1B/BAZ1B_0
-# mv them here
+#Assuming we have the lists in this folder:
+#Timeline_project/1_data/BAZ1B/BAZ1B_0
+
 cd Timeline_project/1_data/BAZ1B/
 
 CLAPgene () {

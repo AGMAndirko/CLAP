@@ -291,11 +291,9 @@ genenames<- gconvert(query = plotinp$genes, organism = "hsapiens",
 
 test <- genenames$input == plotinp$genes
 FALSE %in% test # should be FALSE
-#produces some NA! some ensemble ID genes are not recognized for some reason (71 genes)
-#I can live with that
 plotinp$genes <- as.character(genenames$name)
 
-#plot like in the Expecto paper!
+#plot like in the Expecto paper
 pdf("allconeplot.pdf")
 ggplot(plotinp, aes(x=magnitude, y=directionality, colour = timing, label = genes)) +
   theme_minimal() +

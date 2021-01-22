@@ -32,8 +32,8 @@ ggplot(p, aes(value*29, L1)) +
   theme(legend.position = "top") +
   geom_vline(xintercept = BAZ1B$X23*29, colour = "red")
 dev.off()
-
-rm(list = ls())
+ 
+rm(list = ls()) #clean env space
  
 temp <- list.files(path = "Timeline_project/1_data/BAZ1B/BAZ1B_0/17Inv/", pattern="*")
 for (i in 1:length(temp)) assign(temp[i], read.csv(paste0("Timeline_project/1_data/BAZ1B/BAZ1B_0/17Inv/",temp[i]), header = FALSE))
@@ -71,7 +71,7 @@ ggplot(p, aes(value*29, L1)) +
   geom_vline(xintercept = BAZ1B$X23*29, colour = "red")
 dev.off()
 
-rm(list = ls())
+rm(list = ls()) #clean env space
 
 temp <- list.files(path = "Timeline_project/1_data/BAZ1B/BAZ1B_0/27Dir/", pattern="*")
 for (i in 1:length(temp)) assign(temp[i], read.csv(paste0("Timeline_project/1_data/BAZ1B/BAZ1B_0/27Dir/",temp[i]), header = FALSE))
@@ -193,8 +193,7 @@ model = lm(value ~ L1,
 anova(model)
 # Not significant among categories
 
-
-
+#From specific genes script
 BAZ1B <- read_csv("../Timeline_project/1_data/BAZ1B/BAZ1B_3/BAZ1B.out", 
                   col_names = FALSE)
 
@@ -232,7 +231,7 @@ ggplot(p, aes(value*29, group = L1, colour = L1)) +
   geom_vline(xintercept = BAZ1B$X23*29, colour = "grey")
 dev.off()
 
-#Hor many inv/dir?
+#How many inv/dir?
 filt <- function(input, dirinv, beg, end){
   input %>% 
     filter(L1 == dirinv & value*29 > beg & value*29 < end) %>% 

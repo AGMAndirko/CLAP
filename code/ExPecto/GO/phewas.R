@@ -51,5 +51,3 @@ input <- out %>%
 phe_works <- phewas(variants=input[[3]], pval=1e-5)
 phe_works #Contains a list of all highly-expressed variants that are a top result in a gwas
 
-
-#Are this variants more likely to be top results in a GWAS? stats needed here vs random ammount

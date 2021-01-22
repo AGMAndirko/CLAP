@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Na_high_freq_in_Peycoords is an in-house file: provide
+# Na_high_freq_in_Peycoords is the product of crossing Na_high_freq (provided) with the correspondent list of positively selected genes from Peyrégne et al.
 grep -P -o "rs\d*" Na_high_freq_in_Peycoords.csv > Na_high_freq_in_Peycoords_only_rsIDs
 grep -w -f Na_high_freq_in_Peycoords_only_rsIDs Timeline_project/1_data/hf_COMBINED.tsv > Na_high_freq_in_Peycoords_only_rsIDs_results
 

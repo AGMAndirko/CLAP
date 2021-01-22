@@ -1,7 +1,7 @@
 library(tidyverse)
 library(reshape2)
 
-#The input files for positive selection and deserts are prepared in the #others section
+#The references for the input files for positive selection and deserts are described in the article and provided in the accompanying shell file in this folder
 #Preparing peyregné
 pey <- read_csv("Timeline_project/1_data/inputplot_pey", col_names = FALSE)
 
