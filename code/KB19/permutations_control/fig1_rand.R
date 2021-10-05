@@ -13,7 +13,8 @@ import_data <- function(path, id) {
 
 df <- NULL
 ind = 0
-while(ind < 200 ){
+#note: printing the 1000 permutations might take a while or overload memory
+while(ind < 1000 ){
   print(paste0("Doing permutation nr:", ind))
   perm <- read_csv(paste0("perm", ind, ".csv"), col_names = FALSE)
   df[[paste0("X", ind)]] <- perm$X2
