@@ -10,20 +10,14 @@
   library(coin)
   library(FSA)
   
-  output060 <- read_csv("avenues/ml/ExPecto/output060.csv")
-  output60100 <- read_csv("avenues/ml/ExPecto/output60100.csv")
-  output100200 <- read_csv("avenues/ml/ExPecto/output100200.csv")
-  output200300 <- read_csv("avenues/ml/ExPecto/output200300.csv")
-  output300500 <- read_csv("avenues/ml/ExPecto/output300500.csv")
-  output500800 <- read_csv("avenues/ml/ExPecto/output500800.csv")
+  output0300 <- read_csv("run0300.csv")
+  output300500 <- read_csv("run300500.csv")
+  output5001m <- read_csv("run5001m.csv")
   
   #Select the relevant one for plotting
-  output060 <- output060[,-(1:10),drop=FALSE] 
-  output60100 <- output60100[,-(1:10),drop=FALSE] 
-  output100200 <- output100200[,-(1:10),drop=FALSE] 
-  output200300 <- output200300[,-(1:10),drop=FALSE] 
+  output0300 <- output0300[,-(1:10),drop=FALSE] 
   output300500 <- output300500[,-(1:10),drop=FALSE] 
-  output500800 <- output500800[,-(1:10),drop=FALSE] 
+  output5001m <- output5001m[,-(1:10),drop=FALSE] 
   
   #select columns, format for anova
   select_tissues<- function(tab, name) {
@@ -69,12 +63,12 @@ all_COMBINED <- read_csv("data/Timeline_project/1_data/all_COMBINED.tsv", col_na
 all_COMBINED <- all_COMBINED %>% 
   dplyr::select(X2, X3, X23)
 
-output060 <- read_csv("avenues/ml/ExPecto/output060.csv")
-output60100 <- read_csv("avenues/ml/ExPecto/output60100.csv")
-output100200 <- read_csv("avenues/ml/ExPecto/output100200.csv")
-output200300 <- read_csv("avenues/ml/ExPecto/output200300.csv")
-output300500 <- read_csv("avenues/ml/ExPecto/output300500.csv")
-output500800 <- read_csv("avenues/ml/ExPecto/output500800.csv")
+output060 <- read_csv("output060.csv")
+output60100 <- read_csv("output60100.csv")
+output100200 <- read_csv("output100200.csv")
+output200300 <- read_csv("output200300.csv")
+output300500 <- read_csv("output300500.csv")
+output500800 <- read_csv("output500800.csv")
 
 tissue_rep <- function(x) {
   rep(x, 22)
