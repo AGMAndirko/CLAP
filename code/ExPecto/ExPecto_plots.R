@@ -11,7 +11,9 @@ library(fdrtool)
 #select columns
 select_n_plot <- function (out, whichtitleplot) {	
 	#Discard from tin also the first ten columns!!!!!
-	tin <- melt(out)
+  out <- out %>% 
+    select(3,8,9, 10, 11, 12, 13, 14, 15, 16,17,18,20, 42, 61, 136, 145, 161, 186, 187, 189, 209) 
+  tin <- melt(out)
 	
 	#positive and negative value filtering, since they are two different columns
 	pos <- tin %>% 
@@ -34,6 +36,21 @@ select_n_plot <- function (out, whichtitleplot) {
 	arrange(value, by_group = TRUE) %>%
 	mutate(variable=factor(variable, levels=unique(variable)))
 	inp2$variable <- fct_rev(inp2$variable)
+	
+	#plot
+	p <- ggplot(inp2,aes(x=value,y=variable, fill = group))+
+	  theme_minimal() +
+	  geom_bar(stat="identity") +
+	  labs(title=whichtitleplot,
+	       x = "Predicted expression (logFC)",
+	       y = "Structure", 
+	       fill = "Expression") +
+	  scale_fill_discrete(labels=c("Upregulation", "Downregulation"))
+	
+	#Print
+	pdf(paste0(whichtitleplot, "_1.pdf"))
+	print(p)
+	dev.off()
 
 	#Alternative plot
 	#test if same structures:
@@ -42,19 +59,29 @@ select_n_plot <- function (out, whichtitleplot) {
 	alt <- NULL
 	alt$variable <- one$variable
 	alt$value <- c(one$value+neg$value)
-	#alt$database <- c(rep("GTEX", 14), "Road map", rep("Encode", 7))
+	alt$database <- c(rep("GTEX", 14), "Road map", rep("Encode", 7))
 	alt <- as.data.frame(alt)
 	#arrange
 	alt <- alt %>%
 	arrange(value) %>%
 	mutate(variable=factor(variable, levels=unique(variable)))
 	#plot!
-
+	p <- ggplot(alt,aes(x=value,y=variable,fill =database))+
+	  theme_minimal() +
+	  geom_bar(stat="identity") +
+	  labs(title=whichtitleplot, 
+	       x = "Sum of Predicted expression (logFC)",
+	       y = "Structure", 
+	       fill = "Expression")
+	#Print
+	pdf(paste0(whichtitleplot, "_2.pdf"))
+	print(p)
+	dev.off()
 	return(alt)
 }
 genewiseplot <- function(originalout) {
   #Select as before, reshape
-  output <- originalout %>% 
+  output <- originalout[,-(1:10),drop=FALSE] %>% 
     dplyr::select(3, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 
                   42, 61, 136, 145, 161, 186, 187, 189, 209)  %>% 
     melt()
@@ -242,8 +269,8 @@ plotinp$timing <- factor(plotinp$timing, levels = c("0 - 300k", "300k - 500k", "
 #clean a bit
 rm(inp1, inp2, inp3)
 
-plotinp_significant <- plotinp %>% 
-  filter(genes %in% highlight$)
+#plotinp_significant <- plotinp %>% 
+#  filter(genes %in% highlight$)
 
 genenames<- gconvert(query = plotinp$genes, organism = "hsapiens",
                      target="ENSG", filter_na = FALSE)

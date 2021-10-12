@@ -41,6 +41,7 @@ wget https://human.genome.dating/bulk/atlas.chr20.csv.gz
 wget https://human.genome.dating/bulk/atlas.chr21.csv.gz
 wget https://human.genome.dating/bulk/atlas.chr22.csv.gz
 gzip -d *
+cat *.csv > allchr.csv
 
 #For 90% cutoff, no global filtering
   grep -P -o "rs\d*" Na_high_freq.tsv > hf_vars
