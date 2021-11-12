@@ -12,7 +12,7 @@ import_data <- function(path, id) {
 }
 
 df <- NULL
-ind = 0
+ind = 1
 #note: printing the 1000 permutations might take a while or overload memory
 while(ind < 1000 ){
   print(paste0("Doing permutation nr:", ind))
@@ -21,34 +21,30 @@ while(ind < 1000 ){
   ind = ind+1
 } 
 
-#might throw error if path directory is different!
-all <- import_data("../../all_COMBINED.tsv", "All derived")
-hf <- import_data("../../hf_COMBINED.tsv", "HF derived")
-hf_strict <- import_data("../../hf_strictCOMBINED.tsv", "HF derived (pop. filter)")
-#fixed <- import_data("../../fixed_COMBINED.tsv", "Fixed derived")
+#Modify path directory accordingly
+all <- import_data("../../distributions/all_COMBINED.tsv", "All derived")
+hf <- import_data("../../distributions/hf_COMBINED.tsv", "HF derived")
+hf_strict <- import_data("../../distributions/hf_strictCOMBINED.tsv", "HF derived (pop. filter)")
+fixed <- import_data("../../distributions/fixed_COMBINED.tsv", "Fixed derived")
 
 df <- as.data.frame(df)
 df <- melt(df)
-df['variable'] <- "Permutated control regions"
-df <- rbind(df, hf, hf_strict, all)
+df['variable'] <- "Control regions"
+df <- rbind(df, hf, hf_strict, all, fixed)
 
 df <- df %>% 
-  mutate(variable = fct_relevel(variable,
+  mutate(variable = fct_relevel(variable, 
+                                "Fixed derived",
                                 "HF derived (pop. filter)",
                                 "HF derived", "All derived",
-                                "Permutated control regions")) 
-test <- c("HF derived", "Permutated control regions", "All derived")
-df2<- df %>% 
-  filter(variable %in% test)
+                                "Control regions"))
 
 pdf("fig1.pdf", width =10, height=6  )
-ggplot(df2, aes(value, variable)) +
+ggplot(df, aes(value, variable)) +
   theme_minimal() +
-  ggtitle("Random regions (n=1000) and H. sapiens specific-variants") +
+  #ggtitle("Random regions (n=1000) and H. sapiens specific-variants") +
   scale_x_continuous(labels = function(x) format(x, scientific = FALSE), breaks = seq(0,6218702, by = 200000)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   geom_violin(draw_quantiles = c(0.25, 0.5, 0.75), trim = TRUE, adjust = 4) +
   labs(x = "Years", y = "Dataset") 
 dev.off()
-
-

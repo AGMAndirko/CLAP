@@ -1,3 +1,5 @@
+#PACKAGES
+```{r}
 library(tidyverse)
 library(reshape2)
 library(gprofiler2)
@@ -6,8 +8,11 @@ library(gghighlight)
 library(locfdr)
 library(coin)
 library(fdrtool)
+```
+
 
 #ONLY BRAIN-RELATED VIOLIN PLOT
+```{r}
 #select columns
 select_n_plot <- function (out, whichtitleplot) {	
   #Discard from tin also the first ten columns!!!!!
@@ -253,7 +258,7 @@ kruskal_test(value ~ time, data = allexpr)
 #By both - significant
 kruskal_test(value ~ variable |time, data = allexpr)
 #Brain vs control - significant
-kruskal_test(value ~ as.factor(highlight) | time, data = allexpr) #error
+#kruskal_test(value ~ as.factor(highlight) | time, data = allexpr) #error
 
 #Now for the cone plots
 rm(list = ls())
@@ -315,16 +320,9 @@ ggplot(plotinp, aes(x=magnitude, y=directionality, colour = timing, label = gene
 geom_label_repel(data = subset(plotinp,  magnitude > 2), colour = "black", nudge_y = 1 ) 
 
 #dev.off()
-#Overall Q-Q plot
+#Only brain Q-Q plot
+##Overall
 output <- read_csv("~/data_clap_Alejandro/expecto/outputall.csv")
-out <- output[,-(1:10),drop=FALSE]
-out <- melt(out)
-
-out <- out %>% 
-  group_by(variable) %>% 
-  summarize(sum = sum(as.numeric(value)))
-
-
 out <- output[,-(1:10),drop=FALSE]
 out <- out%>% 
   select(3,8,9, 10, 11, 12, 13, 14, 15, 16,17,18,20, 42, 61, 136, 145, 161, 186, 187, 189, 209) 
@@ -332,13 +330,68 @@ out <- melt(out)
 
 out <- out %>% 
   group_by(variable) %>% 
-  summarize(sum = sum(as.numeric(value)))
+  summarize(sum = sum(as.numeric(value),na.rm = TRUE))
 
 ggplot(out, aes(sample=sum)) + 
   theme_minimal() +
   ggtitle("Q-Q plot - extreme value skewedness", subtitle = "ExPecto (all time windows - only brain tissues)") +
   geom_qq() +
   stat_qq_line()
+
+#First period
+out <- output0300
+out <- out[,-(1:10),drop=FALSE]
+out <- out%>% 
+  select(3,8,9, 10, 11, 12, 13, 14, 15, 16,17,18,20, 42, 61, 136, 145, 161, 186, 187, 189, 209) 
+out <- melt(out)
+
+out <- out %>% 
+  group_by(variable) %>% 
+  summarize(sum = sum(as.numeric(value), na.rm = TRUE))
+
+
+ggplot(out, aes(sample=sum)) + 
+  theme_minimal() +
+  ggtitle("Q-Q plot - extreme value skewedness", subtitle = "ExPecto (0-300k - only brain tissues)") +
+  geom_qq() +
+  stat_qq_line()
+
+#Second period
+out <- output300500
+out <- out[,-(1:10),drop=FALSE]
+out <- out%>% 
+  select(3,8,9, 10, 11, 12, 13, 14, 15, 16,17,18,20, 42, 61, 136, 145, 161, 186, 187, 189, 209) 
+out <- melt(out)
+
+out <- out %>% 
+  group_by(variable) %>% 
+  summarize(sum = sum(as.numeric(value), na.rm = TRUE))
+
+
+ggplot(out, aes(sample=sum)) + 
+  theme_minimal() +
+  ggtitle("Q-Q plot - extreme value skewedness", subtitle = "ExPecto (300k-500k - only brain tissues)") +
+  geom_qq() +
+  stat_qq_line()
+
+#Third period
+out <- output5001m
+out <- out[,-(1:10),drop=FALSE]
+out <- out%>% 
+  select(3,8,9, 10, 11, 12, 13, 14, 15, 16,17,18,20, 42, 61, 136, 145, 161, 186, 187, 189, 209) 
+out <- melt(out)
+
+out <- out %>% 
+  group_by(variable) %>% 
+  summarize(sum = sum(as.numeric(value), na.rm = TRUE))
+
+
+ggplot(out, aes(sample=sum)) + 
+  theme_minimal() +
+  ggtitle("Q-Q plot - extreme value skewedness", subtitle = "ExPecto (500-1m - only brain tissues)") +
+  geom_qq() +
+  stat_qq_line()
+
 
 
 ggplot(plotinp, aes(x=magnitude, y=directionality, colour = timing, label = genes)) +
@@ -388,9 +441,11 @@ b <- ggplot(plotinp, aes(x=magnitude, y=directionality, colour = timing, label =
 library(cowplot)
 plot1 <- plot_grid(a, b, ncol = 2, labels = c("A", "B"), rel_widths = c(1,1))
 ggsave("~/Fig3_brain.pdf", plot1, width = 20, height = 10)
+```
 
-
-#ALL STRUCTURES VIOLIN PLOT
+#ALL STRUCTURES
+```{r}
+#select columns
 select_n_plot <- function (out, whichtitleplot) {	
   tin <- melt(out)
   
@@ -430,6 +485,199 @@ select_n_plot <- function (out, whichtitleplot) {
     arrange(value) %>%
     mutate(variable=factor(variable, levels=unique(variable)))
   return(alt)
+} #all tissues
+genewiseplot <- function(originalout) {
+  #Select as before, reshape
+  output <- originalout[,-(1:10),drop=FALSE] %>% 
+    dplyr::select(3, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 
+                  42, 61, 136, 145, 161, 186, 187, 189, 209)  %>% 
+    melt()
+  
+  #Keep the gene!
+  output$genes <- originalout$gene
+  
+  #Variation potential +directionality = value here
+  inp <- aggregate(value ~ genes, output, sum)
+  colnames(inp)[2] <- "directionality"
+  
+  #Variation potential magnitude to a new dataframe (inpm+number of time window)
+  inpm <- aggregate(abs(value) ~ genes, output, sum)
+  colnames(inpm)[2] <- "magnitude"
+  
+  #Testing íf columns are the same
+  #Replies with FALSE here if everything ok to merge
+  test <- inp$genes == inpm$genes
+  FALSE %in% test
+  
+  #adds magnitude, removes aggregate 
+  inp$magnitude <- inpm$magnitude
+  
+  return(inp)
 }
-##
+dataprep <- function (timewindow) {
+  output <- timewindow[,-(1:10),drop=FALSE] 
+  
+  output <- output %>% 
+    dplyr::select(3,8,9, 10, 11, 12, 13, 14, 15, 16,17,18,20, 42, 61, 136, 145, 161, 186, 187, 189, 209) %>% 
+    melt()
+  output$genes <- timewindow$gene
+  
+  inp <- aggregate(value ~ genes, output, sum)
+  colnames(inp)[2] <- "directionality"
+  
+  inpm <- aggregate(abs(value) ~ genes, output, sum)
+  colnames(inpm)[2] <- "magnitude"
+  
+  test <- inp$genes == inpm$genes
+  FALSE %in% test
+  inp$magnitude <- inpm$magnitude
+  return(inp)
+}
+#false discovery rate for cone plots
+shape_data_FDR <- function (timewindow) {
+  output <- timewindow[,-(1:10),drop=FALSE] 
+  
+  output <- output %>% 
+    dplyr::select(3,8,9, 10, 11, 12, 13, 14, 15, 16,17,18,20, 42, 61, 136, 145, 161, 186, 187, 189, 209) %>% 
+    melt()
+  output$genes <- timewindow$gene
+  return(output)
+  
+  # variant number control for FDR - commented out
+  if(FALSE){
+    output <- output %>%
+      group_by$gene %>%
+      summarize(mean_aggregated_variants = (mean(value)))
+    # problematic - maybe median is better?
+  }
+}
+FDRgenes <- function(output){
+  #conserve time window info
+  output$time <- NA
+  l1 <- as.numeric(length(output0300$value))
+  l2 <- as.numeric(length(output300500$value))
+  l3 <- as.numeric(length(output5001m$value))
+  output$time[1:l1] <- rep("0-300k", l1)
+  output$time[l1+1:l2] <-  rep("300-500k", l2)
+  output$time[l2+1:l3] <-  rep("500-1m", l3)
+  
+  output <- output %>% 
+    group_by(variable, genes) %>% 
+    mutate(value = sum(value)) %>% 
+    filter(value != 0) %>% 
+    unique()
+  
+  output$z_scores  <-  output$value-mean(output$value)/sd(output$value)
+  
+  #commented out
+  if(FALSE){
+    inp <- aggregate(value ~ genes, output, sum)
+    colnames(inp)[2] <- "directionality"
+    
+    inpm <- aggregate(abs(value) ~ genes, output, sum)
+    colnames(inpm)[2] <- "magnitude"
+    
+    test <- inp$genes == inpm$genes
+    FALSE %in% test
+    inp$magnitude <- inpm$magnitude
+  }
+  return(output)
+}
+
+#read
+output0300 <- read_csv("~/data_clap_Alejandro/expecto/run0300.csv")
+output300500 <- read_csv("~/data_clap_Alejandro/expecto/run300500.csv")
+output5001m <- read_csv("~/data_clap_Alejandro/expecto/run5001m.csv")
+output <- read_csv("~/data_clap_Alejandro/expecto/outputall.csv")
+
+#shapes data for violin plot 
+output0300 <- select_n_plot(output0300[,-(1:10),drop=FALSE], "0-300k")
+output300500 <- select_n_plot(output300500[,-(1:10),drop=FALSE], "300-500k")
+output5001m <- select_n_plot(output5001m[,-(1:10),drop=FALSE], "500-1m")
+
+allexpr <- full_join(output0300, output300500)
+allexpr <- full_join(allexpr, output5001m)
+
+windows <-c("0-300kya",  "300-500kya", "500-1mya")
 allexpr$time <- unlist(lapply(windows, rep, 218))
+allexpr$time <- factor(allexpr$time, levels = unique(allexpr$time))
+
+#Overall Q-Q plot
+output <- read_csv("~/data_clap_Alejandro/expecto/outputall.csv")
+out <- output[,-(1:10),drop=FALSE]
+out <- melt(out)
+
+out <- out %>% 
+  group_by(variable) %>% 
+  summarize(sum = sum(as.numeric(value), na.rm = TRUE))
+
+
+ggplot(out, aes(sample=sum)) + 
+  theme_minimal() +
+  ggtitle("Q-Q plot - extreme value skewedness", subtitle = "ExPecto (all time windows - all tissues)") +
+  geom_qq() +
+  stat_qq_line()
+
+
+#First period
+out <- output0300
+out <- out[,-(1:10),drop=FALSE]
+out <- melt(out)
+
+out <- out %>% 
+  group_by(variable) %>% 
+  summarize(sum = sum(as.numeric(value), na.rm = TRUE))
+
+
+ggplot(out, aes(sample=sum)) + 
+  theme_minimal() +
+  ggtitle("Q-Q plot - extreme value skewedness", subtitle = "ExPecto (0-300k - all tissues)") +
+  geom_qq() +
+  stat_qq_line()
+
+#Second period
+out <- output300500
+out <- out[,-(1:10),drop=FALSE]
+out <- melt(out)
+
+out <- out %>% 
+  group_by(variable) %>% 
+  summarize(sum = sum(as.numeric(value), na.rm = TRUE))
+
+
+ggplot(out, aes(sample=sum)) + 
+  theme_minimal() +
+  ggtitle("Q-Q plot - extreme value skewedness", subtitle = "ExPecto (300k-500k - all tissues)") +
+  geom_qq() +
+  stat_qq_line()
+
+#Third period
+out <- output5001m
+out <- out[,-(1:10),drop=FALSE]
+out <- melt(out)
+
+out <- out %>% 
+  group_by(variable) %>% 
+  summarize(sum = sum(as.numeric(value), na.rm = TRUE))
+
+
+ggplot(out, aes(sample=sum)) + 
+  theme_minimal() +
+  ggtitle("Q-Q plot - extreme value skewedness", subtitle = "ExPecto (500-1m - all tissues)") +
+  geom_qq() +
+  stat_qq_line()
+
+
+
+#Kruskal test
+#By variable - not significant
+kruskal_test(value ~ variable, data = allexpr)
+#By age - significant
+kruskal_test(value ~ time, data = allexpr)
+#By both - significant
+kruskal_test(value ~ variable | time, data = allexpr)
+#Brain vs control - significant
+#kruskal_test(value ~ as.factor(highlight) | time, data = allexpr) #error
+
+
+```
