@@ -8,6 +8,7 @@ library(gghighlight)
 library(locfdr)
 library(coin)
 library(fdrtool)
+library(gridExtra)
 ```
 
 
@@ -131,7 +132,6 @@ dataprep <- function (timewindow) {
   inp$magnitude <- inpm$magnitude
   return(inp)
 }
-
 #false discovery rate for cone plots
 shape_data_FDR <- function (timewindow) {
   output <- timewindow[,-(1:10),drop=FALSE] 
@@ -338,6 +338,10 @@ ggplot(out, aes(sample=sum)) +
   geom_qq() +
   stat_qq_line()
 
+
+output0300 <- read_csv("~/data_clap_Alejandro/expecto/run0300.csv")
+output300500 <- read_csv("~/data_clap_Alejandro/expecto/run300500.csv")
+output5001m <- read_csv("~/data_clap_Alejandro/expecto/run5001m.csv")
 #First period
 out <- output0300
 out <- out[,-(1:10),drop=FALSE]
@@ -350,11 +354,11 @@ out <- out %>%
   summarize(sum = sum(as.numeric(value), na.rm = TRUE))
 
 
-ggplot(out, aes(sample=sum)) + 
+p1 <- ggplot(out, aes(sample=sum)) + 
   theme_minimal() +
-  ggtitle("Q-Q plot - extreme value skewedness", subtitle = "ExPecto (0-300k - only brain tissues)") +
+  ggtitle("Q-Q plot - Only brain tissues", subtitle = "Period: 0-300k. Set: Only brain tissues") +
   geom_qq() +
-  stat_qq_line()
+  stat_qq_line()+xlab("")+ylab("")
 
 #Second period
 out <- output300500
@@ -368,11 +372,11 @@ out <- out %>%
   summarize(sum = sum(as.numeric(value), na.rm = TRUE))
 
 
-ggplot(out, aes(sample=sum)) + 
+p2 <- ggplot(out, aes(sample=sum)) + 
   theme_minimal() +
-  ggtitle("Q-Q plot - extreme value skewedness", subtitle = "ExPecto (300k-500k - only brain tissues)") +
+  ggtitle("", subtitle = "Period: 300k-500k. Set: Only brain tissues") +
   geom_qq() +
-  stat_qq_line()
+  stat_qq_line()+xlab("")+ylab("")
 
 #Third period
 out <- output5001m
@@ -386,14 +390,15 @@ out <- out %>%
   summarize(sum = sum(as.numeric(value), na.rm = TRUE))
 
 
-ggplot(out, aes(sample=sum)) + 
+p3 <- ggplot(out, aes(sample=sum)) + 
   theme_minimal() +
-  ggtitle("Q-Q plot - extreme value skewedness", subtitle = "ExPecto (500-1m - only brain tissues)") +
+  ggtitle("", subtitle = "Period: 500k-1m. Set: Only brain tissues") +
   geom_qq() +
-  stat_qq_line()
+  stat_qq_line()+xlab("")+ylab("")
 
 
 
+#
 ggplot(plotinp, aes(x=magnitude, y=directionality, colour = timing, label = genes)) +
   theme_minimal() +
   geom_point(size = 3) +
@@ -619,6 +624,9 @@ ggplot(out, aes(sample=sum)) +
   stat_qq_line()
 
 
+output0300 <- read_csv("~/data_clap_Alejandro/expecto/run0300.csv")
+output300500 <- read_csv("~/data_clap_Alejandro/expecto/run300500.csv")
+output5001m <- read_csv("~/data_clap_Alejandro/expecto/run5001m.csv")
 #First period
 out <- output0300
 out <- out[,-(1:10),drop=FALSE]
@@ -629,11 +637,11 @@ out <- out %>%
   summarize(sum = sum(as.numeric(value), na.rm = TRUE))
 
 
-ggplot(out, aes(sample=sum)) + 
+p4 <- ggplot(out, aes(sample=sum)) + 
   theme_minimal() +
-  ggtitle("Q-Q plot - extreme value skewedness", subtitle = "ExPecto (0-300k - all tissues)") +
+  ggtitle("Q-Q plot - All tissues", subtitle = "Period: 0-300k") +
   geom_qq() +
-  stat_qq_line()
+  stat_qq_line()+xlab("")+ylab("")
 
 #Second period
 out <- output300500
@@ -645,11 +653,11 @@ out <- out %>%
   summarize(sum = sum(as.numeric(value), na.rm = TRUE))
 
 
-ggplot(out, aes(sample=sum)) + 
+p5 <- ggplot(out, aes(sample=sum)) + 
   theme_minimal() +
-  ggtitle("Q-Q plot - extreme value skewedness", subtitle = "ExPecto (300k-500k - all tissues)") +
+  ggtitle("", subtitle = "Period: 300k-500k") +
   geom_qq() +
-  stat_qq_line()
+  stat_qq_line()+xlab("")+ylab("")
 
 #Third period
 out <- output5001m
@@ -661,13 +669,11 @@ out <- out %>%
   summarize(sum = sum(as.numeric(value), na.rm = TRUE))
 
 
-ggplot(out, aes(sample=sum)) + 
+p6 <- ggplot(out, aes(sample=sum)) + 
   theme_minimal() +
-  ggtitle("Q-Q plot - extreme value skewedness", subtitle = "ExPecto (500-1m - all tissues)") +
+  ggtitle("", subtitle = "Period: 500k-1m") +
   geom_qq() +
-  stat_qq_line()
-
-
+  stat_qq_line()+xlab("")+ylab("")
 
 #Kruskal test
 #By variable - not significant
@@ -679,5 +685,14 @@ kruskal_test(value ~ variable | time, data = allexpr)
 #Brain vs control - significant
 #kruskal_test(value ~ as.factor(highlight) | time, data = allexpr) #error
 
+
+```
+
+
+```{r}
+lay <- rbind(c(1,2,3), c(4,5,6))
+pdf(file="~/Temporal-mapping/plots/ExPecto/QQplots_Expecto_v2.pdf")
+grid.arrange(p4, p5, p6, p1, p2, p3, layout_matrix = lay)
+dev.off()
 
 ```
