@@ -356,7 +356,7 @@ out <- out %>%
 
 p1 <- ggplot(out, aes(sample=sum)) + 
   theme_minimal() +
-  ggtitle("Q-Q plot - Only brain tissues", subtitle = "Period: 0-300k. Set: Only brain tissues") +
+  ggtitle("Q-Q plot - Only brain tissues", subtitle = "Period: 0-300k") +
   geom_qq() +
   stat_qq_line()+xlab("")+ylab("")
 
@@ -374,7 +374,7 @@ out <- out %>%
 
 p2 <- ggplot(out, aes(sample=sum)) + 
   theme_minimal() +
-  ggtitle("", subtitle = "Period: 300k-500k. Set: Only brain tissues") +
+  ggtitle("", subtitle = "Period: 300k-500k") +
   geom_qq() +
   stat_qq_line()+xlab("")+ylab("")
 
@@ -392,7 +392,7 @@ out <- out %>%
 
 p3 <- ggplot(out, aes(sample=sum)) + 
   theme_minimal() +
-  ggtitle("", subtitle = "Period: 500k-1m. Set: Only brain tissues") +
+  ggtitle("", subtitle = "Period: 500k-1m") +
   geom_qq() +
   stat_qq_line()+xlab("")+ylab("")
 
